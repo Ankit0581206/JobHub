@@ -10,24 +10,24 @@ ApplicationWindow {
     title: "JobHub"
 
     // Navigation header Just tested
-    header: ToolBar {
-        contentItem: Rectangle {
-            implicitWidth: parent.width
-            implicitHeight: 30
-            color: "transparent"
+//    header: ToolBar {
+//        contentItem: Rectangle {
+//            implicitWidth: parent.width
+//            implicitHeight: 30
+//            color: "transparent"
 
-//            Text {
-//                text: "Job Application System"
-//                anchors.centerIn: parent
-//            }
-        }
-    }
+////            Text {
+////                text: "Job Application System"
+////                anchors.centerIn: parent
+////            }
+//        }
+//    }
 
     // Use a Loader for dynamic page loading
     Loader {
         id: pageLoader
         width: parent.width
-        height: parent.height - header.height
+        height: parent.height
 
         // Set the default page as Home Page
         sourceComponent: homePageComponent
