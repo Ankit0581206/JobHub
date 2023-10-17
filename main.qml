@@ -9,7 +9,7 @@ ApplicationWindow {
     height: Screen.height
     title: "JobHub"
 
-    // Navigation header
+    // Navigation header Just tested
     header: ToolBar {
         contentItem: Rectangle {
             implicitWidth: parent.width
