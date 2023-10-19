@@ -145,7 +145,7 @@ Page {
                                     x: 72
                                     y: 0
                                     width: 162
-                                    height: 38
+                                    height: 30
                                     color: "#ffffff"
                                     text: qsTr("JOB SEEKER")
                                     font.pixelSize: 24
@@ -154,6 +154,95 @@ Page {
                                     wrapMode: Text.Wrap
                                     font.weight: Font.Bold
                                     font.family: "Mulish"
+
+                                    Rectangle {
+                                               id: underlineRect1
+                                               width: jOB_SEEKER.width
+                                               height: 2
+                                               color: "red"
+                                               anchors.horizontalCenter: jOB_SEEKER.horizontalCenter
+                                               anchors.top: jOB_SEEKER.bottom
+                                               visible: false
+                                           }
+
+                                    MouseArea{
+                                        id:hoverarea1
+                                        anchors.fill: parent
+                                        anchors.rightMargin: 14
+                                        hoverEnabled: true
+
+
+                                        onEntered: {
+                                            if(state!=="clicked"){
+                                                jOB_SEEKER.color = "pink";  // Change text color on hover
+                                                state = "hovered";
+
+                                            }
+
+
+                                        }
+                                        onExited: {
+                                            if(state!=="clicked"){
+                                             jOB_SEEKER.color = "#ffffff"; // Reset text color on exit
+                                             state = "";
+                                            }
+
+
+                                        }
+
+                                        onClicked: {
+//                                            eMPLOYER.clicked = true;
+                                            jOB_SEEKER.color = "red";
+                                            underlineRect1.visible = true;
+                                            state = "clicked";
+                                            eMPLOYER.state =""
+
+                                        }
+
+                                    }
+
+                                    states:[
+                                        State {
+                                            name: "clicked"
+                                            PropertyChanges {
+                                                target: jOB_SEEKER
+                                                color: "red"
+                                            }
+                                            PropertyChanges {
+                                                target: underlineRect1
+                                                visible: true
+
+                                            }
+                                        },
+                                        State {
+                                            name: "hovered"
+                                            PropertyChanges {
+                                                target: jOB_SEEKER
+                                                color: "pink"
+                                            }
+                                        }
+
+                                    ]
+
+                                    transitions: Transition {
+                                        from: "*"
+                                        to: "clicked"
+                                        reversible: true
+                                        ParallelAnimation{
+                                            NumberAnimation{
+                                                properties: "color"
+                                                duration: 300
+                                            }
+                                            NumberAnimation{
+                                                target: underlineRect1
+                                                property: "visible"
+                                                duration: 0
+                                            }
+                                        }
+
+                                    }
+
+
                                 }
 
             //                    SvgPathItem {
@@ -174,17 +263,17 @@ Page {
 
                             Item {
                                 id: employer
-                                x: 397
+                                x: 401
                                 y: 65
-                                width: 309
+                                width: 226
                                 height: 38
 
-                                property bool clicked: false
+
                                 Text {
                                     id: eMPLOYER
                                     x: 74
                                     y: 0
-                                    width: 163
+                                    width: 144
                                     height: 38
                                     text: qsTr("EMPLOYER")
                                     color: eMPLOYER.clicked ? "red" : "#ffffff"
@@ -194,27 +283,98 @@ Page {
                                     wrapMode: Text.Wrap
                                     font.weight: Font.Bold
                                     font.family: "Mulish"
-//                                    color: hoverarea.containsMouse ? "red" : "#ffffff"
+
+                                    Rectangle {
+                                               id: underlineRect
+                                               width: eMPLOYER.width
+                                               height: 2
+                                               color: "red"
+                                               anchors.horizontalCenter: eMPLOYER.horizontalCenter
+                                               anchors.top: eMPLOYER.bottom
+                                               visible: false
+                                           }
+
                                     MouseArea{
                                         id:hoverarea
                                         anchors.fill: parent
+                                        anchors.rightMargin: 14
                                         hoverEnabled: true
-                                        onClicked: {
-                                            eMPLOYER.clicked = true;
-//                                            eMPLOYER.color = "red";
 
-                                        }
 
                                         onEntered: {
-                                            eMPLOYER.color = "red"; // Change text color on hover
+                                            if(state!=="clicked"){
+                                                eMPLOYER.color = "pink";  // Change text color on hover
+                                                state = "hovered";
+
+                                            }
+
+
                                         }
                                         onExited: {
-                                            eMPLOYER.color = "#ffffff"; // Reset text color on exit
+                                            if(state!=="clicked"){
+                                             eMPLOYER.color = "#ffffff"; // Reset text color on exit
+                                             state = "";
+                                            }
+
+
+                                        }
+
+                                        onClicked: {
+//                                            eMPLOYER.clicked = true;
+                                            eMPLOYER.color = "red";
+                                            underlineRect.visible = true;
+                                            state = "clicked";
+                                            jOB_SEEKER.state = ""
+
+                                        }
+
+                                    }
+
+                                    states:[
+                                        State {
+                                            name: "clicked"
+                                            PropertyChanges {
+                                                target: eMPLOYER
+                                                color: "red"
+                                            }
+                                            PropertyChanges {
+                                                target: underlineRect
+                                                visible: true
+
+                                            }
+                                        },
+                                        State {
+                                            name: "hovered"
+                                            PropertyChanges {
+                                                target: eMPLOYER
+                                                color: "pink"
+                                            }
+                                        }
+
+                                    ]
+
+                                    transitions: Transition {
+                                        from: "*"
+                                        to: "clicked"
+                                        reversible: true
+                                        ParallelAnimation{
+                                            NumberAnimation{
+                                                properties: "color"
+                                                duration: 300
+                                            }
+                                            NumberAnimation{
+                                                target: underlineRect
+                                                property: "visible"
+                                                duration: 0
+                                            }
                                         }
 
                                     }
 
                                 }
+
+
+
 
 
                             }
