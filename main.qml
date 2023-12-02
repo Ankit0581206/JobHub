@@ -1,69 +1,65 @@
-import QtQuick 2.15
-import QtQuick.Window 2.15
-import QtQuick.Controls 2.15
-import "UI"
+import QtQuick 2.12
+import QtQuick.Window 2.12
+import QtQuick.Controls 2.5
+import QtQuick.Layouts 1.12
 
-ApplicationWindow {
+// Import our custom QML component "MyDatabase", defined in main.cpp.
+import org.mydb 1.0
+
+Window {
+    id: window
+    title: Qt.application.name
+
+    width: 320
+    height: 240
     visible: true
-    width: Screen.width
-    height: Screen.height
-    title: "JobHub"
 
-    // Navigation header
-//    header: ToolBar {
-//        contentItem: Rectangle {
-//            implicitWidth: parent.width
-//            implicitHeight: 30
-//            color: "transparent"
-
-////            Text {
-////                text: "Job Application System"
-////                anchors.centerIn: parent
-////            }
-//        }
-//    }
-
-    // Use a Loader for dynamic page loading
-    Loader {
-        id: pageLoader
-        width: parent.width
-        height: parent.height
-
-        // Set the default page as Home Page
-        sourceComponent: homePageComponent
+    MyDatabase {
+        id: mydb
     }
 
-    // Define the available pages as components
-    Component {
-        id: homePageComponent
-        HomePage {
-            // Add any necessary properties or functions for Home Page
+    ColumnLayout {
+        anchors.centerIn: parent
+        anchors.margins: 10
+        spacing: 10
+
+        TextField {
+            id: mInputEmail
+            Layout.fillWidth: true
+            focus: true
+            placeholderText: "Email Address"
         }
-    }
 
-    Component {
-        id: adminPageComponent
-        AdminPage {
-            // Add any necessary properties or functions for Admin Page
+        TextField {
+            id: mInputPassword
+            Layout.fillWidth: true
+            echoMode: TextInput.Password
+            placeholderText: "Password"
         }
-    }
 
-    Component {
-        id: signInPageComponent
-        SignInPage {
-            // Add any necessary properties or functions for Sign In Page
+        Button {
+            id: mButtonLogin
+            text: "LOGIN"
+            Layout.fillWidth: true
+            onClicked: {
+                var email = mInputEmail.text
+                var password = mInputPassword.text
+
+                var loginResult = mydb.authenticateUser(email, password)
+
+                if (loginResult === "Login Successful") {
+                    mOutputText.text = loginResult
+                    // Redirect or perform actions upon successful login
+                } else {
+                    mOutputText.text = loginResult
+                }
+            }
         }
-    }
 
-    Component {
-        id: registerPageComponent
-        RegisterPage {
-            // Add any necessary properties or functions for Register Page
+        Label {
+            id: mOutputText
+            text: "..."
+            Layout.alignment: Qt.AlignHCenter
         }
-    }
-
-    // Function to navigate to different pages
-    function navigateTo(pageComponent) {
-        pageLoader.sourceComponent = pageComponent;
     }
 }
