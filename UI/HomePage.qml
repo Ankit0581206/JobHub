@@ -4,7 +4,7 @@ import QtQuick.Controls 2.15
 Page {
     id: homePage
     width: Screen.width
-    height: 3280
+    height: 3305
 
     header: ToolBar {
         contentItem: Rectangle {
@@ -43,6 +43,8 @@ Page {
 
         Item {
             id: contentItem
+            x: 0
+            y: 0
             width: Screen.width
             height: 3276
             implicitHeight: height
@@ -2816,6 +2818,7 @@ Page {
                             y: 21
                             width: 80
                             height: 35
+
 
                             onClicked: {
                                                     // Navigate to Sign In Page when the Sign In button is clicked

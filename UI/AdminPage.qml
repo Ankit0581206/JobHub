@@ -4,7 +4,7 @@ import QtQuick.Controls 2.15
 
 Page {
     id: adminPage
-    width: 1440
+    width: Screen.width
     height: 3800
 
 
@@ -25,13 +25,13 @@ Page {
 
         Item {
             id: contentItem
-            width: screen.width
+            width: Screen.width
             height: 3800
             implicitHeight: height
             // Your admin page content goes here
             Rectangle {
                 id: admin
-                width: 1367
+                width: Screen.width
                 height: 3800
                 color: "lightblue"
                 property alias job_DescriptionText: job_Description.text
@@ -84,8 +84,8 @@ Page {
 
                 Image {
                     id: rectangle_51
-                    x: 365
-                    y: 0
+                    x: 294
+                    y: 8
                     width: 1075
                     height: 3444
                     source: "assets/rectangle_51.png"
@@ -101,8 +101,8 @@ Page {
 
                         Image {
                             id: rectangle_52
-                            x: -447
-                            y: 0
+                            x: -368
+                            y: -18
                             width: 1080
                             height: 588
                             source: "assets/rectangle_52.png"
@@ -250,8 +250,8 @@ Page {
 
                             Image {
                                 id: logo_copy_2
-                                x: -347
-                                y: 15
+                                x: -258
+                                y: 16
                                 source: "assets/logo_copy_2_1.png"
 
 
@@ -300,8 +300,8 @@ Page {
 
                 Rectangle {
                     id: rectangle_58
-                    x: 467
-                    y: 592
+                    x: 468
+                    y: 591
                     width: 871
                     height: 2732
                     color: "#F0ECF9"
@@ -605,8 +605,8 @@ Page {
 
                 Image {
                     id: rectangle_59
-                    x: 0
-                    y: 3436
+                    x: -24
+                    y: 3439
                     source: "assets/rectangle_59.png"
                 }
 
@@ -1130,15 +1130,56 @@ Page {
                     source: "assets/_mail_email_icon_1.png"
                 }
 
-                Rectangle {
-                    id: rectangle_7
-                    x: 1110
-                    y: 3200
-                    width: 178
-                    height: 67
+//                Rectangle {
+//                    id: rectangle_7
+//                    x: 1110
+//                    y: 3200
+//                    width: 178
+//                    height: 67
+//                    color: "#6f42c1"
+//                    radius: 15
+
                     Button {
-                                        text: "Submit"
-                                        width: parent.width - 10
+                                        id:rectangle_7
+                                        x: 1110
+                                        y: 3200
+                                        width: 178
+                                        height: 67
+                                        Rectangle {
+                                            id: rectangle_300
+                                            color: "#6f42c1"
+                                            radius: 15
+                                            anchors.left: parent.left
+                                            anchors.right: parent.right
+                                            anchors.top: parent.top
+                                            anchors.bottom: parent.bottom
+                                        }
+
+
+                                        Text{
+                                            id:submit2
+                                            x: 51
+                                            y: 18
+                                            width: 87
+                                            height: 32
+                                            color: "#ffffff"
+                                            text: qsTr("Submit")
+                                            font.pixelSize: 22
+                                            horizontalAlignment: Text.AlignLeft
+                                            verticalAlignment: Text.AlignTop
+                                            wrapMode: Text.NoWrap
+                                            font.capitalization: Font.Capitalize
+                                            font.weight: Font.Light
+                                            font.family: "Mulish"
+                                        }
+
+
+
+
+                                        display: AbstractButton.IconOnly
+                                        anchors.verticalCenterOffset: 1331
+                                        anchors.horizontalCenterOffset: 441
+                                        //                                        width: parent.width - 10
                                         anchors.centerIn: parent
 
                                         onClicked: {
@@ -1162,7 +1203,7 @@ Page {
                                                 tx.executeSql('INSERT INTO jobdetails (job_title, category, academic_level, academic_degree, min_experience, salary, location, deadline, job_type, job_description, academic_description) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [jobTitle, category, academiclevel, academicdegree,experienceyear,salary, location, deadline, type, jobdesc, eddesc]);
                                             });
                                         }
-                }
+
 
                 Text {
                     id: submit
@@ -1184,7 +1225,7 @@ Page {
 
             /*##^##
 Designer {
-    D{i:0;uuid:"d224ddea-e1c7-5889-85e0-7c0ec2a270d0"}
+    D{i:0;uuid:"d224ddea-e1c7-5889-85e0-7c0ec2a270d0"}D{i:92}
 }
 ##^##*/
 

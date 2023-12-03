@@ -1,5 +1,7 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
+        <file>LocalSQLiteStorage.pro</file>
+        <file>LocalSQLiteStorage.pro.user</file>
     </qresource>
 </RCC>
