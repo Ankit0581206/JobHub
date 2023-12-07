@@ -1,103 +1,155 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include <QCoreApplication>
+#include <QQmlContext>
+
 #include <QSqlDatabase>
 #include <QSqlDriver>
 #include <QSqlError>
 #include <QSqlQuery>
-#include <QDebug>
-#include <QObject>
 
-class MyDatabase : public QObject {
+#include <QObject>
+#include <QDebug>
+
+#include <QMessageBox>
+#include <QtSql>
+#include <QString>
+#include <QApplication>
+
+
+
+class MyDatabase : public QObject{
     Q_OBJECT
 
 public:
-    explicit MyDatabase(QObject* parent = nullptr) : QObject(parent) { }
+    explicit MyDatabase(QObject* parent = nullptr) : QObject(parent){}
 
-    Q_INVOKABLE QString authenticateUser(const QString& email, const QString& password) {
+    Q_INVOKABLE void createDatabase(){
+        const QString DRIVER("QSQLITE");
+
+        if(QSqlDatabase::isDriverAvailable(DRIVER))
+        {
+            QSqlDatabase db = QSqlDatabase::addDatabase(DRIVER);
+
+            db.setDatabaseName("C:/Users/ankar/OneDrive/Documents/jobhub2/Database/myDatabase.db");
+
+            if(!db.open())
+                qWarning() << "DatabaseConnect - ERROR: " << db.lastError().text();
+        }
+
         QSqlQuery query;
-        query.prepare("SELECT name FROM authentication WHERE email = :email AND password = :password");
+        query.exec("CREATE TABLE IF NOT EXISTS Users ("
+                   "email TEXT PRIMARY KEY, "
+                   "password TEXT, "
+                   "phint TEXT, "
+                   "fullName TEXT, "
+                   "address TEXT, "
+                   "education TEXT, "
+                   "dob TEXT, "
+                   "experience TEXT"
+                   ")");
+    }
+
+    Q_INVOKABLE bool authenticateUser(const QString& email, const QString& password){
+        QSqlQuery query;
+        query.prepare("SELECT * FROM Users WHERE email = :email AND password = :password");
         query.bindValue(":email", email);
         query.bindValue(":password", password);
 
-
         if (!query.exec()) {
             qWarning() << "MyDatabase::authenticateUser - ERROR: " << query.lastError().text();
-            return QString("Error occurred while checking credentials");
+            return false;
         }
 
+        bool loginSuccessful = query.next();  // Use query.next() instead of query.first() for correctness.
 
-        if (query.first())
-            return QString("Login Successful");
-        else
-            return QString("Invalid credentials");
+        if (loginSuccessful) {
+            QMessageBox::information(nullptr, "Login", "Login Successful");
+            return true;
+        } else {
+            QMessageBox::information(nullptr, "Login", "Invalid Credentials");
+            return false;
+        }
     }
 
-    Q_INVOKABLE QString search(QString mInputText) {
+    //    Q_INVOKABLE bool authenticateUser(const QString& email, const QString password){
+    //        QSqlQuery query;
+    //        query.prepare("SELECT name FROM Users WHERE email = :email AND password = :password");
+    //        query.bindValue(":email", email);
+    //        query.bindValue(":password", password);
+
+
+    //        if (!query.exec()) {
+    //            qWarning() << "MyDatabase::authenticateUser - ERROR: " << query.lastError().text();
+    //            return false;
+    //        }
+
+    //        bool loginSuccessful = query.first();
+    //        if(loginSuccessful){
+    //            QMessageBox::information(nullptr,"Login","Login Successful");
+    //            return true;
+    //        }
+    //             QMessageBox::information(nullptr,"Login","Invalid Credentials");
+    //        return false;
+    //}
+
+    Q_INVOKABLE bool registerUser(const QString& email, const QString& password, const QString& phint) {
         QSqlQuery query;
-        query.prepare("SELECT name FROM authentication WHERE id = ?");
-        query.addBindValue(QVariant(mInputText.toInt()));
+        query.prepare("INSERT INTO Users (email, password, phint) VALUES (:email, :password, :phint)");
+        query.bindValue(":email", email);
+        query.bindValue(":password", password);
+        query.bindValue(":phint",phint);
+        if (!query.exec()) {
+            qWarning() << "MyDatabase::registerUser - ERROR: " << query.lastError().text();
+            return false;
+        }
+        return true;
+    }
 
-        if(!query.exec())
-            qWarning() << "MyDatabase::OnSearchClicked - ERROR: " << query.lastError().text();
+    Q_INVOKABLE bool insertKYCData(const QString& email, const QString& fullName, const QString& address, const QString& education, const QString& dob, const QString& experience) {
+        QSqlQuery query;
+        query.prepare("UPDATE Users SET fullName = :fullName, address = :address, education = :education, dob = :dob, experience = :experience WHERE email = :email");
+        query.bindValue(":fullName", fullName);
+        query.bindValue(":address", address);
+        query.bindValue(":education", education);
+        query.bindValue(":dob", dob);
+        query.bindValue(":experience", experience);
+        query.bindValue(":email", email);
 
-        if(query.first())
-            return QString(query.value(0).toString());
-        else
-            return QString("person not found");
+        if (!query.exec()) {
+            qWarning() << "MyDatabase::insertKYCData - ERROR: " << query.lastError().text();
+            return false;
+        }
+        return true;
+
     }
 };
 
-void databaseConnect() {
-    const QString DRIVER("QSQLITE");
-
-    if(QSqlDatabase::isDriverAvailable(DRIVER))
-    {
-        QSqlDatabase db = QSqlDatabase::addDatabase(DRIVER);
-
-        // Set the database file path
-        QString databasePath = "F:/project/Button/Qt-Tutorials/MOC/database.db";
-        db.setDatabaseName(databasePath);
-
-        if(!db.open())
-            qWarning() << "MainWindow::DatabaseConnect - ERROR: " << db.lastError().text();
-    }
-    else
-        qWarning() << "MainWindow::DatabaseConnect - ERROR: no driver " << DRIVER << " available";
-}
-
-void databaseInit() {
-    QSqlQuery query;
-
-    if(!query.exec("CREATE TABLE IF NOT EXISTS authentication (email TEXT PRIMARY KEY, password TEXT, name TEXT)"))
-        qWarning() << "MainWindow::DatabaseInit - ERROR: " << query.lastError().text();
-}
-
-void databasePopulate() {
-    QSqlQuery query;
-
-    if(!query.exec("INSERT OR IGNORE INTO authentication(email,password,name) VALUES('shkroyas@gmail.com','water123','Royas')"))
-        qWarning() << "MainWindow::DatabasePopulate - ERROR: " << query.lastError().text();
-}
-
 #include "main.moc"
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-    QGuiApplication application(argc, argv);
+#endif
+    QGuiApplication app(argc, argv);
 
-    application.setApplicationName("Qt QML SQL example");
-
-    databaseConnect();
-    databaseInit();
-    databasePopulate();
-
-    qmlRegisterType<MyDatabase>("org.mydb", 1, 0, "MyDatabase");
+    MyDatabase mydb;
+    mydb.createDatabase();
 
     QQmlApplicationEngine engine;
-    engine.load(QUrl(QStringLiteral("qrc:///main.qml")));
 
-    if (engine.rootObjects().isEmpty()) {
-        QCoreApplication::exit(-1);
-    }
-    return application.exec();
+
+    engine.rootContext()->setContextProperty("mydb",&mydb);
+
+
+    const QUrl url(QStringLiteral("qrc:/main.qml"));
+    QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
+        &app, [url](QObject *obj, const QUrl &objUrl) {
+            if (!obj && url == objUrl)
+                QCoreApplication::exit(-1);
+        }, Qt::QueuedConnection);
+    engine.load(url);
+
+    return app.exec();
 }
