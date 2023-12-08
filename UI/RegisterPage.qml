@@ -36,7 +36,7 @@ Page {
                 // Call C++ method to register user
                 if (mydb.registerUser(emailField.text, passwordField.text, hintField.text)){
                     console.log("Registration successful");
-//                    StackView.push(loginpagecomponent.createObject())
+
                      navigateTo(loginpagecomponent);
                 }
                 else

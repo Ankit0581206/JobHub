@@ -1,7 +1,7 @@
 // LoginPage.qml
 import QtQuick 2.15
 import QtQuick.Controls 2.15
-import QtQuick.Layouts 1.15
+import QtQuick.Layouts 1.12
 
 
 Page {
@@ -29,7 +29,9 @@ Page {
                 // Call C++ method to authenticate user
                 if (mydb.authenticateUser(loginEmailField.text, loginPasswordField.text)){
                     console.log("Login successful");
+
                     navigateTo(kycpagecomponent);
+
                 }
                 else
                     console.log("Invalid credentials");

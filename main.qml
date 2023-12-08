@@ -20,29 +20,32 @@ ApplicationWindow {
               sourceComponent: registerpagecomponent
         }
 
-        Component{
-            id:loginpagecomponent
-            LoginPage{
 
+
+
+            Component{
+                id:loginpagecomponent
+                LoginPage{
+
+                }
             }
-        }
 
-        Component{
-            id:registerpagecomponent
-            RegisterPage{
+            Component{
+                id:registerpagecomponent
+                RegisterPage{
 
+                }
             }
-        }
 
-        Component{
-            id:kycpagecomponent
-            KYCPage{
+            Component{
+                id:kycpagecomponent
+                KYCPage{
 
+                }
             }
-        }
 
-        function navigateTo(pageComponent) {
-                pageLoader.sourceComponent = pageComponent;
-        }
+            function navigateTo(pageComponent) {
+                    pageLoader.sourceComponent = pageComponent;
+            }
 
-    }
+        }

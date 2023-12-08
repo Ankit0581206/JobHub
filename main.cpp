@@ -20,7 +20,9 @@
 
 class MyDatabase : public QObject{
     Q_OBJECT
-
+private:
+    QString logInUserId;
+    QString semail;
 public:
     explicit MyDatabase(QObject* parent = nullptr) : QObject(parent){}
 
@@ -39,7 +41,9 @@ public:
 
         QSqlQuery query;
         query.exec("CREATE TABLE IF NOT EXISTS Users ("
+                   "user_id TEXT,"
                    "email TEXT PRIMARY KEY, "
+
                    "password TEXT, "
                    "phint TEXT, "
                    "fullName TEXT, "
@@ -48,6 +52,10 @@ public:
                    "dob TEXT, "
                    "experience TEXT"
                    ")");
+    }
+
+    Q_INVOKABLE void storeCurrentEmail(const QString& email) {
+        semail=email;
     }
 
     Q_INVOKABLE bool authenticateUser(const QString& email, const QString& password){
@@ -61,41 +69,43 @@ public:
             return false;
         }
 
-        bool loginSuccessful = query.next();  // Use query.next() instead of query.first() for correctness.
+        bool loginSuccessful = query.next();
 
         if (loginSuccessful) {
-            QMessageBox::information(nullptr, "Login", "Login Successful");
+            storeCurrentEmail(email);
+
             return true;
         } else {
-            QMessageBox::information(nullptr, "Login", "Invalid Credentials");
             return false;
         }
     }
 
-    //    Q_INVOKABLE bool authenticateUser(const QString& email, const QString password){
-    //        QSqlQuery query;
-    //        query.prepare("SELECT name FROM Users WHERE email = :email AND password = :password");
-    //        query.bindValue(":email", email);
-    //        query.bindValue(":password", password);
 
+    Q_INVOKABLE QString getUserIdByEmail() {
+        QString email = semail;
+        QSqlQuery query;
+        query.prepare("SELECT user_id FROM Users WHERE email = :email");
+        query.bindValue(":email", email);
 
-    //        if (!query.exec()) {
-    //            qWarning() << "MyDatabase::authenticateUser - ERROR: " << query.lastError().text();
-    //            return false;
-    //        }
+        if (!query.exec()) {
+            qWarning() << "MyDatabase::getUserIdByEmail - ERROR: " << query.lastError().text();
+            return QString(); // Return an empty string on error
+        }
 
-    //        bool loginSuccessful = query.first();
-    //        if(loginSuccessful){
-    //            QMessageBox::information(nullptr,"Login","Login Successful");
-    //            return true;
-    //        }
-    //             QMessageBox::information(nullptr,"Login","Invalid Credentials");
-    //        return false;
-    //}
+        if (query.next()) {
+            return query.value("user_id").toString();
+        } else {
+            return QString(); // Return an empty string if no user ID found for the given email
+        }
+    }
+
 
     Q_INVOKABLE bool registerUser(const QString& email, const QString& password, const QString& phint) {
+        // Generate a unique user ID
+        QString userId = QUuid::createUuid().toString();
         QSqlQuery query;
-        query.prepare("INSERT INTO Users (email, password, phint) VALUES (:email, :password, :phint)");
+        query.prepare("INSERT INTO Users (user_id, email, password, phint) VALUES (:user_id, :email, :password, :phint)");
+        query.bindValue(":user_id", userId);
         query.bindValue(":email", email);
         query.bindValue(":password", password);
         query.bindValue(":phint",phint);
@@ -106,15 +116,15 @@ public:
         return true;
     }
 
-    Q_INVOKABLE bool insertKYCData(const QString& email, const QString& fullName, const QString& address, const QString& education, const QString& dob, const QString& experience) {
+    Q_INVOKABLE bool insertKYCData(const QString& userId, const QString& fullName, const QString& address, const QString& education, const QString& dob, const QString& experience) {
         QSqlQuery query;
-        query.prepare("UPDATE Users SET fullName = :fullName, address = :address, education = :education, dob = :dob, experience = :experience WHERE email = :email");
+        query.prepare("UPDATE Users SET fullName = :fullName, address = :address, education = :education, dob = :dob, experience = :experience WHERE user_id = :user_id");
         query.bindValue(":fullName", fullName);
         query.bindValue(":address", address);
         query.bindValue(":education", education);
         query.bindValue(":dob", dob);
         query.bindValue(":experience", experience);
-        query.bindValue(":email", email);
+        query.bindValue(":user_id", userId);
 
         if (!query.exec()) {
             qWarning() << "MyDatabase::insertKYCData - ERROR: " << query.lastError().text();
