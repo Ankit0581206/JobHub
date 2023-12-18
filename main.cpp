@@ -15,13 +15,19 @@
 #include <QtSql>
 #include <QString>
 #include <QApplication>
+#include<QWidget>
+
 
 
 
 class MyDatabase : public QObject{
     Q_OBJECT
+private:
+    QString semail;
+
 
 public:
+
     explicit MyDatabase(QObject* parent = nullptr) : QObject(parent){}
 
     Q_INVOKABLE void createDatabase(){
@@ -31,7 +37,7 @@ public:
         {
             QSqlDatabase db = QSqlDatabase::addDatabase(DRIVER);
 
-            db.setDatabaseName("C:/Users/ankar/OneDrive/Documents/jobhub2/Database/myDatabase.db");
+            db.setDatabaseName("C:/Users/adity/Qttest/credential.db");
 
             if(!db.open())
                 qWarning() << "DatabaseConnect - ERROR: " << db.lastError().text();
@@ -64,12 +70,18 @@ public:
         bool loginSuccessful = query.next();  // Use query.next() instead of query.first() for correctness.
 
         if (loginSuccessful) {
-            QMessageBox::information(nullptr, "Login", "Login Successful");
+            //QMessageBox::information(nullptr, "Login", "Login Successful");
             return true;
         } else {
-            QMessageBox::information(nullptr, "Login", "Invalid Credentials");
+            //QMessageBox::information(nullptr, "Login", "Invalid Credentials");
             return false;
         }
+    }
+    Q_INVOKABLE void storeCurrentEmail(const QString& email) {
+        semail=email;
+    }
+    Q_INVOKABLE QString getEmail(){
+        return semail;
     }
 
     //    Q_INVOKABLE bool authenticateUser(const QString& email, const QString password){
@@ -121,6 +133,102 @@ public:
             return false;
         }
         return true;
+
+    }
+    Q_INVOKABLE QString getFullName(const QString& email) {
+        QSqlQuery query;
+        query.prepare("SELECT fullName FROM Users WHERE email = :email");
+        query.bindValue(":email", email);
+
+        if (!query.exec()) {
+            qWarning() << "Query execution failed:" << query.lastError().text();
+            return QString();  // Return an empty string on failure
+        }
+
+        if (query.next()) {
+            // Assuming the 'name' column is of type QString
+            return query.value("fullName").toString();
+        } else {
+            qWarning() << "No record found for email:" << email;
+            return QString();  // Return an empty string if no record is found
+        }
+
+    }
+    Q_INVOKABLE QString getaddress(const QString& email) {
+        QSqlQuery query;
+        query.prepare("SELECT address FROM Users WHERE email = :email");
+        query.bindValue(":email", email);
+
+        if (!query.exec()) {
+            qWarning() << "Query execution failed:" << query.lastError().text();
+            return QString();  // Return an empty string on failure
+        }
+
+        if (query.next()) {
+            // Assuming the 'name' column is of type QString
+            return query.value("address").toString();
+        } else {
+            qWarning() << "No record found for email:" << email;
+            return QString();  // Return an empty string if no record is found
+        }
+
+    }
+
+    Q_INVOKABLE QString getdob(const QString& email) {
+        QSqlQuery query;
+        query.prepare("SELECT dob FROM Users WHERE email = :email");
+        query.bindValue(":email", email);
+
+        if (!query.exec()) {
+            qWarning() << "Query execution failed:" << query.lastError().text();
+            return QString();  // Return an empty string on failure
+        }
+
+        if (query.next()) {
+            // Assuming the 'name' column is of type QString
+            return query.value("dob").toString();
+        } else {
+            qWarning() << "No record found for email:" << email;
+            return QString();  // Return an empty string if no record is found
+        }
+
+    }
+    Q_INVOKABLE QString getexperience(const QString& email) {
+        QSqlQuery query;
+        query.prepare("SELECT experience FROM Users WHERE email = :email");
+        query.bindValue(":email", email);
+
+        if (!query.exec()) {
+            qWarning() << "Query execution failed:" << query.lastError().text();
+            return QString();  // Return an empty string on failure
+        }
+
+        if (query.next()) {
+            // Assuming the 'name' column is of type QString
+            return query.value("experience").toString();
+        } else {
+            qWarning() << "No record found for email:" << email;
+            return QString();  // Return an empty string if no record is found
+        }
+
+    }
+    Q_INVOKABLE QString geteducation(const QString& email) {
+        QSqlQuery query;
+        query.prepare("SELECT education FROM Users WHERE email = :email");
+        query.bindValue(":email", email);
+
+        if (!query.exec()) {
+            qWarning() << "Query execution failed:" << query.lastError().text();
+            return QString();  // Return an empty string on failure
+        }
+
+        if (query.next()) {
+            // Assuming the 'name' column is of type QString
+            return query.value("education").toString();
+        } else {
+            qWarning() << "No record found for email:" << email;
+            return QString();  // Return an empty string if no record is found
+        }
 
     }
 };

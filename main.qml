@@ -5,6 +5,7 @@ import QtQuick.Layouts 1.12
 import "UI"
 
 
+
 ApplicationWindow {
     visible: true
     width: Screen.width
@@ -37,6 +38,12 @@ ApplicationWindow {
         Component{
             id:kycpagecomponent
             KYCPage{
+
+            }
+        }
+        Component{
+            id:homepagecomponent
+            HomePage{
 
             }
         }
