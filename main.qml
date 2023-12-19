@@ -18,7 +18,7 @@ ApplicationWindow {
               height: parent.height
 
               // Set the default page as Home Page
-              sourceComponent: registerpagecomponent
+              sourceComponent: homepagecomponent
         }
 
         Component{

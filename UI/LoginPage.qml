@@ -101,7 +101,6 @@ Page {
                                                 // Make the TextField transparent
                                                 font.family: "Times New Roman"
                                                 font.pointSize: 22
-                                                font.capitalization: Font.MixedCase
                                                 placeholderTextColor: "#a0a0a1"
                                                 clip: true
 
@@ -222,9 +221,13 @@ Page {
             mydb.storeCurrentEmail(loginEmailField.text.trim().toLowerCase())
             if (mydb.authenticateUser(loginEmailField.text, loginPasswordField.text)){
                 console.log("Login successful");
-
-
-                navigateTo(kycpagecomponent);
+                if (mydb.isKYCDataAvailable(loginEmailField.text)) {
+                                // KYC data is available, navigate to another page
+                                navigateTo(homepagecomponent);
+                            } else {
+                                // KYC data is not available, navigate to the kycpagecomponent
+                                navigateTo(kycpagecomponent);
+                            }
             }
             else
                 console.log("Invalid credentials");

@@ -231,6 +231,25 @@ public:
         }
 
     }
+    Q_INVOKABLE bool isKYCDataAvailable(const QString &email) {
+        // Assuming your table is named 'kyc_data' and has a column 'email' as the primary key
+
+        QSqlQuery query;
+        query.prepare("SELECT address AND dob FROM Users WHERE email = ?");
+        query.addBindValue(email);
+
+        if (query.exec() && query.next()) {
+            QString kycStatus = query.value(0).toString();
+
+            // If the 'kyc_status' column is not empty, KYC data is considered available
+            return !kycStatus.isEmpty();
+        } else {
+            // If no row is found, or an error occurs, KYC data is not available
+            qDebug() << "Error checking KYC data:" << query.lastError().text();
+            return false;
+        }
+
+    }
 };
 
 #include "main.moc"
