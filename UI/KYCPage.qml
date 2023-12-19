@@ -13,6 +13,7 @@ Page {
         TextField{
             id:userid
             placeholderText: "user_id"
+            readOnly: true
             text: mydb.getUserIdByEmail()
         }
 

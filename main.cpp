@@ -2,11 +2,13 @@
 #include <QQmlApplicationEngine>
 #include <QCoreApplication>
 #include <QQmlContext>
+#include <QStringList>
 
 #include <QSqlDatabase>
 #include <QSqlDriver>
 #include <QSqlError>
 #include <QSqlQuery>
+#include <QSqlRecord>
 
 #include <QObject>
 #include <QDebug>
@@ -102,7 +104,8 @@ public:
 
     Q_INVOKABLE bool registerUser(const QString& email, const QString& password, const QString& phint) {
         // Generate a unique user ID
-        QString userId = QUuid::createUuid().toString();
+//        QString userId = QUuid::createUuid().toString();
+        QString userId = QString::number((rand() % 90000) + 10000);
         QSqlQuery query;
         query.prepare("INSERT INTO Users (user_id, email, password, phint) VALUES (:user_id, :email, :password, :phint)");
         query.bindValue(":user_id", userId);
@@ -132,6 +135,26 @@ public:
         }
         return true;
 
+    }
+
+    Q_INVOKABLE bool checkDatabase(QString userEmail){
+      // Executing a query to check if all columns are filled for a given email
+        QSqlQuery query;
+        query.prepare("SELECT * FROM Users WHERE email = :email");
+        query.bindValue(":email", userEmail);
+
+        if (query.exec() && query.next()) {
+            // Checking all columns except for 'Email'
+            for (int i = 1; i < query.record().count(); ++i) {
+                if (query.value(i).isNull()) {
+                    return false;  // If any column is not filled, return false
+                }
+            }
+            return true;  // All columns are filled
+        }
+
+        // Handling the case where the query fails or no results are obtained
+        return false;
     }
 };
 

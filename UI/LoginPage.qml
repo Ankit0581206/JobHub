@@ -29,8 +29,12 @@ Page {
                 // Call C++ method to authenticate user
                 if (mydb.authenticateUser(loginEmailField.text, loginPasswordField.text)){
                     console.log("Login successful");
+                    if(mydb.checkDatabase(loginEmailField.text)){
+                        navigateTo(registerpagecomponent);
+                    }else{
 
                     navigateTo(kycpagecomponent);
+                    }
 
                 }
                 else
