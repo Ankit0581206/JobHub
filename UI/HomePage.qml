@@ -3037,6 +3037,7 @@ Page {
                             }
                             onClicked: {
                                             popupMenu.open()
+
                                         }
 
                         }
@@ -3094,64 +3095,53 @@ Page {
 
                     }
                     Menu {
-                                id: popupMenu
-                                x: searchmenu.x
-                                y: searchmenu.y+ searchmenu.height  // Position the menu below the button
-                                width: searchmenu.width
+                        id: popupMenu
+                        x: searchmenu.x
+                        y: searchmenu.y + searchmenu.height  // Position the menu below the button
+                        width: searchmenu.width
 
-                                MenuItem {
-                                    text: "Job Title"
-                                    onClicked: {
-                                        console.log("Option 1 selected");
-                                        // Add your logic here for Option 1
-                                    }
-                                }
+                        // Assuming you want to call the function once and use the result for all MenuItems
+//                        property string searchResult: mydb.checkForSearch(searchField.text)
 
-                                MenuItem {
-                                    text: "Category"
-                                    onClicked: {
-                                        console.log("Option 2 selected");
-                                        // Add your logic here for Option 2
-                                    }
-                                }
-                                MenuItem {
-                                    text: "Academic Qualifications Required"
-                                    onClicked: {
-                                        console.log("Option 2 selected");
-                                        // Add your logic here for Option 2
-                                    }
-                                }
-                                MenuItem {
-                                    text: "Minimum Job Experience Required"
-                                    onClicked: {
-                                        console.log("Option 2 selected");
-                                        // Add your logic here for Option 2
-                                    }
-                                }
-                                MenuItem {
-                                    text: "Prefered Location"
-                                    onClicked: {
-                                        console.log("Option 2 selected");
-                                        // Add your logic here for Option 2
-                                    }
-                                }
-                                MenuItem {
-                                    text: "Application Deadline"
-                                    onClicked: {
-                                        console.log("Option 2 selected");
-                                        // Add your logic here for Option 2
-                                    }
-                                }
-                                MenuItem {
-                                    text: "Job Description"
-                                    onClicked: {
-                                        console.log("Option 2 selected");
-                                        // Add your logic here for Option 2
-                                    }
-                                }
-
-                                // Add more MenuItems as needed
+                        MenuItem {
+                            text: mydb.checkForSearch(searchField.text)
+                            onClicked: {
+                                console.log("Option 1 selected");
+                                // Add your logic here for Option 1
                             }
+                        }
+//                        property string searchResult: {
+//                            var result = mydb.checkForSearch(searchField.text);
+//                            console.log("Search Result:", result);
+//                            return result;
+//                        }
+
+                        MenuItem {
+                            text: mydb.checkForSearch(searchField.text)
+                            onClicked: {
+                                console.log("Option 1 selected");
+                                // Add your logic here for Option 1
+                            }
+                        }
+
+
+                        MenuItem {
+                            text: mydb.checkForSearch(searchField.text)
+                            onClicked: {
+                                console.log("Option 1 selected");
+                                // Add your logic here for Option 1
+                            }
+                        }
+                        MenuItem {
+                            text: mydb.checkForSearch(searchField.text)
+                            onClicked: {
+                                console.log("Option 1 selected");
+                                // Add your logic here for Option 1
+                            }
+                        }
+
+                        // Add more MenuItems as needed
+                    }
 
 
                     Rectangle {
