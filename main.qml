@@ -27,6 +27,18 @@ ApplicationWindow {
 
             }
         }
+        Component{
+            id:faqpagecomponent
+            FaqPage{
+
+            }
+        }
+        Component{
+            id:dashboardpagecomponent
+            Dashboard{
+
+            }
+        }
 
         Component{
             id:registerpagecomponent

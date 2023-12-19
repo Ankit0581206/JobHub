@@ -793,7 +793,7 @@ Page {
                         // Call C++ method to insert KYC data
                         if (mydb.insertKYCData(mydb.getEmail(), fullNameField.text, addressField.text, educationField.text, dobField.text, experienceField.text)){
                             console.log("KYC data submitted successfully");
-                            navigateTo(homepagecomponent);
+                            navigateTo(dashboardpagecomponent);
 
                         }
                         else

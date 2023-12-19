@@ -37,82 +37,82 @@ Page {
                     width: Screen.width
                     height: 3276
                     color: "#ffffff"
-                    //property alias employerText: employer.text
-                    //property alias info1Text: info1.text
-                    //property alias job_Position7Text: job_Position7.text
-                    //property alias quickly_found_my_ideal_job_with_intuitive_search_and_matching_feText: quickly_found_my_ideal_job_with_intuitive_search_and_matching_fe.text
-                    //property alias location3Text: location3.text
-                    //property alias elementText: element.text
-                    //property alias info7Text: info7.text
-                    //property alias company_NameText: company_Name.text
-                    //property alias location1Text: location1.text
-                    //property alias apply13Text: apply13.text
-                    //property alias apply9Text: apply9.text
-                    //property alias job_Position1Text: job_Position1.text
-                    //property alias apply7Text: apply7.text
-                    //property alias company_Name5Text: company_Name5.text
-                    //property alias job_PositionText: job_Position.text
-                    //property alias info9Text: info9.text
-                    //property alias info6Text: info6.text
-                    //property alias nepal_s_Most_Trusted_Job_Portal_Text: nepal_s_Most_Trusted_Job_Portal_.text
-                    //property alias job_Position4Text: job_Position4.text
-                    //property alias job_Position6Text: job_Position6.text
-                    //property alias samira_J_Data_AnalystText: samira_J_Data_Analyst.text
-                    //property alias apply1Text: apply1.text
-                    //property alias company_Name8Text: company_Name8.text
-                    //property alias apply19Text: apply19.text
-                    //property alias jobHub_is_a_free_job_portal_that_provides_access_to_a_comprehensText: jobHub_is_a_free_job_portal_that_provides_access_to_a_comprehens.text
-                    //property alias location7Text: location7.text
-                    //property alias location4Text: location4.text
-                    //property alias company_Name2Text: company_Name2.text
-                    //property alias info10Text: info10.text
-                    //property alias location2Text: location2.text
-                    //property alias company_Name9Text: company_Name9.text
-                    //property alias company_Name4Text: company_Name4.text
-                    //property alias company_Name7Text: company_Name7.text
-                    //property alias mONTHLY_VIEWSText: mONTHLY_VIEWS.text
-                    //property alias locationText: location.text
-                    //property alias apply11Text: apply11.text
-                    //property alias apply3Text: apply3.text
-                    //property alias contact_UsText: contact_Us.text
-                    //property alias element2Text: element2.text
-                    //property alias pARTNER_COMPANIESText: pARTNER_COMPANIES.text
-                    //property alias location6Text: location6.text
-                    //property alias company_Name3Text: company_Name3.text
-                    //property alias job_Position9Text: job_Position9.text
-                    //property alias apply5Text: apply5.text
-                    //property alias found_an_experienced_role_effortlessly_Versatile_platform_for_prText: found_an_experienced_role_effortlessly_Versatile_platform_for_pr.text
-                    //property alias job_Statistics1Text: job_Statistics1.text
-                    //property alias job_Position8Text: job_Position8.text
-                    //property alias secured_my_first_job_fast_User_friendly_and_tons_of_entry_level_Text: secured_my_first_job_fast_User_friendly_and_tons_of_entry_level_.text
-                    //property alias company_Name1Text: company_Name1.text
-                    //property alias job_Position3Text: job_Position3.text
-                    //property alias info2Text: info2.text
-                    //property alias hAPPY_MEMBERSText: hAPPY_MEMBERS.text
-                    //property alias kabir_C_Graphic_DesignerText: kabir_C_Graphic_Designer.text
-                    //property alias location5Text: location5.text
-                    //property alias job_Position2Text: job_Position2.text
-                    //property alias hello_people_Text: hello_people_.text
-                    //property alias this_portal_transformed_my_job_search_Great_listings_easy_applicText: this_portal_transformed_my_job_search_Great_listings_easy_applic.text
-                    //property alias customer_TestimonialsText: customer_Testimonials.text
-                    //property alias apply15Text: apply15.text
-                    //property alias apply17Text: apply17.text
-                    //property alias info4Text: info4.text
-                    //property alias location9Text: location9.text
-                    //property alias top_JobsText: top_Jobs.text
-                    //property alias thousands_of_job_seekers_use_JobHub_for_their_recruitment_solutiText: thousands_of_job_seekers_use_JobHub_for_their_recruitment_soluti.text
-                    //property alias hari_M_Software_EngineerText: hari_M_Software_Engineer.text
-                    //property alias kanish_S_Security_AnalystText: kanish_S_Security_Analyst.text
-                    //property alias info5Text: info5.text
-                    //property alias info3Text: info3.text
-                    //property alias next_Placement_can_be_yours_Register_Now_Text: next_Placement_can_be_yours_Register_Now_.text
-                    //property alias element1Text: element1.text
-                    //property alias job_Position5Text: job_Position5.text
-                    //property alias info8Text: info8.text
-                    //property alias about_JobHubText: about_JobHub.text
-                    //property alias company_Name6Text: company_Name6.text
-                    //property alias location8Text: location8.text
-                    //property alias job_SeekerText: job_Seeker.text
+//                    property alias employerText: employer.text
+//                    property alias info1Text: info1.text
+//                    property alias job_Position7Text: job_Position7.text
+//                    property alias quickly_found_my_ideal_job_with_intuitive_search_and_matching_feText: quickly_found_my_ideal_job_with_intuitive_search_and_matching_fe.text
+//                    property alias location3Text: location3.text
+//                    property alias elementText: element.text
+//                    property alias info7Text: info7.text
+//                    property alias company_NameText: company_Name.text
+//                    property alias location1Text: location1.text
+//                    property alias apply13Text: apply13.text
+//                    property alias apply9Text: apply9.text
+//                    property alias job_Position1Text: job_Position1.text
+//                    property alias apply7Text: apply7.text
+//                    property alias company_Name5Text: company_Name5.text
+//                    property alias job_PositionText: job_Position.text
+//                    property alias info9Text: info9.text
+//                    property alias info6Text: info6.text
+//                    property alias nepal_s_Most_Trusted_Job_Portal_Text: nepal_s_Most_Trusted_Job_Portal_.text
+//                    property alias job_Position4Text: job_Position4.text
+//                    property alias job_Position6Text: job_Position6.text
+//                    property alias samira_J_Data_AnalystText: samira_J_Data_Analyst.text
+//                    property alias apply1Text: apply1.text
+//                    property alias company_Name8Text: company_Name8.text
+//                    property alias apply19Text: apply19.text
+//                    property alias jobHub_is_a_free_job_portal_that_provides_access_to_a_comprehensText: jobHub_is_a_free_job_portal_that_provides_access_to_a_comprehens.text
+//                    property alias location7Text: location7.text
+//                    property alias location4Text: location4.text
+//                    property alias company_Name2Text: company_Name2.text
+//                    property alias info10Text: info10.text
+//                    property alias location2Text: location2.text
+//                    property alias company_Name9Text: company_Name9.text
+//                    property alias company_Name4Text: company_Name4.text
+//                    property alias company_Name7Text: company_Name7.text
+//                    property alias mONTHLY_VIEWSText: mONTHLY_VIEWS.text
+//                    property alias locationText: location.text
+//                    property alias apply11Text: apply11.text
+//                    property alias apply3Text: apply3.text
+//                    property alias contact_UsText: contact_Us.text
+//                    property alias element2Text: element2.text
+//                    property alias pARTNER_COMPANIESText: pARTNER_COMPANIES.text
+//                    property alias location6Text: location6.text
+//                    property alias company_Name3Text: company_Name3.text
+//                    property alias job_Position9Text: job_Position9.text
+//                    property alias apply5Text: apply5.text
+//                    property alias found_an_experienced_role_effortlessly_Versatile_platform_for_prText: found_an_experienced_role_effortlessly_Versatile_platform_for_pr.text
+//                    property alias job_Statistics1Text: job_Statistics1.text
+//                    property alias job_Position8Text: job_Position8.text
+//                    property alias secured_my_first_job_fast_User_friendly_and_tons_of_entry_level_Text: secured_my_first_job_fast_User_friendly_and_tons_of_entry_level_.text
+//                    property alias company_Name1Text: company_Name1.text
+//                    property alias job_Position3Text: job_Position3.text
+//                    property alias info2Text: info2.text
+//                    property alias hAPPY_MEMBERSText: hAPPY_MEMBERS.text
+//                    property alias kabir_C_Graphic_DesignerText: kabir_C_Graphic_Designer.text
+//                    property alias location5Text: location5.text
+//                    property alias job_Position2Text: job_Position2.text
+//                    property alias hello_people_Text: hello_people_.text
+//                    property alias this_portal_transformed_my_job_search_Great_listings_easy_applicText: this_portal_transformed_my_job_search_Great_listings_easy_applic.text
+//                    property alias customer_TestimonialsText: customer_Testimonials.text
+//                    property alias apply15Text: apply15.text
+//                    property alias apply17Text: apply17.text
+//                    property alias info4Text: info4.text
+//                    property alias location9Text: location9.text
+//                    property alias top_JobsText: top_Jobs.text
+//                    property alias thousands_of_job_seekers_use_JobHub_for_their_recruitment_solutiText: thousands_of_job_seekers_use_JobHub_for_their_recruitment_soluti.text
+//                    property alias hari_M_Software_EngineerText: hari_M_Software_Engineer.text
+//                    property alias kanish_S_Security_AnalystText: kanish_S_Security_Analyst.text
+//                    property alias info5Text: info5.text
+//                    property alias info3Text: info3.text
+//                    property alias next_Placement_can_be_yours_Register_Now_Text: next_Placement_can_be_yours_Register_Now_.text
+//                    property alias element1Text: element1.text
+//                    property alias job_Position5Text: job_Position5.text
+//                    property alias info8Text: info8.text
+//                    property alias about_JobHubText: about_JobHub.text
+//                    property alias company_Name6Text: company_Name6.text
+//                    property alias location8Text: location8.text
+//                    property alias job_SeekerText: job_Seeker.text
 
                     Rectangle {
                         id: footer
@@ -141,8 +141,48 @@ Page {
                             color: "#f2e8ff"
                         }
 
-                    }
+                        MouseArea {
+                            id: mouseArea
+                            x: 759
+                            y: 26
+                            width: 73
+                            height: 27
+                            onClicked:{
+                            navigateTo(faqpagecomponent);
+                            }
+                        }
 
+                        MouseArea {
+                            id: mouseArea1
+                            x: 858
+                            y: 26
+                            width: 107
+                            height: 21
+                            onClicked:{
+                            navigateTo(contactcomponent);
+                            }
+                        }
+
+                        MouseArea {
+                            id: mouseArea2
+                            x: 1000
+                            y: 26
+                            width: 88
+                            height: 27
+                            onClicked:{
+                            navigateTo(aboutcomponent);
+                            }
+                        }
+
+                    }
+                    Text {
+                        id: email
+                        text: mydb.getEmail()
+                    }
+                    Text {
+                        id: address
+                        text: mydb.getaddress(email.text)
+                    }
 
 
                     Item {
@@ -1276,7 +1316,7 @@ Page {
                                                 width: 72
                                                 height: 20
                                                 color: "#ffffff"
-                                                text: mydb.getaddress(mydb.getEmail())
+                                                text: address.text
                                                 font.pixelSize: 16
                                                 horizontalAlignment: Text.AlignLeft
                                                 verticalAlignment: Text.AlignTop
@@ -2995,6 +3035,9 @@ Page {
                             background: Rectangle {
                                 color: "#6f42c1"
                             }
+                            onClicked: {
+                                            popupMenu.open()
+                                        }
 
                         }
                     }
@@ -3013,6 +3056,7 @@ Page {
                         source: "assets/photo_1.png"
                     }
                     Rectangle {
+                        id: searchmenu
                         x: 76
                         y: 342
 
@@ -3047,87 +3091,68 @@ Page {
 
                         }
 
+
                     }
+                    Menu {
+                                id: popupMenu
+                                x: searchmenu.x
+                                y: searchmenu.y+ searchmenu.height  // Position the menu below the button
+                                width: searchmenu.width
 
+                                MenuItem {
+                                    text: "Job Title"
+                                    onClicked: {
+                                        console.log("Option 1 selected");
+                                        // Add your logic here for Option 1
+                                    }
+                                }
 
-                    Rectangle {
-                        id: component_1
-                        x: 556
-                        y: 28
-                        width: 78
-                        height: 23
-                        color: "transparent"
+                                MenuItem {
+                                    text: "Category"
+                                    onClicked: {
+                                        console.log("Option 2 selected");
+                                        // Add your logic here for Option 2
+                                    }
+                                }
+                                MenuItem {
+                                    text: "Academic Qualifications Required"
+                                    onClicked: {
+                                        console.log("Option 2 selected");
+                                        // Add your logic here for Option 2
+                                    }
+                                }
+                                MenuItem {
+                                    text: "Minimum Job Experience Required"
+                                    onClicked: {
+                                        console.log("Option 2 selected");
+                                        // Add your logic here for Option 2
+                                    }
+                                }
+                                MenuItem {
+                                    text: "Prefered Location"
+                                    onClicked: {
+                                        console.log("Option 2 selected");
+                                        // Add your logic here for Option 2
+                                    }
+                                }
+                                MenuItem {
+                                    text: "Application Deadline"
+                                    onClicked: {
+                                        console.log("Option 2 selected");
+                                        // Add your logic here for Option 2
+                                    }
+                                }
+                                MenuItem {
+                                    text: "Job Description"
+                                    onClicked: {
+                                        console.log("Option 2 selected");
+                                        // Add your logic here for Option 2
+                                    }
+                                }
 
-                        Text {
-                            id: home1
-                            color: "#808081"
-                            text: qsTr("Home")
-                            anchors.left: parent.left
-                            anchors.right: parent.right
-                            anchors.top: parent.top
-                            anchors.bottom: parent.bottom
-                            font.pixelSize: 18
-                            horizontalAlignment: Text.AlignLeft
-                            verticalAlignment: Text.AlignTop
-                            wrapMode: Text.NoWrap
-                            anchors.bottomMargin: 1
-                            font.family: "Mulish"
-                            anchors.rightMargin: -1
-                            font.weight: Font.Normal
-                            font.capitalization: Font.Capitalize
-                            anchors.leftMargin: 24
-                        }
+                                // Add more MenuItems as needed
+                            }
 
-                        Image {
-                            id: _home_icon_1
-                            anchors.left: parent.left
-                            anchors.right: parent.right
-                            anchors.top: parent.top
-                            anchors.bottom: parent.bottom
-                            source: "assets/_home_icon_1.png"
-                            anchors.bottomMargin: 3
-                            anchors.rightMargin: 58
-                        }
-                    }
-                    Rectangle {
-                        id: component_2
-                        x: 655
-                        y: 28
-                        width: 82
-                        height: 24
-                        color: "transparent"
-                        //property alias searchText: search.text
-
-                        Text {
-                            id: search1
-                            color: "#808081"
-                            text: qsTr("Search")
-                            anchors.left: parent.left
-                            anchors.right: parent.right
-                            anchors.top: parent.top
-                            anchors.bottom: parent.bottom
-                            font.pixelSize: 18
-                            horizontalAlignment: Text.AlignLeft
-                            verticalAlignment: Text.AlignTop
-                            wrapMode: Text.NoWrap
-                            anchors.bottomMargin: 1
-                            font.family: "Mulish"
-                            anchors.rightMargin: -1
-                            font.weight: Font.Normal
-                            font.capitalization: Font.Capitalize
-                            anchors.leftMargin: 24
-                        }
-
-                        Image {
-                            id: _search_strong_icon_1_1
-                            anchors.left: parent.left
-                            anchors.right: parent.right
-                            anchors.top: parent.top
-                            anchors.bottom: parent.bottom
-                            source: "assets/_search_strong_icon_1_1.png"
-                            anchors.rightMargin: 58
-                        }
-                    }
 
                     Rectangle {
                         id: component_3
