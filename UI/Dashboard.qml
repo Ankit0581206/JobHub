@@ -1,21 +1,23 @@
 import QtQuick
 import QtQuick.Layouts 1.15
 import QtQuick.Controls 6.5
+
 Page {
     id: dashboardPage
     width: 1400
     height: 1550
-    ScrollView{
-        id:scrollview
-        anchors.fill: parent
-        clip: true
-        ScrollBar.vertical.policy: ScrollBar.AlwaysOn
+    ScrollView {
+            id: scrollview
+            anchors.fill: parent
+                clip: true
+                ScrollBar.vertical.policy: ScrollBar.AlwaysOn
 
         Item{
 
             id: contentItem
-            width: 1400
+            width: parent.width
             height: 1550
+            implicitHeight: height
             Column{
 
 

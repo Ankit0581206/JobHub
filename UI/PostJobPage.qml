@@ -1117,14 +1117,14 @@ import QtQuick.Layouts 1.0
        height: 62
        text: qsTr("test")
        onClicked: {
-           popupMenu.open()
+           popupMenu2.open()
        }
    }
    Menu {
                id: popupMenu2
-               x: button.x
-               y: button.y+ button.height  // Position the menu below the button
-               width: button.width
+               x: button2.x
+               y: button2.y+ button2.height  // Position the menu below the button
+               width: button2.width
                ListView {
                    width: 832
                    height: 180
