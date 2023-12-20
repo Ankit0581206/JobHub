@@ -1,7 +1,9 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
+
+
+=======
 import QtQuick.Layouts 1.15
-import "." as Globals
 
 Page {
     id: loginPage
@@ -206,6 +208,8 @@ Page {
         font.weight: Font.Normal
     }
 
+
+
     Button {
         x: 273
         y: 550
@@ -227,6 +231,8 @@ Page {
                 } else {
                     // KYC data is not available, navigate to the kycpagecomponent
                     navigateTo(kycpagecomponent);
+                    }
+
                 }
             }
             else

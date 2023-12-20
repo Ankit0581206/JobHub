@@ -33,11 +33,16 @@ ApplicationWindow {
             }
         }
 
-        Component{
-            id:loginpagecomponent
-            LoginPage{
 
+
+
+            Component{
+                id:loginpagecomponent
+                LoginPage{
+
+                }
             }
+
         }
         Component{
             id:loginpagecomponentemployer
@@ -58,11 +63,14 @@ ApplicationWindow {
             }
         }
 
-        Component{
-            id:registerpagecomponent
-            RegisterPage{
 
+            Component{
+                id:registerpagecomponent
+                RegisterPage{
+
+                }
             }
+
         }
         Component{
             id:registerpagecomponentemployer
@@ -77,11 +85,14 @@ ApplicationWindow {
             }
         }
 
-        Component{
-            id:kycpagecomponent
-            KYCPage{
 
+            Component{
+                id:kycpagecomponent
+                KYCPage{
+
+                }
             }
+
         }
         Component{
             id:kycpageemployercomponent
@@ -96,8 +107,9 @@ ApplicationWindow {
             }
         }
 
-        function navigateTo(pageComponent) {
-                pageLoader.sourceComponent = pageComponent;
-        }
 
-    }
+            function navigateTo(pageComponent) {
+                    pageLoader.sourceComponent = pageComponent;
+            }
+
+        }
