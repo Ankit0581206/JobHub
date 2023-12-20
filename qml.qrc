@@ -174,5 +174,8 @@
         <file>UI/assets/search_Apply_Get_Job_FREE.png</file>
         <file>UI/assets/show.png</file>
         <file>UI/Globals.qml</file>
+        <file>UI/About_us.qml</file>
+        <file>UI/Admin_page.qml</file>
+        <file>UI/FAQs.qml</file>
     </qresource>
 </RCC>
