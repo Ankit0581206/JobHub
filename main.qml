@@ -5,6 +5,7 @@ import QtQuick.Layouts 1.12
 import "UI"
 
 
+
 ApplicationWindow {
     visible: true
     width: Screen.width
@@ -17,7 +18,19 @@ ApplicationWindow {
               height: parent.height
 
               // Set the default page as Home Page
-              sourceComponent: registerpagecomponent
+              sourceComponent: homepagecomponent
+        }
+        Component{
+            id:postjobpagecomponent
+            PostJobPage{
+
+            }
+        }
+        Component{
+            id:admindashboardpagecomponent
+            AdminDashboardPage{
+
+            }
         }
 
 
@@ -30,6 +43,27 @@ ApplicationWindow {
                 }
             }
 
+        }
+        Component{
+            id:loginpagecomponentemployer
+            LoginPageEmployer{
+
+            }
+        }
+        Component{
+            id:faqpagecomponent
+            FaqPage{
+
+            }
+        }
+        Component{
+            id:dashboardpagecomponent
+            Dashboard{
+
+            }
+        }
+
+
             Component{
                 id:registerpagecomponent
                 RegisterPage{
@@ -37,12 +71,42 @@ ApplicationWindow {
                 }
             }
 
+        }
+        Component{
+            id:registerpagecomponentemployer
+            RegisterPageEmployer{
+
+            }
+        }
+        Component{
+            id:aboutuspagecomponent
+            AboutUsPage{
+
+            }
+        }
+
+
             Component{
                 id:kycpagecomponent
                 KYCPage{
 
                 }
             }
+
+        }
+        Component{
+            id:kycpageemployercomponent
+            KYCPageEmployer{
+
+            }
+        }
+        Component{
+            id:homepagecomponent
+            HomePage{
+
+            }
+        }
+
 
             function navigateTo(pageComponent) {
                     pageLoader.sourceComponent = pageComponent;
