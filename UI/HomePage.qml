@@ -3,6 +3,8 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 
 
+
+
 Page {
     id: homePage
     width: Screen.width
@@ -170,7 +172,7 @@ Page {
                             width: 88
                             height: 27
                             onClicked:{
-                            navigateTo(aboutcomponent);
+                            navigateTo(aboutuspagecomponent);
                             }
                         }
 
@@ -2932,24 +2934,7 @@ Page {
                         font.weight: Font.Normal
                     }
 
-                    Button {
-                        id: component_6
-                        x: 1172-40
-                        y: 21
-                        width: 80
-                        height: 35
-                        text: "Sign In"
 
-
-                        onClicked: {
-                            // Navigate to Sign In Page when the Sign In button is clicked
-                            navigateTo(loginpagecomponent);
-                        }
-
-                        //property alias sign_inText: sign_in.text
-
-
-                    }
 
                     Button {
                         id: component_7
@@ -2959,8 +2944,9 @@ Page {
                         height: 35
 
                         onClicked: {
-                            // Navigate to Register Page when the Register button is clicked
-                            navigateTo(registerpagecomponent);
+                            registerPopup.x = component_7.x
+                            registerPopup.y = component_7.y + component_7.height
+                            registerPopup.open();
                         }
                         text: "Register"
 
@@ -2968,6 +2954,307 @@ Page {
 
 
                     }
+                    Popup{
+                        id: registerPopup
+                        width: 285
+                        height: 197
+                        modal: true
+                        visible: false
+                    Rectangle {
+                        id: registerpop
+                        anchors.left: parent.left
+                        anchors.top: parent.top
+                        width: 285
+                        height: 197
+                        color: "#ffffff"
+                        property alias employerText: employer.text
+                        property alias sign_inText: sign_in.text
+                        property alias employeeText: employee.text
+
+                        Rectangle {
+                            id: rectangle_1294b
+                            width: 285
+                            height: 197
+                            color: "#6f42c1"
+                            anchors.left: parent.left
+                            anchors.top: parent.top
+                        }
+
+                        Rectangle {
+                            id: rectangle_1297b
+                            width: 285
+                            height: 42
+                            color: "#ffffff"
+                            anchors.left: parent.left
+                            anchors.top: parent.top
+                        }
+
+                        Text {
+                            id: sign_in2
+                            width: 112
+                            height: 28
+                            color: "#6f42c1"
+                            text: qsTr("Register")
+                            anchors.left: parent.left
+                            anchors.top: parent.top
+                            font.pixelSize: 30
+                            horizontalAlignment: Text.AlignLeft
+                            verticalAlignment: Text.AlignTop
+                            wrapMode: Text.Wrap
+                            anchors.leftMargin: 87
+                            font.weight: Font.Black
+                            font.capitalization: Font.Capitalize
+                            font.family: "Mulish"
+                        }
+
+                        Rectangle {
+                            id: line_2
+                            width: 140
+                            height: 5
+                            color: "#ffffff"
+                            anchors.left: parent.left
+                            anchors.top: parent.top
+                            anchors.topMargin: 110
+                            anchors.leftMargin: 76
+                            rotation: 90
+                        }
+
+                        Text {
+                            id: employeeb
+                            width: 96
+                            height: 25
+                            color: "#ffffff"
+                            text: qsTr("Employee")
+                            anchors.left: parent.left
+                            anchors.top: parent.top
+                            font.pixelSize: 20
+                            horizontalAlignment: Text.AlignLeft
+                            verticalAlignment: Text.AlignTop
+                            wrapMode: Text.NoWrap
+                            anchors.topMargin: 54
+                            anchors.leftMargin: 24
+                            font.weight: Font.Black
+                            font.capitalization: Font.Capitalize
+                            font.family: "Mulish"
+                        }
+
+                        Text {
+                            id: employerb
+                            width: 93
+                            height: 25
+                            color: "#ffffff"
+                            text: qsTr("Employer")
+                            anchors.left: parent.left
+                            anchors.top: parent.top
+                            font.pixelSize: 20
+                            horizontalAlignment: Text.AlignLeft
+                            verticalAlignment: Text.AlignTop
+                            wrapMode: Text.NoWrap
+                            anchors.topMargin: 54
+                            anchors.leftMargin: 167
+                            font.weight: Font.Black
+                            font.capitalization: Font.Capitalize
+                            font.family: "Mulish"
+                        }
+
+                        Button {
+                            id: rectangle_1295a
+                            width: 103
+                            height: 39
+                            text: "Register"
+                            anchors.left: parent.left
+                            anchors.top: parent.top
+                            anchors.topMargin: 133
+                            anchors.leftMargin: 24
+                            onClicked:{
+                                navigateTo(registerpagecomponent);
+                            }
+                        }
+
+                        Button {
+                            id: rectangle_1298a
+                            width: 103
+                            height: 39
+                            text: "Register"
+                            anchors.left: parent.left
+                            anchors.top: parent.top
+                            anchors.topMargin: 133
+                            anchors.leftMargin: 161
+                            onClicked:{
+                                navigateTo(registerpagecomponentemployer);
+                            }
+                        }
+                    }
+                    }
+
+
+
+                    Item{
+                        Button {
+                            id: component_6
+                            x: 1172-40
+                            y: 21
+                            width: 80
+                            height: 35
+                            text: "Sign In"
+
+
+                            onClicked: {
+                                // Navigate to Sign In Page when the Sign In button is clicked
+                                signPopup.x = component_6.x
+                                signPopup.y = component_6.y + component_6.height
+                                signPopup.open()
+
+                            }
+
+                            //property alias sign_inText: sign_in.text
+
+
+                        }
+
+
+
+                        Popup{
+                            id: signPopup
+                            width: 285
+                            height: 197
+                            modal: true
+                            visible: false
+                        Rectangle {
+                            id: signpop
+                            anchors.left: parent.left
+                            anchors.top: parent.top
+                            width: 285
+                            height: 197
+                            color: "#ffffff"
+                            property alias employerText: employer.text
+                            property alias sign_inText: sign_in.text
+                            property alias employeeText: employee.text
+
+                            Rectangle {
+                                id: rectangle_1294a
+                                width: 285
+                                height: 197
+                                color: "#6f42c1"
+                                anchors.left: parent.left
+                                anchors.top: parent.top
+                            }
+
+                            Rectangle {
+                                id: rectangle_1297a
+                                width: 285
+                                height: 42
+                                color: "#ffffff"
+                                anchors.left: parent.left
+                                anchors.top: parent.top
+                            }
+
+                            Text {
+                                id: sign_in
+                                width: 112
+                                height: 28
+                                color: "#6f42c1"
+                                text: qsTr("Sign in")
+                                anchors.left: parent.left
+                                anchors.top: parent.top
+                                font.pixelSize: 30
+                                horizontalAlignment: Text.AlignLeft
+                                verticalAlignment: Text.AlignTop
+                                wrapMode: Text.Wrap
+                                anchors.leftMargin: 87
+                                font.weight: Font.Black
+                                font.capitalization: Font.Capitalize
+                                font.family: "Mulish"
+                            }
+
+                            Rectangle {
+                                id: line_1
+                                width: 140
+                                height: 5
+                                color: "#ffffff"
+                                anchors.left: parent.left
+                                anchors.top: parent.top
+                                anchors.topMargin: 110
+                                anchors.leftMargin: 76
+                                rotation: 90
+                            }
+
+                            Text {
+                                id: employee
+                                width: 96
+                                height: 25
+                                color: "#ffffff"
+                                text: qsTr("Employee")
+                                anchors.left: parent.left
+                                anchors.top: parent.top
+                                font.pixelSize: 20
+                                horizontalAlignment: Text.AlignLeft
+                                verticalAlignment: Text.AlignTop
+                                wrapMode: Text.NoWrap
+                                anchors.topMargin: 54
+                                anchors.leftMargin: 24
+                                font.weight: Font.Black
+                                font.capitalization: Font.Capitalize
+                                font.family: "Mulish"
+                            }
+
+                            Text {
+                                id: employera
+                                width: 93
+                                height: 25
+                                color: "#ffffff"
+                                text: qsTr("Employer")
+                                anchors.left: parent.left
+                                anchors.top: parent.top
+                                font.pixelSize: 20
+                                horizontalAlignment: Text.AlignLeft
+                                verticalAlignment: Text.AlignTop
+                                wrapMode: Text.NoWrap
+                                anchors.topMargin: 54
+                                anchors.leftMargin: 167
+                                font.weight: Font.Black
+                                font.capitalization: Font.Capitalize
+                                font.family: "Mulish"
+                            }
+
+                            Button {
+                                id: rectangle_1295
+                                width: 103
+                                height: 39
+                                text: "Sign In"
+                                anchors.left: parent.left
+                                anchors.top: parent.top
+                                anchors.topMargin: 133
+                                anchors.leftMargin: 24
+                                onClicked:{
+                                    navigateTo(loginpagecomponent);
+                                }
+                            }
+
+                            Button {
+                                id: rectangle_1298
+                                width: 103
+                                height: 39
+                                text: "Sign In"
+                                anchors.left: parent.left
+                                anchors.top: parent.top
+                                anchors.topMargin: 133
+                                anchors.leftMargin: 161
+                                onClicked:{
+                                    navigateTo(loginpagecomponentemployer);
+                                }
+                            }
+                        }
+                        }
+                        /*##^##
+Designer {
+    D{i:0;uuid:"a5e4b998-0724-5544-a7e2-504d58277e24"}
+}
+##^##*/
+
+
+                    }
+
                     Button {
                         id: component_17
                         x: 1058-40
@@ -3094,53 +3381,37 @@ Page {
 
 
                     }
+
+
                     Menu {
                         id: popupMenu
                         x: searchmenu.x
                         y: searchmenu.y + searchmenu.height  // Position the menu below the button
                         width: searchmenu.width
 
-                        // Assuming you want to call the function once and use the result for all MenuItems
-//                        property string searchResult: mydb.checkForSearch(searchField.text)
-
-                        MenuItem {
-                            text: mydb.checkForSearch(searchField.text)
-                            onClicked: {
-                                console.log("Option 1 selected");
-                                // Add your logic here for Option 1
+                        ListView {
+                            model: ListModel {
+                                id: menuModel
                             }
-                        }
-//                        property string searchResult: {
-//                            var result = mydb.checkForSearch(searchField.text);
-//                            console.log("Search Result:", result);
-//                            return result;
-//                        }
 
-                        MenuItem {
-                            text: mydb.checkForSearch(searchField.text)
-                            onClicked: {
-                                console.log("Option 1 selected");
-                                // Add your logic here for Option 1
+                            delegate: MenuItem {
+                                text: model.text
+                                onClicked: {
+                                    console.log("Option selected:", text);
+                                    // Add your logic here
+                                }
                             }
                         }
 
-
-                        MenuItem {
-                            text: mydb.checkForSearch(searchField.text)
-                            onClicked: {
-                                console.log("Option 1 selected");
-                                // Add your logic here for Option 1
+                        onVisibleChanged: {
+                            if (visible && searchField.text !== "") {
+                                menuModel.clear();
+                                var results = mydb.checkForSearch(searchField.text);
+                                for (var i = 0; i < results.length; i++) {
+                                    menuModel.append({text: results[i]});
+                                }
                             }
                         }
-                        MenuItem {
-                            text: mydb.checkForSearch(searchField.text)
-                            onClicked: {
-                                console.log("Option 1 selected");
-                                // Add your logic here for Option 1
-                            }
-                        }
-
-                        // Add more MenuItems as needed
                     }
 
 

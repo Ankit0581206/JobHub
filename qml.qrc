@@ -173,7 +173,6 @@
         <file>UI/assets/search.png</file>
         <file>UI/assets/search_Apply_Get_Job_FREE.png</file>
         <file>UI/assets/show.png</file>
-        <file>UI/Globals.qml</file>
         <file>UI/assets/_about_info_information_help_ui_icon_1.png</file>
         <file>UI/assets/_about_info_information_help_ui_icon_1_1.png</file>
         <file>UI/assets/_about_info_information_help_ui_icon_1_2.png</file>
@@ -608,5 +607,10 @@
         <file>UI/assets/vector31.png</file>
         <file>UI/Dashboard.qml</file>
         <file>UI/FaqPage.qml</file>
+        <file>UI/LoginPageEmployer.qml</file>
+        <file>UI/RegisterPageEmployer.qml</file>
+        <file>UI/AboutUsPage.qml</file>
+        <file>UI/assets/screenshot_2023_12_20_021555_1.png</file>
+        <file>UI/PostJobPage.qml</file>
     </qresource>
 </RCC>

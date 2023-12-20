@@ -64,14 +64,6 @@ Rectangle {
         y: 0
         source: "assets/logo_copy_2.png"
     }
-    Image {
-        id: _home_icon_1_1
-        x: 730
-        y: 8
-        width: 40
-        height: 42
-        source: "assets/_home_icon_1_1.png"
-    }
 
     Image {
         id: rectangle_23
@@ -610,9 +602,20 @@ Rectangle {
         font.weight: Font.Normal
         font.family: "Mulish"
     }
-}
+            }
 
 
 
+    }
+
+MouseArea {
+    id: mouseArea
+    x: 517
+    y: 0
+    width: 201
+    height: 70
+    onClicked:{
+        navigateTo(homepagecomponent);
+    }
 }
 }

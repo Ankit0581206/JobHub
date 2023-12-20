@@ -18,12 +18,24 @@ ApplicationWindow {
               height: parent.height
 
               // Set the default page as Home Page
-              sourceComponent: homepagecomponent
+              sourceComponent: postjobpagecomponent
+        }
+        Component{
+            id:postjobpagecomponent
+            PostJobPage{
+
+            }
         }
 
         Component{
             id:loginpagecomponent
             LoginPage{
+
+            }
+        }
+        Component{
+            id:loginpagecomponentemployer
+            LoginPageEmployer{
 
             }
         }
@@ -43,6 +55,18 @@ ApplicationWindow {
         Component{
             id:registerpagecomponent
             RegisterPage{
+
+            }
+        }
+        Component{
+            id:registerpagecomponentemployer
+            RegisterPageEmployer{
+
+            }
+        }
+        Component{
+            id:aboutuspagecomponent
+            AboutUsPage{
 
             }
         }

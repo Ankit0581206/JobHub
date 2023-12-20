@@ -50,12 +50,12 @@ Page {
 
     Text {
         id: sign_In
-        x: 251
-        y: 191
-        width: 201
+        x: 135
+        y: 180
+        width: 433
         height: 38
         color: "#15cff1"
-        text: qsTr("Sign In")
+        text: qsTr("Sign In for Employee")
         font.pixelSize: 40
         horizontalAlignment: Text.AlignLeft
         verticalAlignment: Text.AlignTop
@@ -247,4 +247,5 @@ Designer {
     D{i:0;uuid:"abe11c64-fde5-5fe9-95b2-78d99eee2754"}
 }
 ##^##*/
+
 

@@ -16,7 +16,9 @@
 #include <QString>
 #include <QApplication>
 #include<QWidget>
-
+#include <QMetaType>
+#include <QVariant>
+// ...
 
 
 
@@ -54,6 +56,41 @@ public:
                    "dob TEXT, "
                    "experience TEXT"
                    ")");
+        //for employer
+        query.exec("CREATE TABLE IF NOT EXISTS employer ("
+                   "email TEXT PRIMARY KEY, "
+                   "password TEXT NOT NULL, "
+                   "phint TEXT, "
+                   "company_name TEXT, "
+                   "company_type TEXT CHECK ("
+                   "    company_type IN ("
+                   "        'Software Development Companies', 'Cybersecurity Firms', 'Managed Service Providers (MSPs)',"
+                   "        'Cloud Service Providers', 'IT Consulting Firms', 'Data Analytics Companies',"
+                   "        'Mobile App Development Companies', 'Web Development Agencies', 'Hardware Manufacturers',"
+                   "        'Networking and Infrastructure Services', 'Artificial Intelligence (AI) Companies',"
+                   "        'Telecommunications Service Providers', 'E-learning and EdTech Companies',"
+                   "        'CRM (Customer Relationship Management) Companies', 'IT Training and Certification Providers',"
+                   "        'Geographic Information System (GIS) Companies', 'Healthcare IT Companies',"
+                   "        'Financial Technology (Fintech) Companies', 'Gaming and Entertainment Software Companies',"
+                   "        'Robotics and Automation Companies'"
+                   "    )"
+                   "), "
+                   "business_type TEXT CHECK ("
+                   "    business_type IN ('Private', 'Public', 'Government', 'Non-Profit')"
+                   "), "
+                   "company_location TEXT, "
+                   "social_link_1 TEXT, "
+                   "social_link_2 TEXT, "
+                   "social_link_3 TEXT, "
+                   "social_link_4 TEXT, "
+                   "social_link_5 TEXT, "
+                   "contact_person TEXT, "
+                   "full_address TEXT, "
+                   "phone TEXT, "
+                   "fax TEXT, "
+                   "website TEXT, "
+                   "company_description TEXT"
+                   ")");
     }
 
     Q_INVOKABLE bool authenticateUser(const QString& email, const QString& password){
@@ -64,6 +101,27 @@ public:
 
         if (!query.exec()) {
             qWarning() << "MyDatabase::authenticateUser - ERROR: " << query.lastError().text();
+            return false;
+        }
+
+        bool loginSuccessful = query.next();  // Use query.next() instead of query.first() for correctness.
+
+        if (loginSuccessful) {
+            //QMessageBox::information(nullptr, "Login", "Login Successful");
+            return true;
+        } else {
+            //QMessageBox::information(nullptr, "Login", "Invalid Credentials");
+            return false;
+        }
+    }
+    Q_INVOKABLE bool authenticateUserEmployer(const QString& email, const QString& password){
+        QSqlQuery query;
+        query.prepare("SELECT * FROM employer WHERE email = :email AND password = :password");
+        query.bindValue(":email", email);
+        query.bindValue(":password", password);
+
+        if (!query.exec()) {
+            qWarning() << "MyDatabase::authenticateUserEmployer - ERROR: " << query.lastError().text();
             return false;
         }
 
@@ -113,6 +171,18 @@ public:
         query.bindValue(":phint",phint);
         if (!query.exec()) {
             qWarning() << "MyDatabase::registerUser - ERROR: " << query.lastError().text();
+            return false;
+        }
+        return true;
+    }
+    Q_INVOKABLE bool registerUserEmpoyer(const QString& email, const QString& password, const QString& phint){
+        QSqlQuery query;
+        query.prepare("INSERT INTO employer (email, password, phint) VALUES (:email, :password, :phint)");
+        query.bindValue(":email", email);
+        query.bindValue(":password", password);
+        query.bindValue(":phint",phint);
+        if (!query.exec()) {
+            qWarning() << "MyDatabase::registerUserEmployer - ERROR: " << query.lastError().text();
             return false;
         }
         return true;
@@ -231,6 +301,34 @@ public:
         }
 
     }
+
+    QStringList checkForSearch(const QString &x) {
+        QSqlQuery query;
+        query.prepare("SELECT DISTINCT * FROM Users WHERE email LIKE :x OR fullName LIKE :x OR password LIKE :x");
+        query.bindValue(":x", "%" + x + "%");
+
+        QStringList results;  // Use a QStringList to store unique results
+
+        if (query.exec()) {
+            while (query.next()) {
+                QString checked = query.value(0).toString();  // Assuming you want the first column value
+                results.append(checked);
+            }
+
+            qDebug() << "Query Results:" << results;
+        } else {
+            qDebug() << "Query Error:" << query.lastError().text();
+        }
+
+        return results;
+    }
+
+
+
+
+
+
+
     Q_INVOKABLE bool isKYCDataAvailable(const QString &email) {
         // Assuming your table is named 'kyc_data' and has a column 'email' as the primary key
 
