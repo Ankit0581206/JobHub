@@ -18,7 +18,7 @@ ApplicationWindow {
               height: parent.height
 
               // Set the default page as Home Page
-              sourceComponent: admindashboardpagecomponent
+              sourceComponent: homepagecomponent
         }
         Component{
             id:postjobpagecomponent
@@ -80,6 +80,12 @@ ApplicationWindow {
         Component{
             id:kycpagecomponent
             KYCPage{
+
+            }
+        }
+        Component{
+            id:kycpageemployercomponent
+            KYCPageEmployer{
 
             }
         }

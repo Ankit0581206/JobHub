@@ -613,5 +613,6 @@
         <file>UI/assets/screenshot_2023_12_20_021555_1.png</file>
         <file>UI/PostJobPage.qml</file>
         <file>UI/AdminDashboardPage.qml</file>
+        <file>UI/KYCPageEmployer.qml</file>
     </qresource>
 </RCC>

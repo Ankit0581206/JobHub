@@ -791,7 +791,7 @@ Page {
             }
         onClicked: {
                         // Call C++ method to insert KYC data
-                        if (mydb.insertKYCData(mydb.getEmail(), fullNameField.text, addressField.text, educationField.text, dobField.text, experienceField.text)){
+                        if (mydb.insertKYCData(mydb.getUserIdByEmail(0), fullNameField.text, addressField.text, educationField.text, dobField.text, experienceField.text)){
                             console.log("KYC data submitted successfully");
                             navigateTo(dashboardpagecomponent);
 

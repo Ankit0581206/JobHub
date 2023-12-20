@@ -39,82 +39,82 @@ Page {
                     width: Screen.width
                     height: 3276
                     color: "#ffffff"
-//                    property alias employerText: employer.text
-//                    property alias info1Text: info1.text
-//                    property alias job_Position7Text: job_Position7.text
-//                    property alias quickly_found_my_ideal_job_with_intuitive_search_and_matching_feText: quickly_found_my_ideal_job_with_intuitive_search_and_matching_fe.text
-//                    property alias location3Text: location3.text
-//                    property alias elementText: element.text
-//                    property alias info7Text: info7.text
-//                    property alias company_NameText: company_Name.text
-//                    property alias location1Text: location1.text
-//                    property alias apply13Text: apply13.text
-//                    property alias apply9Text: apply9.text
-//                    property alias job_Position1Text: job_Position1.text
-//                    property alias apply7Text: apply7.text
-//                    property alias company_Name5Text: company_Name5.text
-//                    property alias job_PositionText: job_Position.text
-//                    property alias info9Text: info9.text
-//                    property alias info6Text: info6.text
-//                    property alias nepal_s_Most_Trusted_Job_Portal_Text: nepal_s_Most_Trusted_Job_Portal_.text
-//                    property alias job_Position4Text: job_Position4.text
-//                    property alias job_Position6Text: job_Position6.text
-//                    property alias samira_J_Data_AnalystText: samira_J_Data_Analyst.text
-//                    property alias apply1Text: apply1.text
-//                    property alias company_Name8Text: company_Name8.text
-//                    property alias apply19Text: apply19.text
-//                    property alias jobHub_is_a_free_job_portal_that_provides_access_to_a_comprehensText: jobHub_is_a_free_job_portal_that_provides_access_to_a_comprehens.text
-//                    property alias location7Text: location7.text
-//                    property alias location4Text: location4.text
-//                    property alias company_Name2Text: company_Name2.text
-//                    property alias info10Text: info10.text
-//                    property alias location2Text: location2.text
-//                    property alias company_Name9Text: company_Name9.text
-//                    property alias company_Name4Text: company_Name4.text
-//                    property alias company_Name7Text: company_Name7.text
-//                    property alias mONTHLY_VIEWSText: mONTHLY_VIEWS.text
-//                    property alias locationText: location.text
-//                    property alias apply11Text: apply11.text
-//                    property alias apply3Text: apply3.text
-//                    property alias contact_UsText: contact_Us.text
-//                    property alias element2Text: element2.text
-//                    property alias pARTNER_COMPANIESText: pARTNER_COMPANIES.text
-//                    property alias location6Text: location6.text
-//                    property alias company_Name3Text: company_Name3.text
-//                    property alias job_Position9Text: job_Position9.text
-//                    property alias apply5Text: apply5.text
-//                    property alias found_an_experienced_role_effortlessly_Versatile_platform_for_prText: found_an_experienced_role_effortlessly_Versatile_platform_for_pr.text
-//                    property alias job_Statistics1Text: job_Statistics1.text
-//                    property alias job_Position8Text: job_Position8.text
-//                    property alias secured_my_first_job_fast_User_friendly_and_tons_of_entry_level_Text: secured_my_first_job_fast_User_friendly_and_tons_of_entry_level_.text
-//                    property alias company_Name1Text: company_Name1.text
-//                    property alias job_Position3Text: job_Position3.text
-//                    property alias info2Text: info2.text
-//                    property alias hAPPY_MEMBERSText: hAPPY_MEMBERS.text
-//                    property alias kabir_C_Graphic_DesignerText: kabir_C_Graphic_Designer.text
-//                    property alias location5Text: location5.text
-//                    property alias job_Position2Text: job_Position2.text
-//                    property alias hello_people_Text: hello_people_.text
-//                    property alias this_portal_transformed_my_job_search_Great_listings_easy_applicText: this_portal_transformed_my_job_search_Great_listings_easy_applic.text
-//                    property alias customer_TestimonialsText: customer_Testimonials.text
-//                    property alias apply15Text: apply15.text
-//                    property alias apply17Text: apply17.text
-//                    property alias info4Text: info4.text
-//                    property alias location9Text: location9.text
-//                    property alias top_JobsText: top_Jobs.text
-//                    property alias thousands_of_job_seekers_use_JobHub_for_their_recruitment_solutiText: thousands_of_job_seekers_use_JobHub_for_their_recruitment_soluti.text
-//                    property alias hari_M_Software_EngineerText: hari_M_Software_Engineer.text
-//                    property alias kanish_S_Security_AnalystText: kanish_S_Security_Analyst.text
-//                    property alias info5Text: info5.text
-//                    property alias info3Text: info3.text
-//                    property alias next_Placement_can_be_yours_Register_Now_Text: next_Placement_can_be_yours_Register_Now_.text
-//                    property alias element1Text: element1.text
-//                    property alias job_Position5Text: job_Position5.text
-//                    property alias info8Text: info8.text
-//                    property alias about_JobHubText: about_JobHub.text
-//                    property alias company_Name6Text: company_Name6.text
-//                    property alias location8Text: location8.text
-//                    property alias job_SeekerText: job_Seeker.text
+                    //                    property alias employerText: employer.text
+                    //                    property alias info1Text: info1.text
+                    //                    property alias job_Position7Text: job_Position7.text
+                    //                    property alias quickly_found_my_ideal_job_with_intuitive_search_and_matching_feText: quickly_found_my_ideal_job_with_intuitive_search_and_matching_fe.text
+                    //                    property alias location3Text: location3.text
+                    //                    property alias elementText: element.text
+                    //                    property alias info7Text: info7.text
+                    //                    property alias company_NameText: company_Name.text
+                    //                    property alias location1Text: location1.text
+                    //                    property alias apply13Text: apply13.text
+                    //                    property alias apply9Text: apply9.text
+                    //                    property alias job_Position1Text: job_Position1.text
+                    //                    property alias apply7Text: apply7.text
+                    //                    property alias company_Name5Text: company_Name5.text
+                    //                    property alias job_PositionText: job_Position.text
+                    //                    property alias info9Text: info9.text
+                    //                    property alias info6Text: info6.text
+                    //                    property alias nepal_s_Most_Trusted_Job_Portal_Text: nepal_s_Most_Trusted_Job_Portal_.text
+                    //                    property alias job_Position4Text: job_Position4.text
+                    //                    property alias job_Position6Text: job_Position6.text
+                    //                    property alias samira_J_Data_AnalystText: samira_J_Data_Analyst.text
+                    //                    property alias apply1Text: apply1.text
+                    //                    property alias company_Name8Text: company_Name8.text
+                    //                    property alias apply19Text: apply19.text
+                    //                    property alias jobHub_is_a_free_job_portal_that_provides_access_to_a_comprehensText: jobHub_is_a_free_job_portal_that_provides_access_to_a_comprehens.text
+                    //                    property alias location7Text: location7.text
+                    //                    property alias location4Text: location4.text
+                    //                    property alias company_Name2Text: company_Name2.text
+                    //                    property alias info10Text: info10.text
+                    //                    property alias location2Text: location2.text
+                    //                    property alias company_Name9Text: company_Name9.text
+                    //                    property alias company_Name4Text: company_Name4.text
+                    //                    property alias company_Name7Text: company_Name7.text
+                    //                    property alias mONTHLY_VIEWSText: mONTHLY_VIEWS.text
+                    //                    property alias locationText: location.text
+                    //                    property alias apply11Text: apply11.text
+                    //                    property alias apply3Text: apply3.text
+                    //                    property alias contact_UsText: contact_Us.text
+                    //                    property alias element2Text: element2.text
+                    //                    property alias pARTNER_COMPANIESText: pARTNER_COMPANIES.text
+                    //                    property alias location6Text: location6.text
+                    //                    property alias company_Name3Text: company_Name3.text
+                    //                    property alias job_Position9Text: job_Position9.text
+                    //                    property alias apply5Text: apply5.text
+                    //                    property alias found_an_experienced_role_effortlessly_Versatile_platform_for_prText: found_an_experienced_role_effortlessly_Versatile_platform_for_pr.text
+                    //                    property alias job_Statistics1Text: job_Statistics1.text
+                    //                    property alias job_Position8Text: job_Position8.text
+                    //                    property alias secured_my_first_job_fast_User_friendly_and_tons_of_entry_level_Text: secured_my_first_job_fast_User_friendly_and_tons_of_entry_level_.text
+                    //                    property alias company_Name1Text: company_Name1.text
+                    //                    property alias job_Position3Text: job_Position3.text
+                    //                    property alias info2Text: info2.text
+                    //                    property alias hAPPY_MEMBERSText: hAPPY_MEMBERS.text
+                    //                    property alias kabir_C_Graphic_DesignerText: kabir_C_Graphic_Designer.text
+                    //                    property alias location5Text: location5.text
+                    //                    property alias job_Position2Text: job_Position2.text
+                    //                    property alias hello_people_Text: hello_people_.text
+                    //                    property alias this_portal_transformed_my_job_search_Great_listings_easy_applicText: this_portal_transformed_my_job_search_Great_listings_easy_applic.text
+                    //                    property alias customer_TestimonialsText: customer_Testimonials.text
+                    //                    property alias apply15Text: apply15.text
+                    //                    property alias apply17Text: apply17.text
+                    //                    property alias info4Text: info4.text
+                    //                    property alias location9Text: location9.text
+                    //                    property alias top_JobsText: top_Jobs.text
+                    //                    property alias thousands_of_job_seekers_use_JobHub_for_their_recruitment_solutiText: thousands_of_job_seekers_use_JobHub_for_their_recruitment_soluti.text
+                    //                    property alias hari_M_Software_EngineerText: hari_M_Software_Engineer.text
+                    //                    property alias kanish_S_Security_AnalystText: kanish_S_Security_Analyst.text
+                    //                    property alias info5Text: info5.text
+                    //                    property alias info3Text: info3.text
+                    //                    property alias next_Placement_can_be_yours_Register_Now_Text: next_Placement_can_be_yours_Register_Now_.text
+                    //                    property alias element1Text: element1.text
+                    //                    property alias job_Position5Text: job_Position5.text
+                    //                    property alias info8Text: info8.text
+                    //                    property alias about_JobHubText: about_JobHub.text
+                    //                    property alias company_Name6Text: company_Name6.text
+                    //                    property alias location8Text: location8.text
+                    //                    property alias job_SeekerText: job_Seeker.text
 
                     Rectangle {
                         id: footer
@@ -150,7 +150,7 @@ Page {
                             width: 73
                             height: 27
                             onClicked:{
-                            navigateTo(faqpagecomponent);
+                                navigateTo(faqpagecomponent);
                             }
                         }
 
@@ -161,7 +161,7 @@ Page {
                             width: 107
                             height: 21
                             onClicked:{
-                            navigateTo(contactcomponent);
+                                navigateTo(contactcomponent);
                             }
                         }
 
@@ -172,7 +172,7 @@ Page {
                             width: 88
                             height: 27
                             onClicked:{
-                            navigateTo(aboutuspagecomponent);
+                                navigateTo(aboutuspagecomponent);
                             }
                         }
 
@@ -2960,131 +2960,131 @@ Page {
                         height: 197
                         modal: true
                         visible: false
-                    Rectangle {
-                        id: registerpop
-                        anchors.left: parent.left
-                        anchors.top: parent.top
-                        width: 285
-                        height: 197
-                        color: "#ffffff"
-                        property alias employerText: employer.text
-                        property alias sign_inText: sign_in.text
-                        property alias employeeText: employee.text
-
                         Rectangle {
-                            id: rectangle_1294b
+                            id: registerpop
+                            anchors.left: parent.left
+                            anchors.top: parent.top
                             width: 285
                             height: 197
-                            color: "#6f42c1"
-                            anchors.left: parent.left
-                            anchors.top: parent.top
-                        }
-
-                        Rectangle {
-                            id: rectangle_1297b
-                            width: 285
-                            height: 42
                             color: "#ffffff"
-                            anchors.left: parent.left
-                            anchors.top: parent.top
-                        }
+                            property alias employerText: employer.text
+                            property alias sign_inText: sign_in.text
+                            property alias employeeText: employee.text
 
-                        Text {
-                            id: sign_in2
-                            width: 112
-                            height: 28
-                            color: "#6f42c1"
-                            text: qsTr("Register")
-                            anchors.left: parent.left
-                            anchors.top: parent.top
-                            font.pixelSize: 30
-                            horizontalAlignment: Text.AlignLeft
-                            verticalAlignment: Text.AlignTop
-                            wrapMode: Text.Wrap
-                            anchors.leftMargin: 87
-                            font.weight: Font.Black
-                            font.capitalization: Font.Capitalize
-                            font.family: "Mulish"
-                        }
+                            Rectangle {
+                                id: rectangle_1294b
+                                width: 285
+                                height: 197
+                                color: "#6f42c1"
+                                anchors.left: parent.left
+                                anchors.top: parent.top
+                            }
 
-                        Rectangle {
-                            id: line_2
-                            width: 140
-                            height: 5
-                            color: "#ffffff"
-                            anchors.left: parent.left
-                            anchors.top: parent.top
-                            anchors.topMargin: 110
-                            anchors.leftMargin: 76
-                            rotation: 90
-                        }
+                            Rectangle {
+                                id: rectangle_1297b
+                                width: 285
+                                height: 42
+                                color: "#ffffff"
+                                anchors.left: parent.left
+                                anchors.top: parent.top
+                            }
 
-                        Text {
-                            id: employeeb
-                            width: 96
-                            height: 25
-                            color: "#ffffff"
-                            text: qsTr("Employee")
-                            anchors.left: parent.left
-                            anchors.top: parent.top
-                            font.pixelSize: 20
-                            horizontalAlignment: Text.AlignLeft
-                            verticalAlignment: Text.AlignTop
-                            wrapMode: Text.NoWrap
-                            anchors.topMargin: 54
-                            anchors.leftMargin: 24
-                            font.weight: Font.Black
-                            font.capitalization: Font.Capitalize
-                            font.family: "Mulish"
-                        }
+                            Text {
+                                id: sign_in2
+                                width: 112
+                                height: 28
+                                color: "#6f42c1"
+                                text: qsTr("Register")
+                                anchors.left: parent.left
+                                anchors.top: parent.top
+                                font.pixelSize: 30
+                                horizontalAlignment: Text.AlignLeft
+                                verticalAlignment: Text.AlignTop
+                                wrapMode: Text.Wrap
+                                anchors.leftMargin: 87
+                                font.weight: Font.Black
+                                font.capitalization: Font.Capitalize
+                                font.family: "Mulish"
+                            }
 
-                        Text {
-                            id: employerb
-                            width: 93
-                            height: 25
-                            color: "#ffffff"
-                            text: qsTr("Employer")
-                            anchors.left: parent.left
-                            anchors.top: parent.top
-                            font.pixelSize: 20
-                            horizontalAlignment: Text.AlignLeft
-                            verticalAlignment: Text.AlignTop
-                            wrapMode: Text.NoWrap
-                            anchors.topMargin: 54
-                            anchors.leftMargin: 167
-                            font.weight: Font.Black
-                            font.capitalization: Font.Capitalize
-                            font.family: "Mulish"
-                        }
+                            Rectangle {
+                                id: line_2
+                                width: 140
+                                height: 5
+                                color: "#ffffff"
+                                anchors.left: parent.left
+                                anchors.top: parent.top
+                                anchors.topMargin: 110
+                                anchors.leftMargin: 76
+                                rotation: 90
+                            }
 
-                        Button {
-                            id: rectangle_1295a
-                            width: 103
-                            height: 39
-                            text: "Register"
-                            anchors.left: parent.left
-                            anchors.top: parent.top
-                            anchors.topMargin: 133
-                            anchors.leftMargin: 24
-                            onClicked:{
-                                navigateTo(registerpagecomponent);
+                            Text {
+                                id: employeeb
+                                width: 96
+                                height: 25
+                                color: "#ffffff"
+                                text: qsTr("Employee")
+                                anchors.left: parent.left
+                                anchors.top: parent.top
+                                font.pixelSize: 20
+                                horizontalAlignment: Text.AlignLeft
+                                verticalAlignment: Text.AlignTop
+                                wrapMode: Text.NoWrap
+                                anchors.topMargin: 54
+                                anchors.leftMargin: 24
+                                font.weight: Font.Black
+                                font.capitalization: Font.Capitalize
+                                font.family: "Mulish"
+                            }
+
+                            Text {
+                                id: employerb
+                                width: 93
+                                height: 25
+                                color: "#ffffff"
+                                text: qsTr("Employer")
+                                anchors.left: parent.left
+                                anchors.top: parent.top
+                                font.pixelSize: 20
+                                horizontalAlignment: Text.AlignLeft
+                                verticalAlignment: Text.AlignTop
+                                wrapMode: Text.NoWrap
+                                anchors.topMargin: 54
+                                anchors.leftMargin: 167
+                                font.weight: Font.Black
+                                font.capitalization: Font.Capitalize
+                                font.family: "Mulish"
+                            }
+
+                            Button {
+                                id: rectangle_1295a
+                                width: 103
+                                height: 39
+                                text: "Register"
+                                anchors.left: parent.left
+                                anchors.top: parent.top
+                                anchors.topMargin: 133
+                                anchors.leftMargin: 24
+                                onClicked:{
+                                    navigateTo(registerpagecomponent);
+                                }
+                            }
+
+                            Button {
+                                id: rectangle_1298a
+                                width: 103
+                                height: 39
+                                text: "Register"
+                                anchors.left: parent.left
+                                anchors.top: parent.top
+                                anchors.topMargin: 133
+                                anchors.leftMargin: 161
+                                onClicked:{
+                                    navigateTo(registerpagecomponentemployer);
+                                }
                             }
                         }
-
-                        Button {
-                            id: rectangle_1298a
-                            width: 103
-                            height: 39
-                            text: "Register"
-                            anchors.left: parent.left
-                            anchors.top: parent.top
-                            anchors.topMargin: 133
-                            anchors.leftMargin: 161
-                            onClicked:{
-                                navigateTo(registerpagecomponentemployer);
-                            }
-                        }
-                    }
                     }
 
 
@@ -3120,131 +3120,131 @@ Page {
                             height: 197
                             modal: true
                             visible: false
-                        Rectangle {
-                            id: signpop
-                            anchors.left: parent.left
-                            anchors.top: parent.top
-                            width: 285
-                            height: 197
-                            color: "#ffffff"
-                            property alias employerText: employer.text
-                            property alias sign_inText: sign_in.text
-                            property alias employeeText: employee.text
-
                             Rectangle {
-                                id: rectangle_1294a
+                                id: signpop
+                                anchors.left: parent.left
+                                anchors.top: parent.top
                                 width: 285
                                 height: 197
-                                color: "#6f42c1"
-                                anchors.left: parent.left
-                                anchors.top: parent.top
-                            }
-
-                            Rectangle {
-                                id: rectangle_1297a
-                                width: 285
-                                height: 42
                                 color: "#ffffff"
-                                anchors.left: parent.left
-                                anchors.top: parent.top
-                            }
+                                property alias employerText: employer.text
+                                property alias sign_inText: sign_in.text
+                                property alias employeeText: employee.text
 
-                            Text {
-                                id: sign_in
-                                width: 112
-                                height: 28
-                                color: "#6f42c1"
-                                text: qsTr("Sign in")
-                                anchors.left: parent.left
-                                anchors.top: parent.top
-                                font.pixelSize: 30
-                                horizontalAlignment: Text.AlignLeft
-                                verticalAlignment: Text.AlignTop
-                                wrapMode: Text.Wrap
-                                anchors.leftMargin: 87
-                                font.weight: Font.Black
-                                font.capitalization: Font.Capitalize
-                                font.family: "Mulish"
-                            }
+                                Rectangle {
+                                    id: rectangle_1294a
+                                    width: 285
+                                    height: 197
+                                    color: "#6f42c1"
+                                    anchors.left: parent.left
+                                    anchors.top: parent.top
+                                }
 
-                            Rectangle {
-                                id: line_1
-                                width: 140
-                                height: 5
-                                color: "#ffffff"
-                                anchors.left: parent.left
-                                anchors.top: parent.top
-                                anchors.topMargin: 110
-                                anchors.leftMargin: 76
-                                rotation: 90
-                            }
+                                Rectangle {
+                                    id: rectangle_1297a
+                                    width: 285
+                                    height: 42
+                                    color: "#ffffff"
+                                    anchors.left: parent.left
+                                    anchors.top: parent.top
+                                }
 
-                            Text {
-                                id: employee
-                                width: 96
-                                height: 25
-                                color: "#ffffff"
-                                text: qsTr("Employee")
-                                anchors.left: parent.left
-                                anchors.top: parent.top
-                                font.pixelSize: 20
-                                horizontalAlignment: Text.AlignLeft
-                                verticalAlignment: Text.AlignTop
-                                wrapMode: Text.NoWrap
-                                anchors.topMargin: 54
-                                anchors.leftMargin: 24
-                                font.weight: Font.Black
-                                font.capitalization: Font.Capitalize
-                                font.family: "Mulish"
-                            }
+                                Text {
+                                    id: sign_in
+                                    width: 112
+                                    height: 28
+                                    color: "#6f42c1"
+                                    text: qsTr("Sign in")
+                                    anchors.left: parent.left
+                                    anchors.top: parent.top
+                                    font.pixelSize: 30
+                                    horizontalAlignment: Text.AlignLeft
+                                    verticalAlignment: Text.AlignTop
+                                    wrapMode: Text.Wrap
+                                    anchors.leftMargin: 87
+                                    font.weight: Font.Black
+                                    font.capitalization: Font.Capitalize
+                                    font.family: "Mulish"
+                                }
 
-                            Text {
-                                id: employera
-                                width: 93
-                                height: 25
-                                color: "#ffffff"
-                                text: qsTr("Employer")
-                                anchors.left: parent.left
-                                anchors.top: parent.top
-                                font.pixelSize: 20
-                                horizontalAlignment: Text.AlignLeft
-                                verticalAlignment: Text.AlignTop
-                                wrapMode: Text.NoWrap
-                                anchors.topMargin: 54
-                                anchors.leftMargin: 167
-                                font.weight: Font.Black
-                                font.capitalization: Font.Capitalize
-                                font.family: "Mulish"
-                            }
+                                Rectangle {
+                                    id: line_1
+                                    width: 140
+                                    height: 5
+                                    color: "#ffffff"
+                                    anchors.left: parent.left
+                                    anchors.top: parent.top
+                                    anchors.topMargin: 110
+                                    anchors.leftMargin: 76
+                                    rotation: 90
+                                }
 
-                            Button {
-                                id: rectangle_1295
-                                width: 103
-                                height: 39
-                                text: "Sign In"
-                                anchors.left: parent.left
-                                anchors.top: parent.top
-                                anchors.topMargin: 133
-                                anchors.leftMargin: 24
-                                onClicked:{
-                                    navigateTo(loginpagecomponent);
+                                Text {
+                                    id: employee
+                                    width: 96
+                                    height: 25
+                                    color: "#ffffff"
+                                    text: qsTr("Employee")
+                                    anchors.left: parent.left
+                                    anchors.top: parent.top
+                                    font.pixelSize: 20
+                                    horizontalAlignment: Text.AlignLeft
+                                    verticalAlignment: Text.AlignTop
+                                    wrapMode: Text.NoWrap
+                                    anchors.topMargin: 54
+                                    anchors.leftMargin: 24
+                                    font.weight: Font.Black
+                                    font.capitalization: Font.Capitalize
+                                    font.family: "Mulish"
+                                }
+
+                                Text {
+                                    id: employera
+                                    width: 93
+                                    height: 25
+                                    color: "#ffffff"
+                                    text: qsTr("Employer")
+                                    anchors.left: parent.left
+                                    anchors.top: parent.top
+                                    font.pixelSize: 20
+                                    horizontalAlignment: Text.AlignLeft
+                                    verticalAlignment: Text.AlignTop
+                                    wrapMode: Text.NoWrap
+                                    anchors.topMargin: 54
+                                    anchors.leftMargin: 167
+                                    font.weight: Font.Black
+                                    font.capitalization: Font.Capitalize
+                                    font.family: "Mulish"
+                                }
+
+                                Button {
+                                    id: rectangle_1295
+                                    width: 103
+                                    height: 39
+                                    text: "Sign In"
+                                    anchors.left: parent.left
+                                    anchors.top: parent.top
+                                    anchors.topMargin: 133
+                                    anchors.leftMargin: 24
+                                    onClicked:{
+                                        navigateTo(loginpagecomponent);
+                                    }
+                                }
+
+                                Button {
+                                    id: rectangle_1298
+                                    width: 103
+                                    height: 39
+                                    text: "Sign In"
+                                    anchors.left: parent.left
+                                    anchors.top: parent.top
+                                    anchors.topMargin: 133
+                                    anchors.leftMargin: 161
+                                    onClicked:{
+                                        navigateTo(loginpagecomponentemployer);
+                                    }
                                 }
                             }
-
-                            Button {
-                                id: rectangle_1298
-                                width: 103
-                                height: 39
-                                text: "Sign In"
-                                anchors.left: parent.left
-                                anchors.top: parent.top
-                                anchors.topMargin: 133
-                                anchors.leftMargin: 161
-                                onClicked:{
-                                    navigateTo(loginpagecomponentemployer);
-                                }
-                            }
-                        }
                         }
                         /*##^##
 Designer {
@@ -3323,9 +3323,10 @@ Designer {
                                 color: "#6f42c1"
                             }
                             onClicked: {
-                                            popupMenu.open()
+//                                popupMenu.clear();
+                                popupMenu.open()
 
-                                        }
+                            }
 
                         }
                     }
@@ -3388,6 +3389,12 @@ Designer {
                         x: searchmenu.x
                         y: searchmenu.y + searchmenu.height  // Position the menu below the button
                         width: searchmenu.width
+                        Component{
+                            id: menuitem
+                            MenuItem{
+
+                            }
+                        }
 
                         ListView {
                             model: ListModel {
@@ -3402,14 +3409,25 @@ Designer {
                                 }
                             }
                         }
+                        //                        MenuItem{
+                        //                            text: "test"
+                        //                        }
 
                         onVisibleChanged: {
+
                             if (visible && searchField.text !== "") {
-                                menuModel.clear();
-                                var results = mydb.checkForSearch(searchField.text);
-                                for (var i = 0; i < results.length; i++) {
-                                    menuModel.append({text: results[i]});
+                                // menuModel.clear();
+                                // popupMenu.addItem({text:"test"});
+                                for(var i=popupMenu.count-1;i>=0;i--){
+                                    popupMenu.takeItem(i)
                                 }
+
+                                var results = mydb.checkForSearch(searchField.text);
+                                for ( i = 0; i < results.length; i++) {
+                                    popupMenu.addItem(menuitem.createObject(popupMenu,{text:results[i]}) )
+
+                                }
+
                             }
                         }
                     }
