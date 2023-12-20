@@ -26,6 +26,7 @@ class MyDatabase : public QObject{
     Q_OBJECT
 private:
     QString semail;
+     QString logInUserId;
 
 
 public:
@@ -47,7 +48,9 @@ public:
 
         QSqlQuery query;
         query.exec("CREATE TABLE IF NOT EXISTS Users ("
+                   "user_id TEXT,"
                    "email TEXT PRIMARY KEY, "
+
                    "password TEXT, "
                    "phint TEXT, "
                    "fullName TEXT, "
@@ -57,41 +60,59 @@ public:
                    "experience TEXT"
                    ")");
         //for employer
-        query.exec("CREATE TABLE IF NOT EXISTS employer ("
-                   "email TEXT PRIMARY KEY, "
-                   "password TEXT NOT NULL, "
-                   "phint TEXT, "
-                   "company_name TEXT, "
-                   "company_type TEXT CHECK ("
-                   "    company_type IN ("
-                   "        'Software Development Companies', 'Cybersecurity Firms', 'Managed Service Providers (MSPs)',"
-                   "        'Cloud Service Providers', 'IT Consulting Firms', 'Data Analytics Companies',"
-                   "        'Mobile App Development Companies', 'Web Development Agencies', 'Hardware Manufacturers',"
-                   "        'Networking and Infrastructure Services', 'Artificial Intelligence (AI) Companies',"
-                   "        'Telecommunications Service Providers', 'E-learning and EdTech Companies',"
-                   "        'CRM (Customer Relationship Management) Companies', 'IT Training and Certification Providers',"
-                   "        'Geographic Information System (GIS) Companies', 'Healthcare IT Companies',"
-                   "        'Financial Technology (Fintech) Companies', 'Gaming and Entertainment Software Companies',"
-                   "        'Robotics and Automation Companies'"
-                   "    )"
-                   "), "
-                   "business_type TEXT CHECK ("
-                   "    business_type IN ('Private', 'Public', 'Government', 'Non-Profit')"
-                   "), "
-                   "company_location TEXT, "
-                   "social_link_1 TEXT, "
-                   "social_link_2 TEXT, "
-                   "social_link_3 TEXT, "
-                   "social_link_4 TEXT, "
-                   "social_link_5 TEXT, "
-                   "contact_person TEXT, "
-                   "full_address TEXT, "
-                   "phone TEXT, "
-                   "fax TEXT, "
-                   "website TEXT, "
-                   "company_description TEXT"
-                   ")");
+        if (!query.exec("CREATE TABLE IF NOT EXISTS employer ("
+                        "email TEXT PRIMARY KEY, "
+                        "password TEXT, "
+                        "phint TEXT, "
+                        "company_name TEXT, "
+                        "company_type TEXT CHECK ("
+                        "    company_type IN ('Software Development Companies', 'Cybersecurity Firms', 'Managed Service Providers (MSPs)',"
+                        "                      'Cloud Service Providers', 'IT Consulting Firms', 'Data Analytics Companies',"
+                        "                      'Mobile App Development Companies', 'Web Development Agencies', 'Hardware Manufacturers',"
+                        "                      'Networking and Infrastructure Services', 'Artificial Intelligence (AI) Companies',"
+                        "                      'Telecommunications Service Providers', 'E-learning and EdTech Companies',"
+                        "                      'CRM (Customer Relationship Management) Companies', 'IT Training and Certification Providers',"
+                        "                      'Geographic Information System (GIS) Companies', 'Healthcare IT Companies',"
+                        "                      'Financial Technology (Fintech) Companies', 'Gaming and Entertainment Software Companies',"
+                        "                      'Robotics and Automation Companies')"
+                        "), "
+                        "business_type TEXT CHECK ("
+                        "    business_type IN ('Private', 'Public', 'Government', 'Non-Profit')"
+                        "), "
+                        "company_location TEXT, "
+                        "social_link_1 TEXT, "
+                        "social_link_2 TEXT, "
+                        "social_link_3 TEXT, "
+                        "social_link_4 TEXT, "
+                        "social_link_5 TEXT, "
+                        "contact_person TEXT, "
+                        "full_address TEXT, "
+                        "phone TEXT, "
+                        "fax TEXT, "
+                        "website TEXT, "
+                        "company_description TEXT"
+                        ")")) {
+            qWarning() << "MyDatabase::createDatabase - Error creating employer table: " << query.lastError().text();
+        }
     }
+    Q_INVOKABLE QString getUserIdByEmail() {
+        QString email = semail;
+        QSqlQuery query;
+        query.prepare("SELECT user_id FROM Users WHERE email = :email");
+        query.bindValue(":email", email);
+
+        if (!query.exec()) {
+            qWarning() << "MyDatabase::getUserIdByEmail - ERROR: " << query.lastError().text();
+            return QString(); // Return an empty string on error
+        }
+
+        if (query.next()) {
+            return query.value("user_id").toString();
+        } else {
+            return QString(); // Return an empty string if no user ID found for the given email
+        }
+    }
+
 
     Q_INVOKABLE bool authenticateUser(const QString& email, const QString& password){
         QSqlQuery query;
@@ -114,7 +135,7 @@ public:
             return false;
         }
     }
-    Q_INVOKABLE bool authenticateUserEmployer(const QString& email, const QString& password){
+    Q_INVOKABLE bool authenticateUserEmployer(const QString &email, const QString &password) {
         QSqlQuery query;
         query.prepare("SELECT * FROM employer WHERE email = :email AND password = :password");
         query.bindValue(":email", email);
@@ -125,16 +146,17 @@ public:
             return false;
         }
 
-        bool loginSuccessful = query.next();  // Use query.next() instead of query.first() for correctness.
+        bool loginSuccessful = query.next();
 
         if (loginSuccessful) {
-            //QMessageBox::information(nullptr, "Login", "Login Successful");
             return true;
         } else {
-            //QMessageBox::information(nullptr, "Login", "Invalid Credentials");
             return false;
         }
     }
+
+
+
     Q_INVOKABLE void storeCurrentEmail(const QString& email) {
         semail=email;
     }
@@ -164,8 +186,12 @@ public:
     //}
 
     Q_INVOKABLE bool registerUser(const QString& email, const QString& password, const QString& phint) {
+        // Generate a unique user ID
+        //        QString userId = QUuid::createUuid().toString();
+        QString userId = QString::number((rand() % 90000) + 10000);
         QSqlQuery query;
-        query.prepare("INSERT INTO Users (email, password, phint) VALUES (:email, :password, :phint)");
+        query.prepare("INSERT INTO Users (user_id, email, password, phint) VALUES (:user_id, :email, :password, :phint)");
+        query.bindValue(":user_id", userId);
         query.bindValue(":email", email);
         query.bindValue(":password", password);
         query.bindValue(":phint",phint);
@@ -188,15 +214,15 @@ public:
         return true;
     }
 
-    Q_INVOKABLE bool insertKYCData(const QString& email, const QString& fullName, const QString& address, const QString& education, const QString& dob, const QString& experience) {
+    Q_INVOKABLE bool insertKYCData(const QString& userId, const QString& fullName, const QString& address, const QString& education, const QString& dob, const QString& experience) {
         QSqlQuery query;
-        query.prepare("UPDATE Users SET fullName = :fullName, address = :address, education = :education, dob = :dob, experience = :experience WHERE email = :email");
+        query.prepare("UPDATE Users SET fullName = :fullName, address = :address, education = :education, dob = :dob, experience = :experience WHERE user_id = :user_id");
         query.bindValue(":fullName", fullName);
         query.bindValue(":address", address);
         query.bindValue(":education", education);
         query.bindValue(":dob", dob);
         query.bindValue(":experience", experience);
-        query.bindValue(":email", email);
+        query.bindValue(":user_id", userId);
 
         if (!query.exec()) {
             qWarning() << "MyDatabase::insertKYCData - ERROR: " << query.lastError().text();

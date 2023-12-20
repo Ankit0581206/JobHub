@@ -18,11 +18,17 @@ ApplicationWindow {
               height: parent.height
 
               // Set the default page as Home Page
-              sourceComponent: postjobpagecomponent
+              sourceComponent: admindashboardpagecomponent
         }
         Component{
             id:postjobpagecomponent
             PostJobPage{
+
+            }
+        }
+        Component{
+            id:admindashboardpagecomponent
+            AdminDashboardPage{
 
             }
         }

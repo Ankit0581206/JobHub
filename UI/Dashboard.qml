@@ -221,25 +221,8 @@ Page {
                     }
 
                     Text {
-                        id: contact_Us
-                        x: 599
-                        y: 23
-                        width: 105
-                        height: 23
-                        color: "#808081"
-                        text: qsTr("Contact Us")
-                        font.pixelSize: 18
-                        horizontalAlignment: Text.AlignLeft
-                        verticalAlignment: Text.AlignTop
-                        wrapMode: Text.Wrap
-                        font.weight: Font.Normal
-                        font.family: "Mulish"
-                        font.capitalization: Font.Capitalize
-                    }
-
-                    Text {
                         id: about
-                        x: 748
+                        x: 599
                         y: 23
                         width: 56
                         height: 23
@@ -283,15 +266,8 @@ Page {
                     }
 
                     Image {
-                        id: _local_phone_icon_1_1
-                        x: 581
-                        y: 26
-                        source: "assets/_local_phone_icon_1_1_3.png"
-                    }
-
-                    Image {
                         id: _about_info_information_help_ui_icon_1
-                        x: 728
+                        x: 573
                         y: 23
                         source: "assets/_about_info_information_help_ui_icon_1_3.png"
                     }
@@ -322,15 +298,6 @@ Page {
                                     anchors.right: parent.right
                                     anchors.top: parent.top
                                     anchors.bottom: parent.bottom
-                                    Image {
-                                        id: profile1
-                                        x: 0
-                                        y: 0
-                                        source: "assets/profile1_1.png"
-                                        Layout.alignment: Qt.AlignLeft | Qt.AlignTop
-                                        Layout.preferredWidth: 40
-                                        Layout.preferredHeight: 40
-                                    }
                                     spacing: 0
                                 }
                                 Layout.alignment: Qt.AlignLeft | Qt.AlignTop
@@ -1324,8 +1291,7 @@ Page {
                             anchors.fill: parent
                             onClicked: {
 
-                                // Add actions or functions to perform when the button is clicked
-                                console.log("Button clicked!")
+                                navigateTo(postjobpagecomponent)
                             }
                         }
                     }
