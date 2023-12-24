@@ -137,12 +137,11 @@ public:
         }
  }
 
-    Q_INVOKABLE bool insertJob(const QString& email, const QString& jobtitle, const QString& catagory, const QString& degree, const QString& job_level, const QString& academics, const QString& minimumjob, const QString& location, const QString& deadline, const QString& description, const QString& education, const QString& vacancies, const QString& salary, const QString& employer_id) {
+Q_INVOKABLE bool insertJob(const QString& email, const QString& jobtitle, const QString& catagory, const QString& degree, const QString& job_level, const QString& academics, const QString& minimumjob, const QString& location, const QString& deadline, const QString& description, const QString& education, const QString& vacancies, const QString& salary, const QString& employer_id) {
         QSqlQuery query;
         QString job_id = QString::number((rand() % 90000) + 10000);
 
-        query.prepare("INSERT INTO JobPosted (email, job_title, category, degree, job_level, academics, minimum_job, location, deadline, job_description, education_preference, vacancies, salary, employer_id, job_id) "
-                      "VALUES (:email, :jobtitle, :catagory, :degree, :job_level, :academics, :minimumjob, :location, :deadline, :description, :education, :vacancies, :salary, :employer_id, :job_id)");
+        query.prepare("INSERT INTO JobPosted (email, job_title, category, degree, job_level, academics, minimum_job, location, deadline, job_description, education_preference, vacancies, salary, employer_id, job_id) VALUES (:email, :jobtitle, :catagory, :degree, :job_level, :academics, :minimumjob, :location, :deadline, :description, :education, :vacancies, :salary, :employer_id, :job_id)");
 
         query.bindValue(":email", email);
         query.bindValue(":jobtitle", jobtitle);
@@ -167,7 +166,6 @@ public:
 
         return true;
     }
-
 
 
     Q_INVOKABLE bool authenticateEmployer(const QString& email, const QString& password){
