@@ -57,6 +57,7 @@ Page {
         }
 
 
+
     }
     Image {
         id: phooto_copy_2
@@ -327,6 +328,7 @@ Page {
         text: "Register"
         background: Rectangle {
                     color: "#96be25" // You can replace "green" with any valid color string
+
                 }
         onClicked: {
             console.log("Attempting registration with values:", emailField.text, passwordField.text, hintField.text);

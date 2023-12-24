@@ -1,7 +1,9 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
+
+
 import QtQuick.Layouts 1.15
-import "." as Globals
+
 
 
 Page {
@@ -57,6 +59,17 @@ Page {
                     width: 1300
                     height: 1514
                     color: "#6f42c1"
+
+
+
+    ColumnLayout {
+        anchors.fill: parent
+        TextField{
+            id:userid
+            placeholderText: "user_id"
+            readOnly: true
+            text: mydb.getUserIdByEmail()
+        }
 
 
 
@@ -170,9 +183,7 @@ Page {
             color: "white" // Set the background color to white
         }
 
-        anchors.horizontalCenterOffset: -89
-        anchors.horizontalCenter: parent.horizontalCenter
-    }
+
 
 
     Text {
@@ -783,6 +794,7 @@ Page {
         text: "Submit"
         background: Rectangle{
             color: "#96be25"
+
         }
 
         font {

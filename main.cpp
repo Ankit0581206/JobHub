@@ -2,11 +2,13 @@
 #include <QQmlApplicationEngine>
 #include <QCoreApplication>
 #include <QQmlContext>
+#include <QStringList>
 
 #include <QSqlDatabase>
 #include <QSqlDriver>
 #include <QSqlError>
 #include <QSqlQuery>
+#include <QSqlRecord>
 
 #include <QObject>
 #include <QDebug>
@@ -25,10 +27,12 @@
 class MyDatabase : public QObject{
     Q_OBJECT
 private:
+
     QString semail;
     QString logInUserId;
     QString EmployerId;
     QString JobId;
+
 
 
 public:
@@ -190,6 +194,9 @@ Q_INVOKABLE bool insertJob(const QString& email, const QString& jobtitle, const 
         }
     }
 
+    Q_INVOKABLE void storeCurrentEmail(const QString& email) {
+        semail=email;
+    }
 
     Q_INVOKABLE bool authenticateUser(const QString& email, const QString& password){
         QSqlQuery query;
@@ -203,14 +210,14 @@ Q_INVOKABLE bool insertJob(const QString& email, const QString& jobtitle, const 
         }
 
 
-
-        bool loginSuccessful = query.next();  // Use query.next() instead of query.first() for correctness.
+        bool loginSuccessful = query.next();
 
         if (loginSuccessful) {
-            //QMessageBox::information(nullptr, "Login", "Login Successful");
+            storeCurrentEmail(email);
+
             return true;
         } else {
-            //QMessageBox::information(nullptr, "Login", "Invalid Credentials");
+
             return false;
         }
     }
@@ -243,30 +250,29 @@ Q_INVOKABLE bool insertJob(const QString& email, const QString& jobtitle, const 
         return semail;
     }
 
-    //    Q_INVOKABLE bool authenticateUser(const QString& email, const QString password){
-    //        QSqlQuery query;
-    //        query.prepare("SELECT name FROM Users WHERE email = :email AND password = :password");
-    //        query.bindValue(":email", email);
-    //        query.bindValue(":password", password);
 
+    Q_INVOKABLE QString getUserIdByEmail() {
+        QString email = semail;
+        QSqlQuery query;
+        query.prepare("SELECT user_id FROM Users WHERE email = :email");
+        query.bindValue(":email", email);
 
-    //        if (!query.exec()) {
-    //            qWarning() << "MyDatabase::authenticateUser - ERROR: " << query.lastError().text();
-    //            return false;
-    //        }
+        if (!query.exec()) {
+            qWarning() << "MyDatabase::getUserIdByEmail - ERROR: " << query.lastError().text();
+            return QString(); // Return an empty string on error
+        }
 
-    //        bool loginSuccessful = query.first();
-    //        if(loginSuccessful){
-    //            QMessageBox::information(nullptr,"Login","Login Successful");
-    //            return true;
-    //        }
-    //             QMessageBox::information(nullptr,"Login","Invalid Credentials");
-    //        return false;
-    //}
+        if (query.next()) {
+            return query.value("user_id").toString();
+        } else {
+            return QString(); // Return an empty string if no user ID found for the given email
+        }
+    }
+
 
     Q_INVOKABLE bool registerUser(const QString& email, const QString& password, const QString& phint) {
         // Generate a unique user ID
-        //        QString userId = QUuid::createUuid().toString();
+
         QString userId = QString::number((rand() % 90000) + 10000);
         QSqlQuery query;
         query.prepare("INSERT INTO Users (user_id, email, password, phint) VALUES (:user_id, :email, :password, :phint)");
@@ -304,12 +310,14 @@ Q_INVOKABLE bool insertJob(const QString& email, const QString& jobtitle, const 
         query.bindValue(":companyType", companyType);
         query.bindValue(":id", Id);
 
+
         if (!query.exec()) {
             qWarning() << "MyDatabase::insertKYCData - ERROR: " << query.lastError().text();
             return false;
         }
         return true;
     }
+
 
     Q_INVOKABLE bool insertKYCData(const QString& userId, const QString& fullName, const QString& address, const QString& education, const QString& dob, const QString& experience) {
         QSqlQuery query;
@@ -328,6 +336,7 @@ Q_INVOKABLE bool insertJob(const QString& email, const QString& jobtitle, const 
         return true;
 
     }
+
     Q_INVOKABLE QString getFullName(const QString& email) {
         QSqlQuery query;
         query.prepare("SELECT fullName FROM Users WHERE email = :email");
@@ -491,6 +500,7 @@ Q_INVOKABLE bool insertJob(const QString& email, const QString& jobtitle, const 
 
 
     }
+
 
 };
 
