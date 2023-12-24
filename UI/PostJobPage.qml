@@ -1,12 +1,19 @@
+
 import QtQuick
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.0
 
- Rectangle {
+ Page {
     id: admin_page
     width: 1300
     height: 2780
-    color: "#6f42c1"
+    Rectangle{
+        width: 1300
+        height: 2780
+        color: "#6f42c1"
+
+    }
+
     /*property alias catagoryText: catagory.text
     property alias aboutText: about.text
     property alias info_JobHub_comText: info_JobHub_com.text
@@ -105,7 +112,7 @@ import QtQuick.Layouts 1.0
         id: job_Seeker
         x: 448
         y: 2495
-        width: 89
+        width: 110
         height: 44
         color: "#000000"
         text: qsTr("Job Seeker")
@@ -615,7 +622,7 @@ import QtQuick.Layouts 1.0
         Button {
             id: post
             x: 721
-            y: 1994
+            y: 2027
             width: 166
             height: 55
             text: qsTr("POST")
@@ -627,20 +634,16 @@ import QtQuick.Layouts 1.0
                  color: "#6f42c1"
              }
             onClicked: {
-
-                            // Call C++ method to authenticate user
-                if (mydb.insertJobDetails(jobtitleField.text, jobcategoryField.text , joblocationField.text, jobeducationField.text,jobexperienceField.text, jobdeadlineField.text, jobdescriptionField.text)){
-                                console.log("Login successful");
-                                navigateTo(kycpagecomponent);}
+                mydb.insertJob(mydb.getEmail(), jobtitleField.text, jobcategoryField.text , degree.text, joblevel.text, jobeducationField.text, jobexperienceField.text, joblocationField.text, jobdeadlineField.text, jobdescriptionField.text, educational_preference.text, number_of_vacancy,salary, mydb.getUserIdByEmail(1));
+}
             }
 
         }
-    }
 
     Text {
         id: minimum_Job_Experience
         x: 234
-        y: 753
+        y: 744
         width: 528
         height: 50
         color: "#000000"
@@ -657,7 +660,7 @@ import QtQuick.Layouts 1.0
     Text {
         id: application_Deadline
         x: 234
-        y: 1059
+        y: 1043
         width: 460
         height: 50
         color: "#000000"
@@ -674,7 +677,7 @@ import QtQuick.Layouts 1.0
     Text {
         id: preferred_Location
         x: 234
-        y: 906
+        y: 894
         width: 414
         height: 49
         color: "#000000"
@@ -690,8 +693,8 @@ import QtQuick.Layouts 1.0
 
     Text {
         id: job_Descripton
-        x: 234
-        y: 1215
+        x: 225
+        y: 1192
         width: 352
         height: 50
         color: "#000000"
@@ -707,7 +710,7 @@ import QtQuick.Layouts 1.0
     Text {
         id: educational_Preference
         x: 234
-        y: 1485
+        y: 1455
         width: 494
         height: 50
         color: "#000000"
@@ -724,7 +727,7 @@ import QtQuick.Layouts 1.0
     Text {
         id: academic_Qualifications
         x: 234
-        y: 601
+        y: 595
         width: 525
         height: 50
         color: "#000000"
@@ -740,9 +743,9 @@ import QtQuick.Layouts 1.0
     Text {
             id: number_of_vacancy1
             x: 234
-            y: 1640
+            y: 1606
             width: 494
-            height: 50
+            height: 46
             color: "#000000"
             text: qsTr("Number of Vacancy")
             font.pixelSize: 40
@@ -756,9 +759,9 @@ import QtQuick.Layouts 1.0
     Text {
             id:salary1
             x: 237
-            y: 1794
+            y: 1756
             width: 494
-            height: 50
+            height: 51
             color: "#000000"
             text: qsTr("Salary")
             font.pixelSize: 40
@@ -769,26 +772,45 @@ import QtQuick.Layouts 1.0
             font.capitalization: Font.Capitalize
             font.family: "Mulish"
         }
+    Text {
+            id:degree1
+            x: 234
+            y: 1903
+            width: 494
+            height: 51
+            color: "#000000"
+            text: qsTr("Degree")
+            font.pixelSize: 40
+            horizontalAlignment: Text.AlignLeft
+            verticalAlignment: Text.AlignTop
+            wrapMode: Text.Wrap
+            font.weight: Font.Bold
+            font.capitalization: Font.Capitalize
+            font.family: "Mulish"
+        }
+    Text {
+            id:joblevel1
+            x: 234
+            y: 2049
+            width: 494
+            height: 51
+            color: "#000000"
+            text: qsTr("Job Level")
+            font.pixelSize: 40
+            horizontalAlignment: Text.AlignLeft
+            verticalAlignment: Text.AlignTop
+            wrapMode: Text.Wrap
+            font.weight: Font.Bold
+            font.capitalization: Font.Capitalize
+            font.family: "Mulish"
+        }
 
-    Image {
-        id: rectangle_53
-        x: 234
-        y: 346
-        source: "assets/rectangle_53.png"
-    }
-
-    Image {
-        id: rectangle_54
-        x: 235
-        y: 501
-        source: "assets/rectangle_54.png"
-    }
 
     Text {
         id: post_a_New_Job
         x: 532
         y: 201
-        width: 299
+        width: 309
         height: 50
         color: "#6f42c1"
         text: qsTr("Post a New Job")
@@ -821,11 +843,11 @@ import QtQuick.Layouts 1.0
     Text {
         id: catagory
         x: 234
-        y: 443
+        y: 439
         width: 240
         height: 50
         color: "#000000"
-        text: qsTr("Catagory")
+        text: qsTr("Category")
         font.pixelSize: 40
         horizontalAlignment: Text.AlignLeft
         verticalAlignment: Text.AlignTop
@@ -842,7 +864,7 @@ import QtQuick.Layouts 1.0
        x: 235
        y: 333
        width: 831
-       height: 1565
+       height: 1826
        spacing: 90
        TextField {
            id: jobtitleField
@@ -854,7 +876,7 @@ import QtQuick.Layouts 1.0
 
            onTextChanged: {
                    // Change text color to black when the text changes
-                   inputField.color = "black"
+                   jobtitleField.color = "black"
                }
        }
 
@@ -869,7 +891,7 @@ import QtQuick.Layouts 1.0
 
            onTextChanged: {
                    // Change text color to black when the text changes
-                   inputField.color = "black"
+                    jobcategoryField.color = "black"
                }
        }
 
@@ -883,7 +905,7 @@ import QtQuick.Layouts 1.0
 
            onTextChanged: {
                    // Change text color to black when the text changes
-                   inputField.color = "black"
+                   jobeducationField.color = "black"
                }
        }
 
@@ -897,7 +919,7 @@ import QtQuick.Layouts 1.0
 
            onTextChanged: {
                    // Change text color to black when the text changes
-                   inputField.color = "black"
+                   jobexperienceField.color = "black"
                }
 
        }
@@ -912,7 +934,7 @@ import QtQuick.Layouts 1.0
 
            onTextChanged: {
                    // Change text color to black when the text changes
-                   inputField.color = "black"
+                   joblocationField.color = "black"
                }
        }
 
@@ -926,7 +948,7 @@ import QtQuick.Layouts 1.0
 
            onTextChanged: {
                    // Change text color to black when the text changes
-                   inputField.color = "black"
+                   jobdeadlineField.color = "black"
                }
        }
 
@@ -940,7 +962,7 @@ import QtQuick.Layouts 1.0
 
            onTextChanged: {
                    // Change text color to black when the text changes
-                   inputField.color = "black"
+                   jobdescriptionField.color = "black"
                }
        }
        TextField {
@@ -953,7 +975,7 @@ import QtQuick.Layouts 1.0
 
            onTextChanged: {
                    // Change text color to black when the text changes
-                   inputField.color = "black"
+                   educational_preference.color = "black"
                }
        }
        TextField {
@@ -966,7 +988,7 @@ import QtQuick.Layouts 1.0
 
            onTextChanged: {
                    // Change text color to black when the text changes
-                   inputField.color = "black"
+                   number_of_vacancy.color = "black"
                }
        }
        TextField {
@@ -979,194 +1001,41 @@ import QtQuick.Layouts 1.0
 
            onTextChanged: {
                    // Change text color to black when the text changes
-                   inputField.color = "black"
+                   salary.color = "black"
+               }
+       }
+       TextField {
+           id:degree
+
+           Layout.preferredWidth: 831
+           Layout.preferredHeight: 60
+           font.pixelSize: 28
+           placeholderText: "Enter text"
+
+           onTextChanged: {
+                   // Change text color to black when the text changes
+                   degree.color = "black"
+               }
+       }
+       TextField {
+           id:joblevel
+
+           Layout.preferredWidth: 831
+           Layout.preferredHeight: 60
+           font.pixelSize: 28
+           placeholderText: "Enter text"
+
+           onTextChanged: {
+                   // Change text color to black when the text changes
+                   joblevel.color = "black"
                }
        }
    }
 
-   Button {
-       id: button
-       x: 234
-       y: 490
-       width: 832
-       height: 71
-       text: qsTr("Select Catagory")
-       onClicked: {
-           popupMenu.open()
-       }
-   }
-   Menu {
-       id: popupMenu
-       x: button.x
-       y: button.y + button.height  // Position the menu below the button
-       width: button.width
-
-       ScrollView {
-           width: 200  // Adjust the width as needed
-           height: 200  // Adjust the height as needed
-           clip: true
-           ScrollBar.vertical: ScrollBar {
-               policy: ScrollBar.AlwaysOn
-           }
-
-           Column {
-               MenuItem {
-                   text: "Application Developer"
-                   onClicked: { }
                }
-               MenuItem {
-                   text: "Blockchain Developer"
-                   onClicked: { }
-               }
-               MenuItem {
-                   text: "C++ Developer"
-                   onClicked: { }
-               }
-               MenuItem {
-                   text: "Cloud Architect"
-                   onClicked: { }
-               }
-               MenuItem {
-                   text: "Computer Systems Analyst"
-                   onClicked: { }
-               }
-               MenuItem {
-                   text: "Cybersecurity Analyst"
-                   onClicked: { }
-               }
-               MenuItem {
-                   text: "Data Scientist"
-                   onClicked: { }
-               }
-               MenuItem {
-                   text: "Database Administrator"
-                   onClicked: { }
-               }
-               MenuItem {
-                   text: "DevOps Engineer"
-                   onClicked: { }
-               }
-               MenuItem {
-                   text: "Frontend Developer"
-                   onClicked: { }
-               }
-               MenuItem {
-                   text: "Full-Stack Developer"
-                   onClicked: { }
-               }
-               MenuItem {
-                   text: "Information Security Analyst"
-                   onClicked: { }
-               }
-               MenuItem {
-                   text: "IT Auditor"
-                   onClicked: { }
-               }
-               MenuItem {
-                   text: "IT Consultant"
-                   onClicked: { }
-               }
-               MenuItem {
-                   text: "IT Project Manager"
-                   onClicked: { }
-               }
-               MenuItem {
-                   text: "Machine Learning Engineer"
-                   onClicked: { }
-               }
-               MenuItem {
-                   text: "Mobile App Developer"
-                   onClicked: { }
-               }
-               MenuItem {
-                   text: "Network Administrator"
-                   onClicked: { }
-               }
-               MenuItem {
-                   text: "Product Manager (IT)"
-                   onClicked: { }
-               }
-               MenuItem {
-                   text: "Python Developer"
-                   onClicked: { }
-               }
-               MenuItem {
-                   text: "Quality Assurance (QA) Tester"
-                   onClicked: { }
-               }
-               MenuItem {
-                   text: "Robotics Engineer"
-                   onClicked: { }
-               }
-               MenuItem {
-                   text: "Scrum Master"
-                   onClicked: { }
-               }
-               MenuItem {
-                   text: "Web Developer"
-                   onClicked: { }
-               }
-           }
-       }
-   }
-   Button {
-       id: button2
-       x: 234
-       y: 1529
-       width: 832
-       height: 62
-       text: qsTr("test")
-       onClicked: {
-           popupMenu2.open()
-       }
-   }
-   Menu {
-               id: popupMenu2
-               x: button2.x
-               y: button2.y+ button2.height  // Position the menu below the button
-               width: button2.width
-               ListView {
-                   width: 832
-                   height: 180
-                   clip: true
-                   boundsBehavior: Flickable.StopAtBounds
-
-                   model: ListModel {
-                       ListElement { text: "Application Developer" }
-                               ListElement { text: "SLC/SEE" }
-                               ListElement { text: "+2" }
-                               ListElement { text: "Diploma" }
-                               ListElement { text: "Bachelors" }
-                               ListElement { text: "Masters" }
-                               ListElement { text: "PhD" }
-
-                   }
-
-                   delegate: MenuItem {
-                       text: model.text
-                       onClicked: {
-                           console.log("Selected:", model.text);
-                           // Add logic for the selected item
-                       }
-                   }
-
-                   ScrollBar.vertical: ScrollBar {
-                       policy: ScrollBar.AlwaysOn
-                   }
-
-                   highlight: Rectangle {
-                       color: "lightblue"
-                       width: parent.width
-                       height: 30
-                   }
-               }
-
-
-               // Add more MenuItems as needed
-           }
-            }
 
 
 
 }
+
 }

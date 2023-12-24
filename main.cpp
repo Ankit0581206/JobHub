@@ -26,7 +26,9 @@ class MyDatabase : public QObject{
     Q_OBJECT
 private:
     QString semail;
-     QString logInUserId;
+    QString logInUserId;
+    QString EmployerId;
+    QString JobId;
 
 
 public:
@@ -82,6 +84,23 @@ public:
                         ")")) {
             qWarning() << "MyDatabase::createDatabase - Error creating employer table: " << query.lastError().text();
         }
+        query.exec("CREATE TABLE IF NOT EXISTS JobPosted ("
+                   "    email TEXT,"
+                   "    job_title TEXT,"
+                   "    category TEXT,"
+                   "    academics TEXT,"
+                   "    minimum_job TEXT,"
+                   "    location TEXT,"
+                   "    deadline TEXT,"
+                   "    job_description TEXT,"
+                   "    education_preference TEXT,"
+                   "    vacancies TEXT,"
+                   "    salary TEXT,"
+                   "    job_id INTEGER PRIMARY KEY,"
+                   "    employer_id INTEGER"
+                   "    degree TEXT,"
+                   "    job_level TEXT,"
+                   ");");
     }
     Q_INVOKABLE QString getUserIdByEmail(int x) {
         QString email = semail;
@@ -117,6 +136,38 @@ public:
             }
         }
  }
+
+    Q_INVOKABLE bool insertJob(const QString& email, const QString& jobtitle, const QString& catagory, const QString& degree, const QString& job_level, const QString& academics, const QString& minimumjob, const QString& location, const QString& deadline, const QString& description, const QString& education, const QString& vacancies, const QString& salary, const QString& employer_id) {
+        QSqlQuery query;
+        QString job_id = QString::number((rand() % 90000) + 10000);
+
+        query.prepare("INSERT INTO JobPosted (email, job_title, category, degree, job_level, academics, minimum_job, location, deadline, job_description, education_preference, vacancies, salary, employer_id, job_id) "
+                      "VALUES (:email, :jobtitle, :catagory, :degree, :job_level, :academics, :minimumjob, :location, :deadline, :description, :education, :vacancies, :salary, :employer_id, :job_id)");
+
+        query.bindValue(":email", email);
+        query.bindValue(":jobtitle", jobtitle);
+        query.bindValue(":catagory", catagory);
+        query.bindValue(":degree", degree);
+        query.bindValue(":job_level", job_level);
+        query.bindValue(":academics", academics);
+        query.bindValue(":minimumjob", minimumjob);
+        query.bindValue(":location", location);
+        query.bindValue(":deadline", deadline);
+        query.bindValue(":description", description);
+        query.bindValue(":education", education);
+        query.bindValue(":vacancies", vacancies);
+        query.bindValue(":salary", salary);
+        query.bindValue(":employer_id", employer_id);
+        query.bindValue(":job_id", job_id);
+
+        if (!query.exec()) {
+            qWarning() << "MyDatabase::insertJob - ERROR: " << query.lastError().text();
+            return false;
+        }
+
+        return true;
+    }
+
 
 
     Q_INVOKABLE bool authenticateEmployer(const QString& email, const QString& password){
