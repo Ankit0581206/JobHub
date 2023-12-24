@@ -101,10 +101,11 @@ public:
                    "    vacancies TEXT,"
                    "    salary TEXT,"
                    "    job_id INTEGER PRIMARY KEY,"
-                   "    employer_id INTEGER"
-                   "    degree TEXT,"
-                   "    job_level TEXT,"
+                   "    employer_id INTEGER,"
+                   "    degree TEXT,"  // <-- Added comma here
+                   "    job_level TEXT" // <-- Removed comma here
                    ");");
+
     }
     Q_INVOKABLE QString getUserIdByEmail(int x) {
         QString email = semail;
@@ -141,7 +142,7 @@ public:
         }
  }
 
-Q_INVOKABLE bool insertJob(const QString& email, const QString& jobtitle, const QString& catagory, const QString& degree, const QString& job_level, const QString& academics, const QString& minimumjob, const QString& location, const QString& deadline, const QString& description, const QString& education, const QString& vacancies, const QString& salary, const QString& employer_id) {
+Q_INVOKABLE bool insertJob(const QString& email, const QString& jobtitle, const QString& catagory, const QString& degree, const QString& job_level, const QString& academics, const QString& minimumjob, const QString& location, const QString& deadline, const QString& description, const QString& education, const QString& vacancies, const QString& salary,const QString &employer_id ) {
         QSqlQuery query;
         QString job_id = QString::number((rand() % 90000) + 10000);
 
@@ -243,9 +244,7 @@ Q_INVOKABLE bool insertJob(const QString& email, const QString& jobtitle, const 
 
 
 
-    Q_INVOKABLE void storeCurrentEmail(const QString& email) {
-        semail=email;
-    }
+
     Q_INVOKABLE QString getEmail(){
         return semail;
     }
