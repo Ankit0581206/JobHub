@@ -614,5 +614,6 @@
         <file>UI/PostJobPage.qml</file>
         <file>UI/AdminDashboardPage.qml</file>
         <file>UI/KYCPageEmployer.qml</file>
+        <file>UI/Retrive_Password.qml</file>
     </qresource>
 </RCC>

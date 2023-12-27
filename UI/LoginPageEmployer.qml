@@ -32,6 +32,26 @@ Page {
         }
     }
 
+    Text{
+          id : forget
+        x: 356
+        y: 563
+        width: 156
+        height: 25
+        color: "#15cff1"
+        text: qsTr("Forgot Password?")
+        font.pixelSize: 16
+
+        MouseArea {
+             id: forget1
+             anchors.fill: parent
+            onClicked:
+            {
+             navigateTo(retrivepasswordcomponent);
+        }
+        }
+    }
+
     Rectangle {
         id: rectangle_1288
         x: 0
@@ -207,8 +227,8 @@ Page {
     }
 
     Button {
-        x: 273
-        y: 550
+        x: 180
+        y: 551
         width: 156
         height: 50
         text: "Login"
@@ -246,4 +266,3 @@ Page {
         source: "assets/image_2_copy_1.png"
     }
 }
-
