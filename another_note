@@ -1,10 +1,11 @@
+
 ListModel {
     id: myModel
 }
 
 ListView {
-    x: -373
-    y: -116
+    x: 335
+    y: 452
     width: 994
     height: 461
     spacing: 15
@@ -14,8 +15,7 @@ ListView {
         var jobIds = mydb.getAllJobIdsAvailable();
         for (var i = 0; i < jobIds.length; ++i) {
             var jobId = jobIds[i];
-            myModel.append({ location: mydb.retrieveJob(jobId, "location"),jobTitle: mydb.retrieveJob(jobId, "job_title"),companyName:     mydb.retrieveEmployer(mydb.retrieveJob(jobId,"employer_id") ,"company_name")
-, jobId: jobId });
+            myModel.append({ location: mydb.retrieveJob(jobId, "location"),jobTitle: mydb.retrieveJob(jobId, "job_title"),companyName: yesma jobid bata employer id ani employer id bata company name, jobId: jobId });
 
         }
     }
@@ -111,7 +111,7 @@ ListView {
         }
 
         Button {
-            id: info
+            id: info1
             width: 80
             height: 35
             text: "Info"
@@ -135,3 +135,24 @@ ListView {
 
 
 }
+
+Designer {
+    D{i:0;uuid:"bc7b0c70-7356-5722-bcbc-a9e32975173d"}D{i:1;uuid:"a164412a-ffef-5b3a-a1b4-0f4e53046362"}
+    D{i:2;uuid:"e9fd9dcc-aaa2-5084-9699-a816f04df439"}
+}
+##^##*//*##^##
+Designer {
+    D{i:0;uuid:"bc7b0c70-7356-5722-bcbc-a9e32975173d"}D{i:1;uuid:"a164412a-ffef-5b3a-a1b4-0f4e53046362"}
+D{i:2;uuid:"e9fd9dcc-aaa2-5084-9699-a816f04df439"}
+}
+##^##*//*##^##
+Designer {
+    D{i:0;uuid:"bc7b0c70-7356-5722-bcbc-a9e32975173d"}D{i:1;uuid:"a164412a-ffef-5b3a-a1b4-0f4e53046362"}
+D{i:2;uuid:"e9fd9dcc-aaa2-5084-9699-a816f04df439"}
+}
+##^##*//*##^##
+Designer {
+    D{i:0;uuid:"bc7b0c70-7356-5722-bcbc-a9e32975173d"}D{i:1;uuid:"a164412a-ffef-5b3a-a1b4-0f4e53046362"}
+D{i:2;uuid:"e9fd9dcc-aaa2-5084-9699-a816f04df439"}
+}
+##^##*/

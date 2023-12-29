@@ -1259,7 +1259,7 @@ Page {
                 y: 452
                 width: 994
                 height: 461
-
+                spacing: 15
                 model: myModel
 
                 Component.onCompleted: {

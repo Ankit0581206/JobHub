@@ -186,6 +186,24 @@ public:
         return jobIds;
     }
 
+    Q_INVOKABLE QStringList getAllJobIdsAvailable() {
+        QStringList jobIds;
+        QSqlQuery query;
+
+        query.prepare("SELECT job_id FROM JobPosted");
+
+        if (query.exec()) {
+            while (query.next()) {
+                QString jobId = query.value("job_id").toString();
+                jobIds.append(jobId);
+            }
+        } else {
+            qWarning() << "MyDatabase::getAllJobIdsByEmployer - ERROR: " << query.lastError().text();
+        }
+
+        return jobIds;
+    }
+
 
 Q_INVOKABLE bool insertJob(const QString& email, const QString& jobtitle, const QString& catagory, const QString& degree, const QString& job_level, const QString& academics, const QString& minimumjob, const QString& location, const QString& deadline, const QString& description, const QString& education, const QString& vacancies, const QString& salary,const QString &employer_id ) {
         QSqlQuery query;
@@ -415,6 +433,76 @@ Q_INVOKABLE bool insertJob(const QString& email, const QString& jobtitle, const 
         return true;
 
     }
+    Q_INVOKABLE QString retrieveEmployer(const QString &id, const QString &whatINeed) {
+        QSqlQuery query;
+        query.prepare("SELECT * FROM Employer WHERE id = :id");
+        query.bindValue(":id", id);
+
+        if (!query.exec()) {
+            qWarning() << "MyDatabase::retrieveEmployer - ERROR: " << query.lastError().text();
+            return QString(); // Return an empty string on error
+        }
+
+        if (query.next()) {
+            if (whatINeed == "password") {
+                return query.value("password").toString();
+            }
+            if (whatINeed == "phint") {
+                return query.value("phint").toString();
+            }
+            if (whatINeed == "email") {
+                return query.value("email").toString();
+            }
+            if (whatINeed == "company_name") {
+                return query.value("company_name").toString();
+            }
+            if (whatINeed == "company_type") {
+                return query.value("company_type").toString();
+            }
+            if (whatINeed == "company_location") {
+                return query.value("company_location").toString();
+            }
+            if (whatINeed == "social_link_1") {
+                return query.value("social_link_1").toString();
+            }
+            if (whatINeed == "social_link_2") {
+                return query.value("social_link_2").toString();
+            }
+            if (whatINeed == "social_link_3") {
+                return query.value("social_link_3").toString();
+            }
+            if (whatINeed == "social_link_4") {
+                return query.value("social_link_4").toString();
+            }
+            if (whatINeed == "social_link_5") {
+                return query.value("social_link_5").toString();
+            }
+            if (whatINeed == "contact_person") {
+                return query.value("contact_person").toString();
+            }
+            if (whatINeed == "full_address") {
+                return query.value("full_address").toString();
+            }
+            if (whatINeed == "phone") {
+                return query.value("phone").toString();
+            }
+            if (whatINeed == "fax") {
+                return query.value("fax").toString();
+            }
+            if (whatINeed == "website") {
+                return query.value("website").toString();
+            }
+            if (whatINeed == "company_description") {
+                return query.value("company_description").toString();
+            }
+
+            // Handle the case when the requested field is not found
+            return QString("Field not found");
+        } else {
+            return QString(); // Return an empty string if no data found for the given id
+        }
+    }
+
     Q_INVOKABLE QString retrieveJob(const QString &job_id, const QString &whatINeed) {
         QSqlQuery query;
         query.prepare("SELECT * FROM JobPosted WHERE job_id = :job_id");

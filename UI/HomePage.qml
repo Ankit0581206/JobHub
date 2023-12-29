@@ -1783,25 +1783,166 @@ Page {
                                     width: 80
                                     height: 35
 
-                                    Button {
-                                        id: info1
-                                        x: 0
-                                        y: 0
-                                        width: 80
-                                        height: 35
-                                        text: "Info"
-                                        background: Rectangle {
-                                            color: "white"
+                                    // Button {
+                                    //     id: info1
+                                    //     x: 0
+                                    //     y: 0
+                                    //     width: 80
+                                    //     height: 35
+                                    //     text: "Info"
+                                    //     background: Rectangle {
+                                    //         color: "white"
+                                    //     }
+                                    //     onClicked:{
+                                    //         jobIdSave= mydb.getNewJobId();
+                                    //         infoPopup.x = info1.x;
+                                    //         infoPopup.y = info1.y;
+                                    //         infoPopup.open();
+                                    //     }
+
+                                    // }
+                                }
+                                ListModel {
+                                    id: myModel
+                                }
+
+                                ListView {
+                                    x: -373
+                                    y: -116
+                                    width: 994
+                                    height: 461
+                                    spacing: 15
+                                    model: myModel
+
+                                    Component.onCompleted: {
+                                        var jobIds = mydb.getAllJobIdsAvailable();
+                                        for (var i = 0; i < jobIds.length; ++i) {
+                                            var jobId = jobIds[i];
+                                            myModel.append({ location: mydb.retrieveJob(jobId, "location"),jobTitle: mydb.retrieveJob(jobId, "job_title"),companyName:     mydb.retrieveEmployer(mydb.retrieveJob(jobId,"employer_id") ,"company_name")
+                                , jobId: jobId });
+
                                         }
-                                        onClicked:{
-                                            jobIdSave= mydb.getNewJobId();
-                                            infoPopup.x = info1.x;
-                                            infoPopup.y = info1.y;
-                                            infoPopup.open();
+                                    }
+
+                                    delegate: Rectangle {
+                                        id: topJobs
+                                        width: 560
+                                        height: 142
+                                        color: "transparent"
+                                        property string jobId:""
+
+
+                                        Image {
+                                            id: rectangle_32
+                                            anchors.left: parent.left
+                                            anchors.top: parent.top
+                                            source: "assets/rectangle_32.png"
                                         }
 
+                                        Image {
+                                            id: rectangle_49
+                                            anchors.left: parent.left
+                                            anchors.top: parent.top
+                                            anchors.leftMargin: 21
+                                            anchors.topMargin: 15
+                                            source: "assets/rectangle_49.png"
+                                        }
+
+                                        Text {
+                                            id: location
+                                            width: 52
+                                            height: 16
+                                            color: "#6f42c1"
+                                            text: model.location
+                                            anchors.left: parent.left
+                                            anchors.top: parent.top
+                                            anchors.leftMargin: 180
+                                            anchors.topMargin: 78
+                                            font.pixelSize: 13
+                                            horizontalAlignment: Text.AlignLeft
+                                            verticalAlignment: Text.AlignVCenter
+                                            wrapMode: Text.NoWrap
+                                            font.weight: Font.Light
+                                            font.family: "Mulish"
+                                            font.capitalization: Font.Capitalize
+                                        }
+
+                                        Image {
+                                            id: location_pin_alt_1_svgrepo_com_2_1
+                                            anchors.left: parent.left
+                                            anchors.top: parent.top
+                                            anchors.leftMargin: 148
+                                            anchors.topMargin: 71
+                                            source: "assets/location_pin_alt_1_svgrepo_com_2_1.png"
+                                        }
+
+                                        Text {
+                                            id: company_Name
+                                            width: 288
+                                            height: 25
+                                            color: "#000000"
+                                            text: model.companyName
+                                            anchors.left: parent.left
+                                            anchors.top: parent.top
+                                            anchors.leftMargin: 148
+                                            anchors.topMargin: 15
+                                            font.pixelSize: 20
+                                            horizontalAlignment: Text.AlignLeft
+                                            verticalAlignment: Text.AlignVCenter
+                                            wrapMode: Text.Wrap
+                                            font.weight: Font.Medium
+                                            font.family: "Mulish"
+                                            font.capitalization: Font.Capitalize
+                                        }
+
+                                        Text {
+                                            id: job_Position
+                                            width: 92
+                                            height: 21
+                                            color: "#898989"
+                                            text: model.jobTitle
+                                            anchors.left: parent.left
+                                            anchors.top: parent.top
+                                            anchors.leftMargin: 148
+                                            anchors.topMargin: 45
+                                            font.pixelSize: 17
+                                            horizontalAlignment: Text.AlignLeft
+                                            verticalAlignment: Text.AlignVCenter
+                                            wrapMode: Text.Wrap
+                                            font.weight: Font.Light
+                                            font.family: "Mulish"
+                                            font.capitalization: Font.Capitalize
+                                        }
+
+                                        Button {
+                                            id: info
+                                            width: 80
+                                            height: 35
+                                            text: "Info"
+                                            background: Rectangle {
+                                                color: "white"
+                                            }
+                                            anchors {
+                                                left: parent.left
+                                                top: parent.top
+                                                leftMargin: 443
+                                                topMargin: 92
+                                            }
+                                            onClicked:{
+                                                jobIdSave= jobId;
+                                                infoPopup.x = info.x;
+                                                infoPopup.y = info.y;
+                                                infoPopup.open();
+                                            }
+                                        }
                                     }
+
+
                                 }
+
+
+
+
                                 Popup {
                                     id: infoPopup
                                     width: 833
@@ -2200,7 +2341,7 @@ Page {
                                     }
 
                                     Text {
-                                        id: location
+
                                         width: 19
                                         height: 20
                                         color: "#ffffff"
@@ -2675,7 +2816,7 @@ Page {
                             }
 
                             Image {
-                                id: rectangle_49
+                                id: rectangle_49i
                                 x: 736
                                 y: 192
                                 source: "assets/rectangle_49.png"
@@ -2702,7 +2843,7 @@ Page {
                                 width: 287
                                 height: 88
                                 Text {
-                                    id: job_Position
+
                                     x: 0
                                     y: 29
                                     width: 92
@@ -2719,7 +2860,7 @@ Page {
                                 }
 
                                 Text {
-                                    id: company_Name
+
                                     x: 0
                                     y: 0
                                     width: 288
@@ -2736,7 +2877,7 @@ Page {
                                 }
 
                                 Image {
-                                    id: location_pin_alt_1_svgrepo_com_2_1
+                                    id: location_pin_alt_1_svgrepo_com_2_1a
                                     x: 0
                                     y: 58
                                     source: "assets/location_pin_alt_1_svgrepo_com_2_1.png"
