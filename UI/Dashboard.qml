@@ -138,7 +138,7 @@ Page {
                         width: 491
                         height: 115
                         color: "#000000"
-                        text: qsTr("Shrestha Softwares")
+                        text: mydb.retrieveEmployer(mydb.getUserIdByEmail(1) ,"company_name")
                         font.pixelSize: 48
                         horizontalAlignment: Text.AlignHCenter
                         verticalAlignment: Text.AlignVCenter
@@ -703,489 +703,7 @@ Page {
                         font.family: "Inter"
                     }
 
-                    Rectangle {
-                        id: rectangle_1281
-                        x: 335
-                        y: 465
-                        width: 994
-                        height: 50
-                        color: "#f0ecf9"
-                    }
 
-                    Rectangle {
-                        id: rectangle_1282
-                        x: 335
-                        y: 530
-                        width: 994
-                        height: 50
-                        color: "#f0ecf9"
-                    }
-
-                    Rectangle {
-                        id: rectangle_1283
-                        x: 335
-                        y: 595
-                        width: 994
-                        height: 50
-                        color: "#f0ecf9"
-                    }
-
-                    Rectangle {
-                        id: rectangle_1284
-                        x: 335
-                        y: 660
-                        width: 994
-                        height: 50
-                        color: "#f0ecf9"
-                    }
-
-                    Text {
-                        id: back_end_Software_Developer
-                        x: 359
-                        y: 480
-                        width: 231
-                        height: 19
-                        color: "#0f172a"
-                        text: qsTr("Back-end Software Developer")
-                        font.pixelSize: 16
-                        horizontalAlignment: Text.AlignLeft
-                        verticalAlignment: Text.AlignTop
-                        wrapMode: Text.NoWrap
-                        font.weight: Font.Medium
-                        font.family: "Inter"
-                    }
-
-                    Text {
-                        id: element
-                        x: 661
-                        y: 480
-                        width: 92
-                        height: 19
-                        color: "#0f172a"
-                        text: qsTr("2023-10-18")
-                        font.pixelSize: 16
-                        horizontalAlignment: Text.AlignLeft
-                        verticalAlignment: Text.AlignTop
-                        wrapMode: Text.NoWrap
-                        font.weight: Font.Medium
-                        font.family: "Inter"
-                    }
-
-                    Text {
-                        id: element1
-                        x: 819
-                        y: 480
-                        width: 92
-                        height: 19
-                        color: "#0f172a"
-                        text: qsTr("2023-10-18")
-                        font.pixelSize: 16
-                        horizontalAlignment: Text.AlignLeft
-                        verticalAlignment: Text.AlignTop
-                        wrapMode: Text.NoWrap
-                        font.weight: Font.Medium
-                        font.family: "Inter"
-                    }
-
-                    Text {
-                        id: element2
-                        x: 1012
-                        y: 476
-                        width: 12
-                        height: 19
-                        color: "#0f172a"
-                        text: qsTr("9")
-                        font.pixelSize: 16
-                        horizontalAlignment: Text.AlignHCenter
-                        verticalAlignment: Text.AlignVCenter
-                        wrapMode: Text.NoWrap
-                        font.weight: Font.Medium
-                        font.family: "Inter"
-                    }
-
-                    Text {
-                        id: element3
-                        x: 661
-                        y: 545
-                        width: 92
-                        height: 19
-                        color: "#0f172a"
-                        text: qsTr("2023-10-18")
-                        font.pixelSize: 16
-                        horizontalAlignment: Text.AlignLeft
-                        verticalAlignment: Text.AlignTop
-                        wrapMode: Text.NoWrap
-                        font.weight: Font.Medium
-                        font.family: "Inter"
-                    }
-
-                    Text {
-                        id: element4
-                        x: 819
-                        y: 545
-                        width: 92
-                        height: 19
-                        color: "#0f172a"
-                        text: qsTr("2023-10-18")
-                        font.pixelSize: 16
-                        horizontalAlignment: Text.AlignLeft
-                        verticalAlignment: Text.AlignTop
-                        wrapMode: Text.NoWrap
-                        font.weight: Font.Medium
-                        font.family: "Inter"
-                    }
-
-                    Text {
-                        id: element5
-                        x: 1012
-                        y: 541
-                        width: 19
-                        height: 19
-                        color: "#0f172a"
-                        text: qsTr("15")
-                        font.pixelSize: 16
-                        horizontalAlignment: Text.AlignHCenter
-                        verticalAlignment: Text.AlignVCenter
-                        wrapMode: Text.NoWrap
-                        font.weight: Font.Medium
-                        font.family: "Inter"
-                    }
-
-                    Text {
-                        id: element6
-                        x: 661
-                        y: 610
-                        width: 92
-                        height: 19
-                        color: "#0f172a"
-                        text: qsTr("2023-10-18")
-                        font.pixelSize: 16
-                        horizontalAlignment: Text.AlignLeft
-                        verticalAlignment: Text.AlignTop
-                        wrapMode: Text.NoWrap
-                        font.weight: Font.Medium
-                        font.family: "Inter"
-                    }
-
-                    Text {
-                        id: element7
-                        x: 819
-                        y: 610
-                        width: 92
-                        height: 19
-                        color: "#0f172a"
-                        text: qsTr("2023-10-18")
-                        font.pixelSize: 16
-                        horizontalAlignment: Text.AlignLeft
-                        verticalAlignment: Text.AlignTop
-                        wrapMode: Text.NoWrap
-                        font.weight: Font.Medium
-                        font.family: "Inter"
-                    }
-
-                    Text {
-                        id: element8
-                        x: 1012
-                        y: 606
-                        width: 22
-                        height: 19
-                        color: "#0f172a"
-                        text: qsTr("45")
-                        font.pixelSize: 16
-                        horizontalAlignment: Text.AlignHCenter
-                        verticalAlignment: Text.AlignVCenter
-                        wrapMode: Text.NoWrap
-                        font.weight: Font.Medium
-                        font.family: "Inter"
-                    }
-
-                    Text {
-                        id: element9
-                        x: 661
-                        y: 675
-                        width: 92
-                        height: 19
-                        color: "#0f172a"
-                        text: qsTr("2023-10-18")
-                        font.pixelSize: 16
-                        horizontalAlignment: Text.AlignLeft
-                        verticalAlignment: Text.AlignTop
-                        wrapMode: Text.NoWrap
-                        font.weight: Font.Medium
-                        font.family: "Inter"
-                    }
-
-                    Text {
-                        id: element10
-                        x: 819
-                        y: 675
-                        width: 92
-                        height: 19
-                        color: "#0f172a"
-                        text: qsTr("2023-10-18")
-                        font.pixelSize: 16
-                        horizontalAlignment: Text.AlignLeft
-                        verticalAlignment: Text.AlignTop
-                        wrapMode: Text.NoWrap
-                        font.weight: Font.Medium
-                        font.family: "Inter"
-                    }
-
-                    Text {
-                        id: element11
-                        x: 1012
-                        y: 671
-                        width: 12
-                        height: 19
-                        color: "#0f172a"
-                        text: qsTr("0")
-                        font.pixelSize: 16
-                        horizontalAlignment: Text.AlignHCenter
-                        verticalAlignment: Text.AlignVCenter
-                        wrapMode: Text.NoWrap
-                        font.weight: Font.Medium
-                        font.family: "Inter"
-                    }
-
-                    Text {
-                        id: front_end_Software_Developer
-                        x: 359
-                        y: 545
-                        width: 233
-                        height: 19
-                        color: "#0f172a"
-                        text: qsTr("Front-end Software Developer")
-                        font.pixelSize: 16
-                        horizontalAlignment: Text.AlignLeft
-                        verticalAlignment: Text.AlignTop
-                        wrapMode: Text.NoWrap
-                        font.weight: Font.Medium
-                        font.family: "Inter"
-                    }
-
-                    Text {
-                        id: data_Analyst
-                        x: 359
-                        y: 610
-                        width: 99
-                        height: 19
-                        color: "#0f172a"
-                        text: qsTr("Data Analyst")
-                        font.pixelSize: 16
-                        horizontalAlignment: Text.AlignLeft
-                        verticalAlignment: Text.AlignTop
-                        wrapMode: Text.NoWrap
-                        font.weight: Font.Medium
-                        font.family: "Inter"
-                    }
-
-                    Text {
-                        id: secretary
-                        x: 359
-                        y: 675
-                        width: 76
-                        height: 19
-                        color: "#0f172a"
-                        text: qsTr("Secretary")
-                        font.pixelSize: 16
-                        horizontalAlignment: Text.AlignLeft
-                        verticalAlignment: Text.AlignTop
-                        wrapMode: Text.NoWrap
-                        font.weight: Font.Medium
-                        font.family: "Inter"
-                    }
-
-                    Text {
-                        id: edit
-                        x: 1118
-                        y: 480
-                        width: 31
-                        height: 19
-                        color: "#4f7ce7"
-                        text: qsTr("Edit")
-                        font.pixelSize: 16
-                        horizontalAlignment: Text.AlignLeft
-                        verticalAlignment: Text.AlignTop
-                        wrapMode: Text.NoWrap
-                        font.weight: Font.Medium
-                        font.family: "Inter"
-                    }
-
-                    Text {
-                        id: edit1
-                        x: 1118
-                        y: 545
-                        width: 31
-                        height: 19
-                        color: "#4f7ce7"
-                        text: qsTr("Edit")
-                        font.pixelSize: 16
-                        horizontalAlignment: Text.AlignLeft
-                        verticalAlignment: Text.AlignTop
-                        wrapMode: Text.NoWrap
-                        font.weight: Font.Medium
-                        font.family: "Inter"
-                    }
-
-                    Text {
-                        id: edit2
-                        x: 1118
-                        y: 610
-                        width: 31
-                        height: 19
-                        color: "#4f7ce7"
-                        text: qsTr("Edit")
-                        font.pixelSize: 16
-                        horizontalAlignment: Text.AlignLeft
-                        verticalAlignment: Text.AlignTop
-                        wrapMode: Text.NoWrap
-                        font.weight: Font.Medium
-                        font.family: "Inter"
-                    }
-
-                    Text {
-                        id: edit3
-                        x: 1118
-                        y: 675
-                        width: 31
-                        height: 19
-                        color: "#4f7ce7"
-                        text: qsTr("Edit")
-                        font.pixelSize: 16
-                        horizontalAlignment: Text.AlignLeft
-                        verticalAlignment: Text.AlignTop
-                        wrapMode: Text.NoWrap
-                        font.weight: Font.Medium
-                        font.family: "Inter"
-                    }
-
-                    Text {
-                        id: update
-                        x: 1177
-                        y: 480
-                        width: 58
-                        height: 19
-                        color: "#4f7ce7"
-                        text: qsTr("Update")
-                        font.pixelSize: 16
-                        horizontalAlignment: Text.AlignLeft
-                        verticalAlignment: Text.AlignTop
-                        wrapMode: Text.NoWrap
-                        font.weight: Font.Medium
-                        font.family: "Inter"
-                    }
-
-                    Text {
-                        id: update1
-                        x: 1177
-                        y: 545
-                        width: 58
-                        height: 19
-                        color: "#4f7ce7"
-                        text: qsTr("Update")
-                        font.pixelSize: 16
-                        horizontalAlignment: Text.AlignLeft
-                        verticalAlignment: Text.AlignTop
-                        wrapMode: Text.NoWrap
-                        font.weight: Font.Medium
-                        font.family: "Inter"
-                    }
-
-                    Text {
-                        id: update2
-                        x: 1177
-                        y: 610
-                        width: 58
-                        height: 19
-                        color: "#4f7ce7"
-                        text: qsTr("Update")
-                        font.pixelSize: 16
-                        horizontalAlignment: Text.AlignLeft
-                        verticalAlignment: Text.AlignTop
-                        wrapMode: Text.NoWrap
-                        font.weight: Font.Medium
-                        font.family: "Inter"
-                    }
-
-                    Text {
-                        id: update3
-                        x: 1177
-                        y: 675
-                        width: 58
-                        height: 19
-                        color: "#4f7ce7"
-                        text: qsTr("Update")
-                        font.pixelSize: 16
-                        horizontalAlignment: Text.AlignLeft
-                        verticalAlignment: Text.AlignTop
-                        wrapMode: Text.NoWrap
-                        font.weight: Font.Medium
-                        font.family: "Inter"
-                    }
-
-                    Text {
-                        id: delete1
-                        x: 1256
-                        y: 480
-                        width: 51
-                        height: 19
-                        color: "#4f7ce7"
-                        text: qsTr("Delete")
-                        font.pixelSize: 16
-                        horizontalAlignment: Text.AlignLeft
-                        verticalAlignment: Text.AlignTop
-                        wrapMode: Text.NoWrap
-                        font.weight: Font.Medium
-                        font.family: "Inter"
-                    }
-
-                    Text {
-                        id: delete2
-                        x: 1256
-                        y: 545
-                        width: 51
-                        height: 19
-                        color: "#4f7ce7"
-                        text: qsTr("Delete")
-                        font.pixelSize: 16
-                        horizontalAlignment: Text.AlignLeft
-                        verticalAlignment: Text.AlignTop
-                        wrapMode: Text.NoWrap
-                        font.weight: Font.Medium
-                        font.family: "Inter"
-                    }
-
-                    Text {
-                        id: delete3
-                        x: 1256
-                        y: 610
-                        width: 51
-                        height: 19
-                        color: "#4f7ce7"
-                        text: qsTr("Delete")
-                        font.pixelSize: 16
-                        horizontalAlignment: Text.AlignLeft
-                        verticalAlignment: Text.AlignTop
-                        wrapMode: Text.NoWrap
-                        font.weight: Font.Medium
-                        font.family: "Inter"
-                    }
-
-                    Text {
-                        id: delete4
-                        x: 1256
-                        y: 675
-                        width: 51
-                        height: 19
-                        color: "#6f42c1"
-                        text: qsTr("Delete")
-                        font.pixelSize: 16
-                        horizontalAlignment: Text.AlignLeft
-                        verticalAlignment: Text.AlignTop
-                        wrapMode: Text.NoWrap
-                        font.weight: Font.Medium
-                        font.family: "Inter"
-                    }
 
                     Rectangle {
                         id: rectangle_1285
@@ -1266,32 +784,16 @@ Page {
 
                     // Start fetching and appending data
                     // fetchAndAppendData();
-                    var employerId = "22472"; // Replace with the actual employer ID
+                    var employerId = mydb.getUserIdByEmail(1) ; // Replace with the actual employer ID
                     var jobIds = mydb.getAllJobIdsByEmployer(employerId);
 
-                            // Iterate over the job IDs
-                            for (var i = 0; i < jobIds.length; ++i) {
-                                var jobId = jobIds[i];
-                                 myModel.append({ jobName: mydb.retrieveJob(jobId, "job_title"), jobId: jobId });
+                    // Iterate over the job IDs
+                    for (var i = 0; i < jobIds.length; ++i) {
+                        var jobId = jobIds[i];
+                        myModel.append({ jobName: mydb.retrieveJob(jobId, "job_title"), jobId: jobId });
 
-                            }
+                    }
                 }
-                // function fetchAndAppendData() {
-                //         // Replace with your logic to fetch data from the JobPosted table
-                //         var jobId = mydb.getAllJobIdFromEmployer("22472");
-                //         var jobData = mydb.retrieveJob(jobId, "job_title");
-
-                //         if (jobData !== "") {
-                //             // Fetched data successfully, append to the model
-                //             var newEntry = { jobName: jobData };
-                //             myModel.append(newEntry);
-
-                //             // Use a Timer to control the recursive fetching
-                //             var timer = Qt.createQmlObject("import QtQuick 2.15; Timer { interval: 1000; onTriggered: fetchAndAppendData() }", listView);
-                //             timer.repeat = false; // Set to true if you want continuous fetching
-                //             timer.start();
-                //         }
-                //     }
 
                 delegate: Rectangle {
                     id: newJob
@@ -1300,17 +802,29 @@ Page {
                     height: 50
                     color: "#f0ecf9"
 
-                     property string jobId:""
+                    property string jobId:""
 
                     Button {
-                        id: deleteButton
-                        text: qsTr("Delete")
-                        anchors {
-                            right: parent.right
-                            verticalCenter: parent.verticalCenter
-                            rightMargin: 10
-                        }
+                                id: deleteButton
+                                text: qsTr("Delete")
+                                anchors {
+                                    right: parent.right
+                                    verticalCenter: parent.verticalCenter
+                                    rightMargin: 10
+                                }
+
+                                onClicked: {
+                                                mydb.deleteJobById(jobId);
+                                                // Find the index of the delegate in the model by iterating over items
+                                                for (var i = 0; i < myModel.count; ++i) {
+                                                    if (myModel.get(i).jobId === model.jobId) {
+                                                        myModel.remove(i);
+                                                        break;
+                                                    }
+                                                }
+                                            }
                     }
+
 
                     Button {
                         id: editButton
@@ -1326,7 +840,7 @@ Page {
                         text: qsTr("Update")
                         anchors.verticalCenterOffset: 0
                         anchors {
-                            left: parent.left
+                            right: editButton.left
                             verticalCenter: parent.verticalCenter
                             rightMargin: 10
                         }

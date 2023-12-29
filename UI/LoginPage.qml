@@ -107,7 +107,7 @@ Page {
     //        width: 433
     //        height: 67
     //        color: "#d9d9d9"
-    //        placeholderText: "Email"
+    //        placeholderText: mydb.retrieveJob(jobId,"job_title")
     //    }
     Rectangle {
         x: 134

@@ -124,10 +124,11 @@ public:
                    "    education_preference TEXT,"
                    "    vacancies TEXT,"
                    "    salary TEXT,"
-                   "    job_id INTEGER PRIMARY KEY,"
+                   "    job_id INTEGER,"
                    "    employer_id INTEGER,"
-                   "    degree TEXT,"  // <-- Added comma here
-                   "    job_level TEXT" // <-- Removed comma here
+                   "    degree TEXT,"
+                   "    job_level TEXT,"
+                   "    serialNumber INTEGER PRIMARY KEY"
                    ");");
 
     }
@@ -171,7 +172,7 @@ public:
         QStringList jobIds;
         QSqlQuery query;
 
-        query.prepare("SELECT job_id FROM JobPosted WHERE employer_id = :employer_id");
+        query.prepare("SELECT job_id FROM JobPosted WHERE employer_id = :employer_id ORDER BY serialNumber DESC");
         query.bindValue(":employer_id", employerId);
 
         if (query.exec()) {
@@ -190,7 +191,7 @@ public:
         QStringList jobIds;
         QSqlQuery query;
 
-        query.prepare("SELECT job_id FROM JobPosted");
+        query.prepare("SELECT job_id FROM JobPosted ORDER BY serialNumber DESC");
 
         if (query.exec()) {
             while (query.next()) {
@@ -260,6 +261,26 @@ Q_INVOKABLE bool insertJob(const QString& email, const QString& jobtitle, const 
 
     Q_INVOKABLE void storeCurrentEmail(const QString& email) {
         semail=email;
+    }
+    Q_INVOKABLE bool deleteJobById(const QString &jobId)
+    {
+        QSqlDatabase::database().transaction();
+
+        QSqlQuery query;
+        query.prepare("DELETE FROM JobPosted WHERE job_id = :jobId");
+        query.bindValue(":jobId", jobId);
+
+        if (query.exec()) {
+            qDebug() << "Row removed successfully";
+            // Commit the transaction
+            QSqlDatabase::database().commit();
+            return true;
+        } else {
+            qDebug() << "Error removing row:" << query.lastError().text();
+            // Rollback the transaction on error
+            QSqlDatabase::database().rollback();
+            return false;
+        }
     }
 
     Q_INVOKABLE bool authenticateUser(const QString& email, const QString& password){
