@@ -7,10 +7,10 @@ Page {
     width: 1400
     height: 1550
     ScrollView {
-            id: scrollview
-            anchors.fill: parent
-                clip: true
-                ScrollBar.vertical.policy: ScrollBar.AlwaysOn
+        id: scrollview
+        anchors.fill: parent
+        clip: true
+        ScrollBar.vertical.policy: ScrollBar.AlwaysOn
 
         Item{
 
@@ -170,6 +170,7 @@ Page {
                         y: 23
                         source: "assets/home_3.png"
                     }
+
 
                     Text {
                         id: dashBoard
@@ -702,57 +703,6 @@ Page {
                         font.family: "Inter"
                     }
 
-                    Text {
-                        id: posted_Date
-                        x: 667
-                        y: 416
-                        width: 81
-                        height: 17
-                        color: "#1e293b"
-                        text: qsTr("Posted Date")
-                        font.letterSpacing: -0.266
-                        font.pixelSize: 14
-                        horizontalAlignment: Text.AlignLeft
-                        verticalAlignment: Text.AlignTop
-                        wrapMode: Text.NoWrap
-                        font.weight: Font.Medium
-                        font.family: "Inter"
-                    }
-
-                    Text {
-                        id: ad_Expiry
-                        x: 834
-                        y: 416
-                        width: 63
-                        height: 17
-                        color: "#1e293b"
-                        text: qsTr("Ad Expiry")
-                        font.letterSpacing: -0.266
-                        font.pixelSize: 14
-                        horizontalAlignment: Text.AlignLeft
-                        verticalAlignment: Text.AlignTop
-                        wrapMode: Text.NoWrap
-                        font.weight: Font.Medium
-                        font.family: "Inter"
-                    }
-
-                    Text {
-                        id: total_Applicants
-                        x: 971
-                        y: 416
-                        width: 105
-                        height: 17
-                        color: "#1e293b"
-                        text: qsTr("Total Applicants")
-                        font.letterSpacing: -0.266
-                        font.pixelSize: 14
-                        horizontalAlignment: Text.AlignLeft
-                        verticalAlignment: Text.AlignTop
-                        wrapMode: Text.NoWrap
-                        font.weight: Font.Medium
-                        font.family: "Inter"
-                    }
-
                     Rectangle {
                         id: rectangle_1281
                         x: 335
@@ -1245,22 +1195,12 @@ Page {
                         height: 367
                         color: "#ffffff"
                         radius: 10
-
-                        Button {
-                            id: button
-                            x: 415
-                            y: 88
-                            text: qsTr("Click Here")
-                            icon.color: "#6f42c1"
-
-
-                        }
                     }
 
                     Text {
                         id: post_a_new_job_
-                        x: 701
-                        y: 783
+                        x: 708
+                        y: 952
                         width: 261
                         height: 46
                         color: "#000000"
@@ -1274,8 +1214,8 @@ Page {
                     }
                     Rectangle {
                         id: customButton
-                        x: 700
-                        y: 850
+                        x: 740
+                        y: 1030
 
 
                         width: 197
@@ -1310,6 +1250,101 @@ Page {
 
 
             }
+            ListModel {
+                id: myModel
+            }
+
+            ListView {
+                x: 335
+                y: 452
+                width: 994
+                height: 461
+
+                model: myModel
+
+                Component.onCompleted: {
+
+                    // Start fetching and appending data
+                    // fetchAndAppendData();
+                    var employerId = "22472"; // Replace with the actual employer ID
+                    var jobIds = mydb.getAllJobIdsByEmployer(employerId);
+
+                            // Iterate over the job IDs
+                            for (var i = 0; i < jobIds.length; ++i) {
+                                var jobId = jobIds[i];
+                                 myModel.append({ jobName: mydb.retrieveJob(jobId, "job_title"), jobId: jobId });
+
+                            }
+                }
+                // function fetchAndAppendData() {
+                //         // Replace with your logic to fetch data from the JobPosted table
+                //         var jobId = mydb.getAllJobIdFromEmployer("22472");
+                //         var jobData = mydb.retrieveJob(jobId, "job_title");
+
+                //         if (jobData !== "") {
+                //             // Fetched data successfully, append to the model
+                //             var newEntry = { jobName: jobData };
+                //             myModel.append(newEntry);
+
+                //             // Use a Timer to control the recursive fetching
+                //             var timer = Qt.createQmlObject("import QtQuick 2.15; Timer { interval: 1000; onTriggered: fetchAndAppendData() }", listView);
+                //             timer.repeat = false; // Set to true if you want continuous fetching
+                //             timer.start();
+                //         }
+                //     }
+
+                delegate: Rectangle {
+                    id: newJob
+                    width: 994
+
+                    height: 50
+                    color: "#f0ecf9"
+
+                     property string jobId:""
+
+                    Button {
+                        id: deleteButton
+                        text: qsTr("Delete")
+                        anchors {
+                            right: parent.right
+                            verticalCenter: parent.verticalCenter
+                            rightMargin: 10
+                        }
+                    }
+
+                    Button {
+                        id: editButton
+                        text: qsTr("Edit")
+                        anchors {
+                            right: deleteButton.left
+                            verticalCenter: parent.verticalCenter
+                            rightMargin: 10
+                        }
+                    }
+                    Button {
+                        id: updateButton
+                        text: qsTr("Update")
+                        anchors.verticalCenterOffset: 0
+                        anchors {
+                            left: parent.left
+                            verticalCenter: parent.verticalCenter
+                            rightMargin: 10
+                        }
+                    }
+
+                    Text {
+                        x: 65
+                        y: 5
+                        text: model.jobName
+                        font.pixelSize: 30
+                        font.family: "Times New Roman"
+                    }
+
+
+                }
+
+            }
+
         }
     }
 }

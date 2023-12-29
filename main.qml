@@ -96,6 +96,12 @@ Window {
 
         }
     }
+    Component{
+        id:retrivepasswordcomponent
+        Retrive_Password{
+
+        }
+    }
 
     function navigateTo(pageComponent) {
         pageLoader.sourceComponent = pageComponent;

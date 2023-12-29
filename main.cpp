@@ -55,15 +55,39 @@ public:
         QSqlQuery query;
         query.exec("CREATE TABLE IF NOT EXISTS Users ("
                    "user_id TEXT,"
-                   "email TEXT PRIMARY KEY, "
-
-                   "password TEXT, "
-                   "phint TEXT, "
-                   "fullName TEXT, "
-                   "address TEXT, "
-                   "education TEXT, "
-                   "dob TEXT, "
-                   "experience TEXT"
+                   "email TEXT PRIMARY KEY,"
+                   "password TEXT,"
+                   "phint TEXT,"
+                   "fullName TEXT,"
+                   "address TEXT,"
+                   "dob DATETIME,"
+                   "gender TEXT CHECK (gender IN ('male', 'female', 'others')),"
+                   "marital_status TEXT CHECK (marital_status IN ('married', 'unmarried')),"
+                   "phone_number TEXT,"
+                   "education_level TEXT CHECK (education_level IN ('SLC/SEE', '+2', 'Diploma', 'Bachelors', 'Masters', 'PhD')),"
+                   "degree_name TEXT,"
+                   "running TEXT CHECK (running IN ('yes', 'no')),"
+                   "institute_name TEXT,"
+                   "gpa_or_percentage TEXT,"
+                   "experience_org_name TEXT,"
+                   "experience_org_address TEXT,"
+                   "num_experience_years INTEGER,"
+                   "working TEXT CHECK (working IN ('yes', 'no')),"
+                   "designation TEXT,"
+                   "freelancing_1_title TEXT,"
+                   "freelancing_1_link TEXT,"
+                   "freelancing_2_title TEXT,"
+                   "freelancing_2_link TEXT,"
+                   "freelancing_3_title TEXT,"
+                   "freelancing_3_link TEXT,"
+                   "social_link_1 TEXT,"
+                   "social_link_2 TEXT,"
+                   "social_link_3 TEXT,"
+                   "social_link_4 TEXT,"
+                   "social_link_5 TEXT,"
+                   "photo_link TEXT,"
+                   "resume_link TEXT,"
+                   "recommendation_letter_link TEXT"
                    ")");
         //for employer
         if (!query.exec("CREATE TABLE IF NOT EXISTS Employer ("
@@ -141,6 +165,27 @@ public:
             }
         }
  }
+
+ //just for trying
+    Q_INVOKABLE QStringList getAllJobIdsByEmployer(const QString& employerId) {
+        QStringList jobIds;
+        QSqlQuery query;
+
+        query.prepare("SELECT job_id FROM JobPosted WHERE employer_id = :employer_id");
+        query.bindValue(":employer_id", employerId);
+
+        if (query.exec()) {
+            while (query.next()) {
+                QString jobId = query.value("job_id").toString();
+                jobIds.append(jobId);
+            }
+        } else {
+            qWarning() << "MyDatabase::getAllJobIdsByEmployer - ERROR: " << query.lastError().text();
+        }
+
+        return jobIds;
+    }
+
 
 Q_INVOKABLE bool insertJob(const QString& email, const QString& jobtitle, const QString& catagory, const QString& degree, const QString& job_level, const QString& academics, const QString& minimumjob, const QString& location, const QString& deadline, const QString& description, const QString& education, const QString& vacancies, const QString& salary,const QString &employer_id ) {
         QSqlQuery query;
@@ -250,6 +295,41 @@ Q_INVOKABLE bool insertJob(const QString& email, const QString& jobtitle, const 
     }
 
 
+    //this one is for the top jobs section where all the new job id is required
+    Q_INVOKABLE QString getNewJobId() {
+        static int i = 0;
+        QSqlQuery query;
+        query.prepare("SELECT job_id FROM JobPosted ORDER BY job_id");
+        if (query.exec()) {
+            if (query.next()) {
+                QString value = query.value(i).toString();
+                i = (i + 1) % query.size(); // Reset the counter if it reaches the end
+                return value;
+            }
+        }
+
+        return ""; // Return an empty string if there's an issue with the query
+    }
+
+    Q_INVOKABLE QString getAllJobIdFromEmployer(const QString &employerId) {
+        static int i = 0;
+        QSqlQuery query;
+        query.prepare("SELECT job_id FROM JobPosted ORDER BY job_id WHERE employer_id = :employer_id");
+        query.bindValue(":employer_id", employerId);
+        if (query.exec()) {
+            if (query.next()) {
+                QString value = query.value(i).toString();
+                i = (i + 1) % query.size(); // Reset the counter if it reaches the end
+                return value;
+            }
+        }
+
+        return ""; // Return an empty string if there's an issue with the query
+    }
+
+
+
+
     Q_INVOKABLE QString getUserIdByEmail() {
         QString email = semail;
         QSqlQuery query;
@@ -335,6 +415,65 @@ Q_INVOKABLE bool insertJob(const QString& email, const QString& jobtitle, const 
         return true;
 
     }
+    Q_INVOKABLE QString retrieveJob(const QString &job_id, const QString &whatINeed) {
+        QSqlQuery query;
+        query.prepare("SELECT * FROM JobPosted WHERE job_id = :job_id");
+        query.bindValue(":job_id", job_id);
+
+        if (!query.exec()) {
+            qWarning() << "MyDatabase::getUserIdByEmail - ERROR: " << query.lastError().text();
+            return QString(); // Return an empty string on error
+        }
+
+        if (query.next()) {
+            if(whatINeed=="job_title"){
+                return query.value("job_title").toString();
+            }
+            if(whatINeed=="category"){
+                return query.value("category").toString();
+            }
+            if(whatINeed=="academics"){
+                return query.value("academics").toString();
+            }
+            if(whatINeed=="minimum_job"){
+                return query.value("minimum_job").toString();
+            }
+            if(whatINeed=="location"){
+                return query.value("location").toString();
+            }
+            if(whatINeed=="deadline"){
+                return query.value("deadline").toString();
+            }
+            if(whatINeed=="job_description"){
+                return query.value("job_description").toString();
+            }
+            if(whatINeed=="education_preference"){
+                return query.value("education_preference").toString();
+            }
+            if(whatINeed=="vacancies"){
+                return query.value("vacancies").toString();
+            }
+            if(whatINeed=="salary"){
+                return query.value("salary").toString();
+            }
+            if(whatINeed=="degree"){
+                return query.value("degree").toString();
+            }
+            if(whatINeed=="job_level"){
+                return query.value("job_level").toString();
+            }
+
+            //for the employer_id of who posted the job
+            if(whatINeed=="employer_id"){
+                return query.value("employer_id").toString();
+            }
+        }
+        else {
+            return QString(); // Return an empty string if no user ID found for the given email
+        }
+    }
+
+
 
     Q_INVOKABLE QString getFullName(const QString& email) {
         QSqlQuery query;
@@ -435,7 +574,7 @@ Q_INVOKABLE bool insertJob(const QString& email, const QString& jobtitle, const 
 
     Q_INVOKABLE QStringList checkForSearch(const QString &x) {
         QSqlQuery query;
-        query.prepare("SELECT DISTINCT * FROM Users WHERE email LIKE :x OR fullName LIKE :x OR password LIKE :x");
+        query.prepare("SELECT DISTINCT job_title FROM JobPosted WHERE job_title LIKE :x OR category LIKE :x");
         query.bindValue(":x", "%" + x + "%");
 
         QStringList results;  // Use a QStringList to store unique results

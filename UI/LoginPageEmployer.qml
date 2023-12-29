@@ -60,6 +60,22 @@ Page {
         height: 124
         color: "#f0ecf9"
     }
+    Image {
+        id: _back_arrow_left_icon_1_1
+        anchors.left: parent.left
+        anchors.top: parent.top
+        source: "assets/_back_arrow_left_icon_1_1.png"
+        anchors.topMargin: 127
+        anchors.leftMargin: 15
+        MouseArea {
+                  id: mouseAreaForEmployee
+                  anchors.fill: parent // Fill the entire rectangle with the MouseArea
+                  onClicked: {
+                      // Call a function to navigate to the kycpagecomponent
+                      navigateTo(homepagecomponent);// This function should handle navigation
+                  }
+              }
+    }
 
     Image {
         id: logo_copy_2

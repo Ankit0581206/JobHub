@@ -90,7 +90,7 @@ Page {
                 }
                 TextField {
                     id: fullNameField
-                    y: 491
+                    y: 500
                     width: 750
                     height: 55
                     color: "#d9d9d9"

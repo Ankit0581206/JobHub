@@ -4,11 +4,11 @@ import QtQuick.Controls 2.15
 
 
 
-
 Page {
     id: homePage
     width: Screen.width
     height: 3305
+    property string jobIdSave: ""
 
 
 
@@ -23,6 +23,7 @@ Page {
         anchors.topMargin: 0
         clip: true
         ScrollBar.vertical.policy: ScrollBar.AlwaysOn
+
 
 
         Item {
@@ -1774,12 +1775,14 @@ Page {
                                 y: 0
                                 width: 816
                                 height: 803
+
                                 Item {
                                     id: apply20
                                     x: 0
                                     y: 0
                                     width: 80
                                     height: 35
+
                                     Button {
                                         id: info1
                                         x: 0
@@ -1790,9 +1793,639 @@ Page {
                                         background: Rectangle {
                                             color: "white"
                                         }
+                                        onClicked:{
+                                            jobIdSave= mydb.getNewJobId();
+                                            infoPopup.x = info1.x;
+                                            infoPopup.y = info1.y;
+                                            infoPopup.open();
+                                        }
 
                                     }
                                 }
+                                Popup {
+                                    id: infoPopup
+                                    width: 833
+                                    height: 793
+
+                                    // property alias element1Text: element1.text
+                                    // property alias iNFOText: iNFO.text
+                                    // property alias academic_QualificationText: academic_Qualification.text
+                                    // property alias elementText: element.text
+                                    // property alias jOBHUBText: jOBHUB.text
+                                    // property alias achieve_MoreText: achieve_More.text
+                                    // property alias job_Description_Text: job_Description_.text
+                                    // property alias location_Text: location_.text
+                                    // property alias job_Title_Text: job_Title_.text
+                                    // property alias number_of_vacancy_Text: number_of_vacancy_.text
+                                    // property alias element9Text: element9.text
+                                    // property alias element8Text: element8.text
+                                    // property alias element5Text: element5.text
+                                    // property alias gender_Text: gender_.text
+                                    // property alias job_LevelText: job_Level.text
+                                    // property alias element10Text: element10.text
+                                    // property alias educational_preference_Text: educational_preference_.text
+                                    // property alias element2Text: element2.text
+                                    // property alias salary_Text: salary_.text
+                                    // property alias element7Text: element7.text
+                                    // property alias element4Text: element4.text
+                                    // property alias element11Text: element11.text
+                                    // property alias element6Text: element6.text
+                                    // property alias element3Text: element3.text
+                                    // property alias work_Experience_Text: work_Experience_.text
+                                    // property alias i_have_read_and_agree_to_the_terms_and_conditions_including_any_Text: i_have_read_and_agree_to_the_terms_and_conditions_including_any_.text
+                                    // property alias job_category_Text: job_category_.text
+                                    // property alias application_Deadline_Text: application_Deadline_.text
+
+                                    Rectangle {
+                                        id: rectangle_1294i
+                                        width: 833
+                                        height: 878
+                                        color: "#6f42c1"
+                                        anchors.left: parent.left
+                                        anchors.top: parent.top
+                                    }
+
+                                    Rectangle {
+                                        id: rectangle_1295
+                                        width: 121
+                                        height: 59
+                                        color: "#d9d9d9"
+                                        anchors.left: parent.left
+                                        anchors.top: parent.top
+                                        anchors.leftMargin: 525
+                                        anchors.topMargin: 701
+                                    }
+
+                                    Text {
+                                        id: terms
+                                        width: 488
+                                        height: 54
+                                        color: "#ffffff"
+                                        text: qsTr("I have read and agree to the terms and conditions, including any applicable privacy policies. I understand that my use of this service is subject to these terms, and I undertake to comply with them.")
+                                        anchors.left: parent.left
+                                        anchors.top: parent.top
+                                        anchors.leftMargin: 38
+                                        anchors.topMargin: 611
+                                        font.pixelSize: 14
+                                        horizontalAlignment: Text.AlignLeft
+                                        verticalAlignment: Text.AlignTop
+                                        wrapMode: Text.Wrap
+                                        font.weight: Font.Black
+                                        font.family: "Mulish"
+                                        font.capitalization: Font.Capitalize
+                                    }
+
+                                    Text {
+                                        id: job_Title
+                                        width: 72
+                                        height: 20
+                                        color: "#ffffff"
+                                        text: qsTr("Job Title: ")
+                                        anchors.left: parent.left
+                                        anchors.top: parent.top
+                                        anchors.leftMargin: 38
+                                        anchors.topMargin: 78
+                                        font.pixelSize: 16
+                                        horizontalAlignment: Text.AlignLeft
+                                        verticalAlignment: Text.AlignTop
+                                        wrapMode: Text.NoWrap
+                                        font.weight: Font.Black
+                                        font.family: "Mulish"
+                                        font.capitalization: Font.Capitalize
+                                    }
+
+                                    Text {
+                                        id: job_category_
+                                        width: 110
+                                        height: 20
+                                        color: "#ffffff"
+                                        text: qsTr("job category:")
+                                        anchors.left: parent.left
+                                        anchors.top: parent.top
+                                        anchors.leftMargin: 38
+                                        anchors.topMargin: 119
+                                        font.pixelSize: 16
+                                        horizontalAlignment: Text.AlignLeft
+                                        verticalAlignment: Text.AlignTop
+                                        wrapMode: Text.NoWrap
+                                        font.weight: Font.Black
+                                        font.family: "Mulish"
+                                        font.capitalization: Font.Capitalize
+                                    }
+
+                                    Text {
+                                        id: academic_Qualification
+                                        width: 186
+                                        height: 20
+                                        color: "#ffffff"
+                                        text: qsTr("academic Qualification")
+                                        anchors.left: parent.left
+                                        anchors.top: parent.top
+                                        anchors.leftMargin: 38
+                                        anchors.topMargin: 160
+                                        font.pixelSize: 16
+                                        horizontalAlignment: Text.AlignLeft
+                                        verticalAlignment: Text.AlignTop
+                                        wrapMode: Text.NoWrap
+                                        font.weight: Font.Black
+                                        font.family: "Mulish"
+                                        font.capitalization: Font.Capitalize
+                                    }
+
+                                    Text {
+                                        id: location_
+                                        width: 74
+                                        height: 20
+                                        color: "#ffffff"
+                                        text: qsTr("Location:")
+                                        anchors.left: parent.left
+                                        anchors.top: parent.top
+                                        anchors.leftMargin: 38
+                                        anchors.topMargin: 207
+                                        font.pixelSize: 16
+                                        horizontalAlignment: Text.AlignLeft
+                                        verticalAlignment: Text.AlignTop
+                                        wrapMode: Text.NoWrap
+                                        font.weight: Font.Black
+                                        font.family: "Mulish"
+                                        font.capitalization: Font.Capitalize
+                                    }
+
+                                    Text {
+                                        id: educational_preference_
+                                        width: 189
+                                        height: 20
+                                        color: "#ffffff"
+                                        text: qsTr("Educational preference:")
+                                        anchors.left: parent.left
+                                        anchors.top: parent.top
+                                        anchors.leftMargin: 38
+                                        anchors.topMargin: 248
+                                        font.pixelSize: 16
+                                        horizontalAlignment: Text.AlignLeft
+                                        verticalAlignment: Text.AlignTop
+                                        wrapMode: Text.NoWrap
+                                        font.weight: Font.Black
+                                        font.family: "Mulish"
+                                        font.capitalization: Font.Capitalize
+                                    }
+
+                                    Text {
+                                        id: work_Experience
+                                        width: 139
+                                        height: 20
+                                        color: "#ffffff"
+                                        text: qsTr("Work Experience:")
+                                        anchors.left: parent.left
+                                        anchors.top: parent.top
+                                        anchors.leftMargin: 38
+                                        anchors.topMargin: 281
+                                        font.pixelSize: 16
+                                        horizontalAlignment: Text.AlignLeft
+                                        verticalAlignment: Text.AlignTop
+                                        wrapMode: Text.NoWrap
+                                        font.weight: Font.Black
+                                        font.family: "Mulish"
+                                        font.capitalization: Font.Capitalize
+                                    }
+
+                                    Text {
+                                        id: number_of_vacancy_
+                                        width: 164
+                                        height: 20
+                                        color: "#ffffff"
+                                        text: qsTr("number of vacancy:")
+                                        anchors.left: parent.left
+                                        anchors.top: parent.top
+                                        anchors.leftMargin: 38
+                                        anchors.topMargin: 324
+                                        font.pixelSize: 16
+                                        horizontalAlignment: Text.AlignLeft
+                                        verticalAlignment: Text.AlignTop
+                                        wrapMode: Text.NoWrap
+                                        font.weight: Font.Black
+                                        font.family: "Mulish"
+                                        font.capitalization: Font.Capitalize
+                                    }
+
+                                    Text {
+                                        id: gender_
+                                        width: 63
+                                        height: 20
+                                        color: "#ffffff"
+                                        text: qsTr("Gender:")
+                                        anchors.left: parent.left
+                                        anchors.top: parent.top
+                                        anchors.leftMargin: 34
+                                        anchors.topMargin: 357
+                                        font.pixelSize: 16
+                                        horizontalAlignment: Text.AlignLeft
+                                        verticalAlignment: Text.AlignTop
+                                        wrapMode: Text.NoWrap
+                                        font.weight: Font.Black
+                                        font.family: "Mulish"
+                                        font.capitalization: Font.Capitalize
+                                    }
+
+                                    Text {
+                                        id: salary_
+                                        width: 58
+                                        height: 20
+                                        color: "#ffffff"
+                                        text: qsTr("Salary:")
+                                        anchors.left: parent.left
+                                        anchors.top: parent.top
+                                        anchors.leftMargin: 38
+                                        anchors.topMargin: 398
+                                        font.pixelSize: 16
+                                        horizontalAlignment: Text.AlignLeft
+                                        verticalAlignment: Text.AlignTop
+                                        wrapMode: Text.NoWrap
+                                        font.weight: Font.Black
+                                        font.family: "Mulish"
+                                        font.capitalization: Font.Capitalize
+                                    }
+
+                                    Text {
+                                        id: application_Deadline_
+                                        width: 172
+                                        height: 20
+                                        color: "#ffffff"
+                                        text: qsTr("Application Deadline:")
+                                        anchors.left: parent.left
+                                        anchors.top: parent.top
+                                        anchors.leftMargin: 34
+                                        anchors.topMargin: 441
+                                        font.pixelSize: 16
+                                        horizontalAlignment: Text.AlignLeft
+                                        verticalAlignment: Text.AlignTop
+                                        wrapMode: Text.NoWrap
+                                        font.weight: Font.Black
+                                        font.family: "Mulish"
+                                        font.capitalization: Font.Capitalize
+                                    }
+
+                                    Text {
+                                        id: job_Level
+                                        width: 73
+                                        height: 20
+                                        color: "#ffffff"
+                                        text: qsTr("Job Level")
+                                        anchors.left: parent.left
+                                        anchors.top: parent.top
+                                        anchors.leftMargin: 33
+                                        anchors.topMargin: 488
+                                        font.pixelSize: 16
+                                        horizontalAlignment: Text.AlignLeft
+                                        verticalAlignment: Text.AlignTop
+                                        wrapMode: Text.NoWrap
+                                        font.weight: Font.Black
+                                        font.family: "Mulish"
+                                        font.capitalization: Font.Capitalize
+                                    }
+
+                                    Text {
+                                        id: job_Description_
+                                        width: 127
+                                        height: 20
+                                        color: "#ffffff"
+                                        text: qsTr("Job Description:")
+                                        anchors.left: parent.left
+                                        anchors.top: parent.top
+                                        anchors.leftMargin: 30
+                                        anchors.topMargin: 533
+                                        font.pixelSize: 16
+                                        horizontalAlignment: Text.AlignLeft
+                                        verticalAlignment: Text.AlignTop
+                                        wrapMode: Text.NoWrap
+                                        font.weight: Font.Black
+                                        font.family: "Mulish"
+                                        font.capitalization: Font.Capitalize
+                                    }
+
+                                    Rectangle {
+                                        id: rectangle_1296
+                                        width: 121
+                                        height: 59
+                                        color: "#d9d9d9"
+                                        anchors.left: parent.left
+                                        anchors.top: parent.top
+                                        anchors.leftMargin: 678
+                                        anchors.topMargin: 701
+                                    }
+
+                                    Rectangle {
+                                        id: rectangle_1297i
+                                        width: 833
+                                        height: 57
+                                        color: "#ffffff"
+                                        anchors.left: parent.left
+                                        anchors.top: parent.top
+                                    }
+
+                                    Text {
+                                        id: iNFO
+                                        width: 75
+                                        height: 38
+                                        color: "#6f42c1"
+                                        text: qsTr("INFO")
+                                        anchors.top: parent.top
+                                        anchors.topMargin: 9
+                                        font.pixelSize: 30
+                                        horizontalAlignment: Text.AlignLeft
+                                        verticalAlignment: Text.AlignTop
+                                        wrapMode: Text.NoWrap
+                                        font.weight: Font.Black
+                                        font.family: "Mulish"
+                                        font.capitalization: Font.Capitalize
+                                        anchors.horizontalCenterOffset: 1
+                                        anchors.horizontalCenter: parent.horizontalCenter
+                                    }
+
+                                    Text {
+                                        id: jobTitle
+                                        width: 19
+                                        height: 20
+                                        color: "#ffffff"
+                                        text: qsTr(mydb.retrieveJob(jobIdSave, "job_title"))
+                                        anchors.left: parent.left
+                                        anchors.top: parent.top
+                                        anchors.leftMargin: 253
+                                        anchors.topMargin: 78
+                                        font.pixelSize: 16
+                                        horizontalAlignment: Text.AlignLeft
+                                        verticalAlignment: Text.AlignTop
+                                        wrapMode: Text.NoWrap
+                                        font.weight: Font.Black
+                                        font.family: "Mulish"
+                                        font.capitalization: Font.Capitalize
+                                    }
+
+                                    Text {
+                                        id: jobCategory
+                                        width: 19
+                                        height: 20
+                                        color: "#ffffff"
+                                        text: qsTr(mydb.retrieveJob(jobIdSave, "category"))
+                                        anchors.left: parent.left
+                                        anchors.top: parent.top
+                                        anchors.leftMargin: 253
+                                        anchors.topMargin: 115
+                                        font.pixelSize: 16
+                                        horizontalAlignment: Text.AlignLeft
+                                        verticalAlignment: Text.AlignTop
+                                        wrapMode: Text.NoWrap
+                                        font.weight: Font.Black
+                                        font.family: "Mulish"
+                                        font.capitalization: Font.Capitalize
+                                    }
+
+                                    Text {
+                                        id: academicQualification
+                                        width: 19
+                                        height: 20
+                                        color: "#ffffff"
+                                        text: qsTr(mydb.retrieveJob(jobIdSave, "academics"))
+                                        anchors.left: parent.left
+                                        anchors.top: parent.top
+                                        anchors.leftMargin: 253
+                                        anchors.topMargin: 156
+                                        font.pixelSize: 16
+                                        horizontalAlignment: Text.AlignLeft
+                                        verticalAlignment: Text.AlignTop
+                                        wrapMode: Text.NoWrap
+                                        font.weight: Font.Black
+                                        font.family: "Mulish"
+                                        font.capitalization: Font.Capitalize
+                                    }
+
+                                    Text {
+                                        id: location
+                                        width: 19
+                                        height: 20
+                                        color: "#ffffff"
+                                        text: qsTr(mydb.retrieveJob(jobIdSave, "location"))
+                                        anchors.left: parent.left
+                                        anchors.top: parent.top
+                                        anchors.leftMargin: 253
+                                        anchors.topMargin: 201
+                                        font.pixelSize: 16
+                                        horizontalAlignment: Text.AlignLeft
+                                        verticalAlignment: Text.AlignTop
+                                        wrapMode: Text.NoWrap
+                                        font.weight: Font.Black
+                                        font.family: "Mulish"
+                                        font.capitalization: Font.Capitalize
+                                    }
+
+                                    Text {
+                                        id: educationalPreference
+                                        width: 19
+                                        height: 20
+                                        color: "#ffffff"
+                                        text: qsTr(mydb.retrieveJob(jobIdSave, "education_preference"))
+                                        anchors.left: parent.left
+                                        anchors.top: parent.top
+                                        anchors.leftMargin: 253
+                                        anchors.topMargin: 248
+                                        font.pixelSize: 16
+                                        horizontalAlignment: Text.AlignLeft
+                                        verticalAlignment: Text.AlignTop
+                                        wrapMode: Text.NoWrap
+                                        font.weight: Font.Black
+                                        font.family: "Mulish"
+                                        font.capitalization: Font.Capitalize
+                                    }
+
+                                    Text {
+                                        id: workExperience
+                                        width: 19
+                                        height: 20
+                                        color: "#ffffff"
+                                        text: qsTr(mydb.retrieveJob(jobIdSave, "minimum_job"))
+                                        anchors.left: parent.left
+                                        anchors.top: parent.top
+                                        anchors.leftMargin: 253
+                                        anchors.topMargin: 285
+                                        font.pixelSize: 16
+                                        horizontalAlignment: Text.AlignLeft
+                                        verticalAlignment: Text.AlignTop
+                                        wrapMode: Text.NoWrap
+                                        font.weight: Font.Black
+                                        font.family: "Mulish"
+                                        font.capitalization: Font.Capitalize
+                                    }
+
+                                    Text {
+                                        id: vacancies
+                                        width: 19
+                                        height: 20
+                                        color: "#ffffff"
+                                        text: qsTr(mydb.retrieveJob(jobIdSave, "vacancies"))
+                                        anchors.left: parent.left
+                                        anchors.top: parent.top
+                                        anchors.leftMargin: 253
+                                        anchors.topMargin: 324
+                                        font.pixelSize: 16
+                                        horizontalAlignment: Text.AlignLeft
+                                        verticalAlignment: Text.AlignTop
+                                        wrapMode: Text.NoWrap
+                                        font.weight: Font.Black
+                                        font.family: "Mulish"
+                                        font.capitalization: Font.Capitalize
+                                    }
+
+                                    Text {
+                                        id: gender
+                                        width: 19
+                                        height: 20
+                                        color: "#ffffff"
+                                        text: qsTr("...")
+                                        anchors.left: parent.left
+                                        anchors.top: parent.top
+                                        anchors.leftMargin: 253
+                                        anchors.topMargin: 361
+                                        font.pixelSize: 16
+                                        horizontalAlignment: Text.AlignLeft
+                                        verticalAlignment: Text.AlignTop
+                                        wrapMode: Text.NoWrap
+                                        font.weight: Font.Black
+                                        font.family: "Mulish"
+                                        font.capitalization: Font.Capitalize
+                                    }
+
+                                    Text {
+                                        id: salary
+                                        width: 19
+                                        height: 20
+                                        color: "#ffffff"
+                                        text: qsTr(mydb.retrieveJob(jobIdSave, "salary"))
+                                        anchors.left: parent.left
+                                        anchors.top: parent.top
+                                        anchors.leftMargin: 253
+                                        anchors.topMargin: 402
+                                        font.pixelSize: 16
+                                        horizontalAlignment: Text.AlignLeft
+                                        verticalAlignment: Text.AlignTop
+                                        wrapMode: Text.NoWrap
+                                        font.weight: Font.Black
+                                        font.family: "Mulish"
+                                        font.capitalization: Font.Capitalize
+                                    }
+
+                                    Text {
+                                        id: deadline
+                                        width: 19
+                                        height: 20
+                                        color: "#ffffff"
+                                        text: qsTr(mydb.retrieveJob(jobIdSave, "deadline"))
+                                        anchors.left: parent.left
+                                        anchors.top: parent.top
+                                        anchors.leftMargin: 253
+                                        anchors.topMargin: 443
+                                        font.pixelSize: 16
+                                        horizontalAlignment: Text.AlignLeft
+                                        verticalAlignment: Text.AlignTop
+                                        wrapMode: Text.NoWrap
+                                        font.weight: Font.Black
+                                        font.family: "Mulish"
+                                        font.capitalization: Font.Capitalize
+                                    }
+
+                                    Text {
+                                        id: jobLevel
+                                        width: 19
+                                        height: 20
+                                        color: "#ffffff"
+                                        text: qsTr(mydb.retrieveJob(jobIdSave, "job_level"))
+                                        anchors.left: parent.left
+                                        anchors.top: parent.top
+                                        anchors.leftMargin: 253
+                                        anchors.topMargin: 488
+                                        font.pixelSize: 16
+                                        horizontalAlignment: Text.AlignLeft
+                                        verticalAlignment: Text.AlignTop
+                                        wrapMode: Text.NoWrap
+                                        font.weight: Font.Black
+                                        font.family: "Mulish"
+                                        font.capitalization: Font.Capitalize
+                                    }
+
+                                    Text {
+                                        id: jobDescription
+                                        width: 19
+                                        height: 20
+                                        color: "#ffffff"
+                                        text: qsTr(mydb.retrieveJob(jobIdSave, "job_description"))
+                                        anchors.left: parent.left
+                                        anchors.top: parent.top
+                                        anchors.leftMargin: 253
+                                        anchors.topMargin: 533
+                                        font.pixelSize: 16
+                                        horizontalAlignment: Text.AlignLeft
+                                        verticalAlignment: Text.AlignTop
+                                        wrapMode: Text.NoWrap
+                                        font.weight: Font.Black
+                                        font.family: "Mulish"
+                                        font.capitalization: Font.Capitalize
+                                    }
+
+                                    Image {
+                                        id: image_5
+                                        anchors.left: parent.left
+                                        anchors.top: parent.top
+                                        anchors.leftMargin: 495
+                                        anchors.topMargin: 61
+                                        source: "assets/image_5.png"
+                                    }
+
+                                    Text {
+                                        id: jOBHUB
+                                        width: 153
+                                        height: 38
+                                        color: "#eed274"
+                                        text: qsTr("jOBHUB")
+                                        anchors.left: parent.left
+                                        anchors.top: parent.top
+                                        anchors.leftMargin: 587
+                                        anchors.topMargin: 347
+                                        font.pixelSize: 30
+                                        horizontalAlignment: Text.AlignLeft
+                                        verticalAlignment: Text.AlignTop
+                                        wrapMode: Text.Wrap
+                                        font.weight: Font.Black
+                                        font.family: "Mulish"
+                                        font.capitalization: Font.Capitalize
+                                    }
+
+                                    Image {
+                                        id: logo_copy_3
+                                        anchors.left: parent.left
+                                        anchors.top: parent.top
+                                        anchors.leftMargin: 684
+                                        anchors.topMargin: 72
+                                        source: "assets/logo_copy_3.png"
+                                    }
+
+                                    Text {
+                                        id: achieve_More
+                                        width: 54
+                                        height: 23
+                                        color: "#012b3d"
+                                        text: qsTr("Achieve More")
+                                        anchors.left: parent.left
+                                        anchors.top: parent.top
+                                        anchors.leftMargin: 756
+                                        anchors.topMargin: 133
+                                        font.pixelSize: 8
+                                        horizontalAlignment: Text.AlignLeft
+                                        verticalAlignment: Text.AlignTop
+                                        wrapMode: Text.NoWrap
+                                        font.weight: Font.Black
+                                        font.family: "Mulish"
+                                    }
+                                }
+
 
                                 Item {
                                     id: apply21
@@ -2110,7 +2743,7 @@ Page {
                                 }
 
                                 Text {
-                                    id: location
+                                    id: locationi
                                     x: 30
                                     y: 65
                                     width: 52
@@ -3218,7 +3851,7 @@ Page {
                                 }
 
                                 Button {
-                                    id: rectangle_1295
+                                    id: rectangle_1295i
                                     width: 103
                                     height: 39
                                     text: "Sign In"
@@ -3323,7 +3956,7 @@ Designer {
                                 color: "#6f42c1"
                             }
                             onClicked: {
-//                                popupMenu.clear();
+                                //                                popupMenu.clear();
                                 popupMenu.open()
 
                             }

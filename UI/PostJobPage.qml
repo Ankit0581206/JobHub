@@ -94,6 +94,7 @@ Page {
 
 
 
+
             Text {
                 id: about_JobHub
                 x: 40
@@ -195,6 +196,22 @@ Page {
                 wrapMode: Text.Wrap
                 font.weight: Font.Normal
                 font.family: "Mulish"
+            }
+            Image {
+                id: _back_arrow_left_icon_1_1
+                anchors.left: parent.left
+                anchors.top: parent.top
+                source: "assets/_back_arrow_left_icon_1_1.png"
+                anchors.topMargin: 200
+                anchors.leftMargin: 15
+                MouseArea {
+                          id: mouseAreaForEmployee
+                          anchors.fill: parent // Fill the entire rectangle with the MouseArea
+                          onClicked: {
+                              // Call a function to navigate to the kycpagecomponent
+                              navigateTo(dashboardpagecomponent);// This function should handle navigation
+                          }
+                      }
             }
 
             Text {
@@ -639,6 +656,7 @@ Page {
                     onClicked: {
                         var userId = mydb.getUserIdByEmail(1);
                         mydb.insertJob(mydb.getEmail(), jobtitleField.text, jobcategoryField.text , degree.text, joblevel.text, jobeducationField.text, jobexperienceField.text, joblocationField.text, jobdeadlineField.text, jobdescriptionField.text, educational_preference.text, number_of_vacancy.text,salary.text, userId);
+                        navigateTo(dashboardpagecomponent);
                     }//Q_INVOKABLE bool insertJob(const QString& email, const QString& jobtitle, const QString& catagory, const QString& degree, const QString& job_level, const QString& academics, const QString& minimumjob, const QString& location, const QString& deadline, const QString& description, const QString& education, const QString& vacancies, const QString& salary, const QString& employer_id) {
 
                 }

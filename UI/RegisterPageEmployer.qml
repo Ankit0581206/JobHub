@@ -27,9 +27,9 @@ Page {
             Rectangle {
                 id: rectangle
                 x: 0
-                y: 0
+                y: 113
                 width: 1440
-                height: 900
+                height: 787
                 color: "#6f42c1"
 
                 Button {
@@ -269,6 +269,22 @@ Page {
                     //                                            }
                 }
 
+            }
+            Image {
+                id: _back_arrow_left_icon_1_1
+                anchors.left: parent.left
+                anchors.top: parent.top
+                source: "assets/_back_arrow_left_icon_1_1.png"
+                anchors.topMargin: 127
+                anchors.leftMargin: 15
+                MouseArea {
+                          id: mouseAreaForEmployee
+                          anchors.fill: parent // Fill the entire rectangle with the MouseArea
+                          onClicked: {
+                              // Call a function to navigate to the kycpagecomponent
+                              navigateTo(homepagecomponent);// This function should handle navigation
+                          }
+                      }
             }
 
             Text {
