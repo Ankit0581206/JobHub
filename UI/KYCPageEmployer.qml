@@ -1,43 +1,13 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
-import "." as Globals
+
 
 Page {
     id: kycPage
     width: 1300
     height: 1514
 
-
-    /*property alias xxxxxxxxText: xxxxxxxx.text
-    property alias experienceText: experience.text
-    property alias employerText: employer.text
-    property alias personal_InformationText: personal_Information.text
-    property alias reviewText: review.text
-    property alias about_JobHubText: about_JobHub.text
-    property alias aboutText: about.text
-    property alias contact_Us1Text: contact_Us1.text
-    property alias fAQs1Text: fAQs1.text
-    property alias job_SeekerText: job_Seeker.text
-    property alias search_JobsText: search_Jobs.text
-    property alias fAQsText: fAQs.text
-    property alias sign_inText: sign_in.text
-    property alias searchText: search.text
-    property alias create_Account1Text: create_Account1.text
-    property alias kupondole_Lalitpur_NepalText: kupondole_Lalitpur_Nepal.text
-    property alias jobHub_comText: jobHub_com.text
-    property alias contact_UsText: contact_Us.text
-    property alias educationText: education.text
-    property alias feedbackText: feedback.text
-    property alias create_AccountText: create_Account.text
-    property alias full_NameText: full_Name.text
-    property alias xxxxxxxx1Text: xxxxxxxx1.text
-    property alias addressText: address.text
-    property alias terms_ConditionsText: terms_Conditions.text
-    property alias date_of_BirthText: date_of_Birth.text
-    property alias info_JobHub_comText: info_JobHub_com.text
-    property alias fAQs2Text: fAQs2.text
-*/
     ScrollView {
         id: scrollview
         anchors.fill: parent

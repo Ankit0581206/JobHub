@@ -1,6 +1,6 @@
 import QtQuick
 import QtQuick.Layouts 1.15
-import QtQuick.Controls 6.5
+import QtQuick.Controls 2.25
 
 Page {
     id: dashboardPage
@@ -27,63 +27,7 @@ Page {
                     width: 1400
                     height: 1550
                     color: "#f4f6f8"
-                    //    property alias edit2Text: edit2.text
-                    //    property alias searchText: search.text
-                    //    property alias edit3Text: edit3.text
-                    //    property alias editText: edit.text
-                    //    property alias elementText: element.text
-                    //    property alias element6Text: element6.text
-                    //    property alias element3Text: element3.text
-                    //    property alias delete2Text: delete2.text
-                    //    property alias contact_Us1Text: contact_Us1.text
-                    //    property alias total_ApplicantsText: total_Applicants.text
-                    //    property alias update2Text: update2.text
-                    //    property alias delete3Text: delete3.text
-                    //    property alias employerText: employer.text
-                    //    property alias delete1Text: delete1.text
-                    //    property alias ad_ExpiryText: ad_Expiry.text
-                    //    property alias element8Text: element8.text
-                    //    property alias dashBoardText: dashBoard.text
-                    //    property alias update3Text: update3.text
-                    //    property alias element4Text: element4.text
-                    //    property alias jobHub_comText: jobHub_com.text
-                    //    property alias job_AdvertisementsText: job_Advertisements.text
-                    //    property alias feedbackText: feedback.text
-                    //    property alias info_JobHub_comText: info_JobHub_com.text
-                    //    property alias element11Text: element11.text
-                    //    property alias search_JobsText: search_Jobs.text
-                    //    property alias kupondole_Lalitpur_NepalText: kupondole_Lalitpur_Nepal.text
-                    //    property alias xxxxxxxxText: xxxxxxxx.text
-                    //    property alias aboutText: about.text
-                    //    property alias about_JobHubText: about_JobHub.text
-                    //    property alias update1Text: update1.text
-                    //    property alias updateText: update.text
-                    //    property alias element1Text: element1.text
-                    //    property alias job_SeekerText: job_Seeker.text
-                    //    property alias element2Text: element2.text
-                    //    property alias create_AccountText: create_Account.text
-                    //    property alias element5Text: element5.text
-                    //    property alias delete4Text: delete4.text
-                    //    property alias back_end_Software_DeveloperText: back_end_Software_Developer.text
-                    //    property alias xxxxxxxx1Text: xxxxxxxx1.text
-                    //    property alias create_Account1Text: create_Account1.text
-                    //    property alias posted_DateText: posted_Date.text
-                    //    property alias terms_ConditionsText: terms_Conditions.text
-                    //    property alias secretaryText: secretary.text
-                    //    property alias element9Text: element9.text
-                    //    property alias front_end_Software_DeveloperText: front_end_Software_Developer.text
-                    //    property alias fAQsText: fAQs.text
-                    //    property alias shrestha_SoftwaresText: shrestha_Softwares.text
-                    //    property alias edit1Text: edit1.text
-                    //    property alias post_a_new_job_Text: post_a_new_job_.text
-                    //    property alias data_AnalystText: data_Analyst.text
-                    //    property alias element10Text: element10.text
-                    //    property alias element7Text: element7.text
-                    //    property alias reviewText: review.text
-                    //    property alias menuText: menu.text
-                    //    property alias contact_UsText: contact_Us.text
-                    //    property alias fAQs1Text: fAQs1.text
-                    //    property alias fAQs2Text: fAQs2.text
+
 
 
                     Rectangle {
@@ -717,8 +661,8 @@ Page {
 
                     Text {
                         id: post_a_new_job_
-                        x: 708
-                        y: 952
+                        x: 1098
+                        y: 146
                         width: 261
                         height: 46
                         color: "#000000"
@@ -732,8 +676,8 @@ Page {
                     }
                     Rectangle {
                         id: customButton
-                        x: 740
-                        y: 1030
+                        x: 1132
+                        y: 205
 
 
                         width: 197
@@ -776,14 +720,14 @@ Page {
                 x: 335
                 y: 452
                 width: 994
-                height: 461
+                height: 276
                 spacing: 15
                 model: myModel
 
                 Component.onCompleted: {
 
                     // Start fetching and appending data
-                    // fetchAndAppendData();
+
                     var employerId = mydb.getUserIdByEmail(1) ; // Replace with the actual employer ID
                     var jobIds = mydb.getAllJobIdsByEmployer(employerId);
 
@@ -805,24 +749,24 @@ Page {
                     property string jobId:""
 
                     Button {
-                                id: deleteButton
-                                text: qsTr("Delete")
-                                anchors {
-                                    right: parent.right
-                                    verticalCenter: parent.verticalCenter
-                                    rightMargin: 10
-                                }
+                        id: deleteButton
+                        text: qsTr("Delete")
+                        anchors {
+                            right: parent.right
+                            verticalCenter: parent.verticalCenter
+                            rightMargin: 10
+                        }
 
-                                onClicked: {
-                                                mydb.deleteJobById(jobId);
-                                                // Find the index of the delegate in the model by iterating over items
-                                                for (var i = 0; i < myModel.count; ++i) {
-                                                    if (myModel.get(i).jobId === model.jobId) {
-                                                        myModel.remove(i);
-                                                        break;
-                                                    }
-                                                }
-                                            }
+                        onClicked: {
+                            mydb.deleteJobById(jobId);
+                            // Find the index of the delegate in the model by iterating over items
+                            for (var i = 0; i < myModel.count; ++i) {
+                                if (myModel.get(i).jobId === model.jobId) {
+                                    myModel.remove(i);
+                                    break;
+                                }
+                            }
+                        }
                     }
 
 
@@ -858,6 +802,93 @@ Page {
                 }
 
             }
+            ListModel {
+                id: myModel2
+            }
+
+            ListView {
+                x: 335
+                y: 772
+                width: 994
+                height: 364
+                spacing: 15
+                model: myModel2
+
+
+                Component.onCompleted: {
+
+                    // Start fetching and appending data
+
+                    var employerId = mydb.getUserIdByEmail(1) ; // Replace with the actual employer ID
+                    var applicationId = mydb.getAllAppliedJobsByEmployer(employerId);
+
+                    // Iterate over the job IDs
+                    for (var i = 0; i < applicationId.length; ++i) {
+                        var applicationId1 = applicationId[i];
+                        myModel2.append({ jobName: mydb.retrieveJob(mydb.retrievePosted(applicationId1,"job_id") ,"job_title"), userName: mydb.retrieveUser(mydb.retrievePosted(applicationId1,"user_id") , "fullName") , applicationId: applicationId1 });
+
+                    }
+                }
+
+                delegate: Rectangle {
+                    id: newApplicant
+                    width: 994
+
+                    height: 50
+                    color: "#f0ecf9"
+
+                    property string applicationId: model.applicationId
+
+                    Button {
+                        id: test1
+                        text: qsTr("Reject")
+                        anchors {
+                            right: parent.right
+                            verticalCenter: parent.verticalCenter
+                            rightMargin: 10
+                        }
+
+                    }
+
+
+                    Button {
+                        id: test2
+                        text: qsTr("Shortlist")
+                        anchors {
+                            right: test1.left
+                            verticalCenter: parent.verticalCenter
+                            rightMargin: 10
+                        }
+                    }
+
+
+                    Text {
+                        id: userName
+                        text: model.userName
+                        font.pixelSize: 30
+                        font.family: "Times New Roman"
+                        anchors{
+                            left: parent.left
+                            verticalCenter: parent.verticalCenter
+                            rightMargin: 10
+                        }
+                    }
+                    Text {
+                        text: model.jobName
+                        font.pixelSize: 30
+                        font.family: "Times New Roman"
+                        anchors {
+                            left: userName.right
+                            verticalCenter: parent.verticalCenter
+                            leftMargin: 15
+                        }
+                    }
+
+
+                }
+
+            }
+
 
         }
     }

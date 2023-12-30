@@ -33,6 +33,19 @@ Window {
 
         }
     }
+    Component{
+        id:retrivepasswordemployercomponent
+        Retrive_PasswordEmployer{
+
+        }
+    }
+
+    Component{
+        id:reviewpagecomponent
+        ReviewPage{
+            
+        }
+    }
 
     Component{
         id:loginpagecomponent
@@ -71,6 +84,13 @@ Window {
 
         }
     }
+    Component{
+        id:searchresultpage
+        SearchResultPage{
+
+        }
+    }
+
     Component{
         id:aboutuspagecomponent
         AboutUsPage{

@@ -1,16 +1,14 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
-import "." as Globals
+
 
 Page {
     id: loginPage
     title: "Login Page"
     width: Screen.width
     height: 900
-    /*property alias passwordText: password.text
-    property alias emailText: email.text
-    property alias sign_InText: sign_In.text*/
+
     Rectangle {
         id: rectangle1
         width: Screen.width
@@ -18,19 +16,33 @@ Page {
         color: "#6f42c1"
 
         Button {
-            x: 1330
-            y: 176
+            x: 971
+            y: 171
             width: 156
             height: 50
             text: "Register"
             background: Rectangle {
-                color: "#96be25" // You can replace "green" with any valid color string
+                color: "#96be25"
             }
             onClicked: {
                 navigateTo(registerpagecomponent);
             }
         }
     }
+
+    Label {
+        id: label
+        x: 247
+        y: 489
+        width: 226
+        height: 33
+        color: "Red"
+        text: qsTr("")
+        verticalAlignment: "AlignVCenter"
+        horizontalAlignment: "AlignHCenter"
+        font.pixelSize: 18
+    }
+
 
     Text{
           id : forget
@@ -47,7 +59,7 @@ Page {
              anchors.fill: parent
             onClicked:
             {
-             navigateTo(retrivepasswordcomponent);
+             navigateTo(retrivepasswordemployercomponent);
         }
         }
     }
@@ -72,7 +84,7 @@ Page {
                   anchors.fill: parent // Fill the entire rectangle with the MouseArea
                   onClicked: {
                       // Call a function to navigate to the kycpagecomponent
-                      navigateTo(homepagecomponent);// This function should handle navigation
+                      navigateTo(homepagecomponent);// This function handle navigation
                   }
               }
     }
@@ -82,14 +94,20 @@ Page {
         x: 652
         y: 26
         source: "assets/logo_copy_2.png"
+        MouseArea{
+            anchors.fill: parent
+            onClicked: {
+                navigateTo(homepagecomponent);
+            }
+        }
     }
 
     Text {
         id: sign_In
-        x: 135
-        y: 180
-        width: 433
-        height: 38
+        x: 134
+        y: 160
+        width: 446
+        height: 51
         color: "#15cff1"
         text: qsTr("Sign In for Employers")
         font.pixelSize: 40
@@ -100,15 +118,7 @@ Page {
         font.weight: Font.Bold
     }
 
-    //    TextField {
-    //        id: loginEmailField
-    //        x: 134
-    //        y: 269
-    //        width: 433
-    //        height: 67
-    //        color: "#d9d9d9"
-    //        placeholderText: "Email"
-    //    }
+
     Rectangle {
         x: 134
         y: 269
@@ -144,16 +154,7 @@ Page {
 
     }
 
-    //    TextField {
-    //        id: loginPasswordField
-    //        placeholderText: "Password"
-    //        echoMode: TextInput.Password
-    //        x: 134
-    //        y: 403
-    //        width: 433
-    //        height: 67
-    //        color: "#d9d9d9"
-    //    }
+
     Rectangle {
         x: 134
         y: 403
@@ -192,6 +193,25 @@ Page {
 
 
         }
+        Button {
+            x: 392
+            y: 0
+            width: 41
+            height: 67
+            text: "show"
+            background: Rectangle {
+                color: "transparent"
+            }
+            onClicked: {
+                if (loginPasswordField.echoMode === TextField.Password) {
+                    loginPasswordField.echoMode = TextField.Normal; // Display actual text
+                    text = "Hide";
+                } else {
+                    loginPasswordField.echoMode = TextField.Password; // Display asterisks
+                    text = "Show";
+                }
+            }
+        }
     }
 
     Text {
@@ -227,7 +247,7 @@ Page {
     }
     Text {
         id: newRegister
-        x: 1126
+        x: 752
 
         y: 191
         width: 248
@@ -249,11 +269,10 @@ Page {
         height: 50
         text: "Login"
         background: Rectangle {
-            color: "#96be25" // You can replace "green" with any valid color string
+            color: "#96be25"
         }
         onClicked: {
-            //Globals.globalString += loginEmailField.text
-            // Call C++ method to authenticate user
+
          mydb.storeCurrentEmail(loginEmailField.text.trim().toLowerCase())
             if (mydb.authenticateEmployer(loginEmailField.text,loginPasswordField.text)){
                 console.log("Login successful");
@@ -269,16 +288,18 @@ Page {
                     navigateTo(kycpageemployercomponent);
                 }
             }
-            else
+            else{
+                label.text="Invalid Credentials"
                 console.log("Invalid credentials");
+            }
         }
     }
 
 
     Image {
         id: image_2_copy_1
-        x: 870
-        y: 242
+        x: 711
+        y: 254
         source: "assets/image_2_copy_1.png"
     }
 }

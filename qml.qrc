@@ -1923,5 +1923,9 @@
         <file>UI/assets/_about_info_information_help_ui_icon_1_1.png</file>
         <file>UI/assets/_app_instagram_logo_media_popular_icon_1.png</file>
         <file>UI/assets/_about_info_information_help_ui_icon_1.png</file>
+        <file>UI/SearchResultPage.qml</file>
+        <file>UI/ReviewPage.qml</file>
+        <file>UI/assets/next_button.png</file>
+        <file>UI/Retrive_PasswordEmployer.qml</file>
     </qresource>
 </RCC>

@@ -6,41 +6,15 @@ import QtQuick.Layouts 1.15
 
 Page {
     id: kycPage
-    width: 1300
-    height: 1514
-
-    /*property alias xxxxxxxxText: xxxxxxxx.text
-    property alias experienceText: experience.text
-    property alias employerText: employer.text
-    property alias personal_InformationText: personal_Information.text
-    property alias reviewText: review.text
-    property alias about_JobHubText: about_JobHub.text
-    property alias aboutText: about.text
-    property alias contact_Us1Text: contact_Us1.text
-    property alias fAQs1Text: fAQs1.text
-    property alias job_SeekerText: job_Seeker.text
-    property alias search_JobsText: search_Jobs.text
-    property alias fAQsText: fAQs.text
-    property alias sign_inText: sign_in.text
-    property alias searchText: search.text
-    property alias create_Account1Text: create_Account1.text
-    property alias kupondole_Lalitpur_NepalText: kupondole_Lalitpur_Nepal.text
-    property alias jobHub_comText: jobHub_com.text
-    property alias contact_UsText: contact_Us.text
-    property alias educationText: education.text
-    property alias feedbackText: feedback.text
-    property alias create_AccountText: create_Account.text
-    property alias full_NameText: full_Name.text
-    property alias xxxxxxxx1Text: xxxxxxxx1.text
-    property alias addressText: address.text
-    property alias terms_ConditionsText: terms_Conditions.text
-    property alias date_of_BirthText: date_of_Birth.text
-    property alias info_JobHub_comText: info_JobHub_com.text
-    property alias fAQs2Text: fAQs2.text
-*/
+    width: Screen.width
+    height: 1300
     ScrollView {
         id: scrollview
         anchors.fill: parent
+        anchors.rightMargin: 0
+        anchors.bottomMargin: 7
+        anchors.leftMargin: 0
+        anchors.topMargin: -7
         clip: true
         ScrollBar.vertical.policy: ScrollBar.AlwaysOn
 
@@ -48,38 +22,1156 @@ Page {
         Item {
             id: contentItem
             width: Screen.width
-            height: 1514
+            height: 1300
             implicitHeight: height
             Rectangle {
                 id: rectangle
                 x: 0
                 y: 3
-                width: 1300
-                height: 1514
+                width: Screen.width
+                height: 1300
                 color: "#6f42c1"
+                Label {
+                    id: label3
+                    x: 717
+                    y: 875
+                    width: 550
+                    height: 54
+                    color: "Red"
+                    text: qsTr("")
+                    verticalAlignment: "AlignVCenter"
+                    horizontalAlignment: "AlignHCenter"
+                    font.pixelSize: 18
+                }
 
+                Label {
+                    id: label
+                    x: 62
+                    y: 134
+                    width: 121
+                    height: 49
+                    color: "White"
+                    text: qsTr("Master Id : ")
+                    verticalAlignment: "AlignVCenter"
+                    horizontalAlignment: "AlignJustify"
+                    font.pixelSize: 24
+                    font.bold: true
+                }
 
-
-
-                Rectangle {
+                Label {
+                    id: label1
+                    x: 189
+                    y: 142
+                    width: 155
+                    height: 33
+                    color: "White"
+                    text: mydb.getUserIdByEmail(0)
+                    verticalAlignment: "AlignVCenter"
+                    horizontalAlignment: "AlignJustify"
+                    font.pixelSize: 24
+                    font.bold: true
+                }
+                Rectangle{
                     id: rectangle_1
-                    y: 323
+                    y: 246
                     width: 1000
-                    height: 662
-                    color: "#f0ecf9"
+                    height: 617
+                    color: "#fefdff"
                     radius: 50
-                    anchors.horizontalCenterOffset: -110
+                    visible:true
+                    anchors.horizontalCenterOffset: 119
                     anchors.horizontalCenter: parent.horizontalCenter
+
+
+                    Text {
+                        id: personal_Information
+                        y: 26
+                        width: 329
+                        height: 36
+                        color: "#15cff1"
+                        text: qsTr("Personal Information")
+                        font.pixelSize: 30
+                        horizontalAlignment: Text.AlignLeft
+                        verticalAlignment: Text.AlignTop
+                        wrapMode: Text.Wrap
+                        font.weight: Font.Bold
+                        font.family: "Mulish"
+                        anchors.horizontalCenterOffset: 14
+                        anchors.horizontalCenter: parent.horizontalCenter
+                    }
+                    Text {
+                        id: full_Name
+                        x: 139
+                        y: 100
+                        width: 112
+                        height: 24
+                        color: "#6f42c1"
+                        text: qsTr("Full Name")
+                        font.pixelSize: 24
+                        horizontalAlignment: Text.AlignLeft
+                        verticalAlignment: Text.AlignTop
+                        wrapMode: Text.NoWrap
+                        font.bold: true
+                        font.weight: Font.Normal
+                        font.family: "Times New Roman"
+                    }
+                    TextField {
+                        id: fullNameField
+                        x: 139
+                        y: 130
+                        width: 750
+                        height: 55
+
+                        font.pixelSize: 28
+
+
+
+                        background: Rectangle {
+                            color: "white"
+                        }
+                        placeholderText: "Fullname *"
+
+
+                        onTextChanged: {
+                            // Change text color to black when the text changes
+                            fullNameField.color = "black"
+                        }
+
+                    }
+                    Text {
+                        id: dateofbirth
+                        x: 139
+                        y: 200
+                        width: 198
+                        height: 29
+                        color: "#6f42c1"
+                        text: qsTr("Date Of Birth (AD)")
+                        font.pixelSize: 24
+                        horizontalAlignment: Text.AlignLeft
+                        verticalAlignment: Text.AlignTop
+                        wrapMode: Text.NoWrap
+                        font.bold: true
+                        font.weight: Font.Normal
+                        font.family: "Times New Roman"
+                    }
+                    TextField {
+                        id: dateofbirthADfield
+                        x: 139
+                        y: 230
+                        width: 750
+                        height: 55
+
+                        font.pixelSize: 28
+
+
+
+                        background: Rectangle {
+                            color: "white"
+                        }
+                        placeholderText: "eg: 2023-12-23"
+
+
+                        onTextChanged: {
+                            // Change text color to black when the text changes
+                            dateofbirthADfield.color = "black"
+                        }
+
+                    }
+                    TextField {
+                        id: dateofbirthBSfield
+                        x: 139
+                        y: 300
+                        width: 750
+                        height: 55
+
+                        font.pixelSize: 28
+
+
+
+                        background: Rectangle {
+                            color: "white"
+                        }
+                        placeholderText: "eg:2080-12-23"
+
+
+                        onTextChanged: {
+                            // Change text color to black when the text changes
+                            dateofbirthBSfield.color = "black"
+                        }
+
+                    }
+                    Text {
+                        id: gender
+                        x: 145
+                        y: 370
+                        width: 165
+                        height: 24
+                        color: "#6f42c1"
+                        text: qsTr("Gender")
+                        font.pixelSize: 24
+                        horizontalAlignment: Text.AlignLeft
+                        verticalAlignment: Text.AlignTop
+                        wrapMode: Text.NoWrap
+                        font.bold: true
+                        font.weight: Font.Normal
+                        font.family: "Times New Roman"
+                    }
+                    TextField {
+                        id: genderfield
+                        x: 139
+                        y: 400
+                        width: 750
+                        height: 55
+                        font.pixelSize: 28
+                        background: Rectangle {
+                            color: "white"
+                        }
+                        ComboBox {
+                            id:combobox1
+                            anchors.fill: parent
+                            model: ["Select","male", "female", "Others"]
+                            onCurrentIndexChanged: {
+                                genderfield.text = combobox1.currentText
+                            }
+                        }
+                    }
+
+                    Text {
+                        id: maritalstatus
+                        x: 139
+                        y: 470
+                        width: 165
+                        height: 24
+                        color: "#6f42c1"
+                        text: qsTr("Marital Status")
+                        font.pixelSize: 24
+                        horizontalAlignment: Text.AlignLeft
+                        verticalAlignment: Text.AlignTop
+                        wrapMode: Text.NoWrap
+                        font.bold: true
+                        font.weight: Font.Normal
+                        font.family: "Times New Roman"
+                    }
+                    TextField {
+                        id: maritalstatusfield
+                        x: 139
+                        y: 500
+                        width: 750
+                        height: 55
+
+                        font.pixelSize: 28
+
+
+
+                        background: Rectangle {
+                            color: "white"
+                        }
+                        ComboBox {
+                            id:combobox2
+                            anchors.fill: parent
+                            model: ["Select","unmarried", "married"]
+                            onCurrentIndexChanged: {
+                                maritalstatusfield.text = combobox2.currentText
+                            }
+                        }
+
+                    }
+
+                    Image {
+                        id: next_button
+                        x: 901
+                        y: 550
+                        width: 83
+                        height: 59
+                        source: "assets/next_button.png"
+                        fillMode: Image.PreserveAspectFit
+                        MouseArea{
+                            anchors.fill: parent
+                            onClicked: {
+                                rectangle_1295.clicked()
+                            }
+                        }
+                    }
+
+
+
+                    Text {
+                        id: dateofbirth1
+                        x: 139
+                        y: 278
+                        width: 198
+                        height: 29
+                        color: "#6f42c1"
+                        text: qsTr("Date Of Birth (AD)")
+                        font.pixelSize: 24
+                        horizontalAlignment: Text.AlignLeft
+                        verticalAlignment: Text.AlignTop
+                        wrapMode: Text.NoWrap
+                        font.bold: true
+                        font.weight: Font.Normal
+                        font.family: "Times New Roman"
+                    }
+
+
+
+                }
+                Rectangle {
+                    id: rectangle_2
+                    y: 288
+                    width: 1000
+                    height: 468
+                    color: "#fefdff"
+                    radius: 50
+                    visible: false
+                    anchors.horizontalCenterOffset: 122
+                    anchors.horizontalCenter: parent.horizontalCenter
+
+                    Text {
+                        id: contact_Information
+                        y: 26
+                        width: 329
+                        height: 36
+                        color: "#15cff1"
+                        text: qsTr("Contact Information")
+                        font.pixelSize: 30
+                        horizontalAlignment: Text.AlignLeft
+                        verticalAlignment: Text.AlignTop
+                        wrapMode: Text.Wrap
+                        font.weight: Font.Bold
+                        font.family: "Mulish"
+                        anchors.horizontalCenterOffset: 14
+                        anchors.horizontalCenter: parent.horizontalCenter
+                    }
+                    Text {
+                        id: address
+                        x: 178
+                        y: 100
+                        width: 165
+                        height: 24
+                        color: "#6f42c1"
+                        text: qsTr("Address")
+                        font.pixelSize: 24
+                        horizontalAlignment: Text.AlignLeft
+                        verticalAlignment: Text.AlignTop
+                        wrapMode: Text.NoWrap
+                        font.bold: true
+                        font.weight: Font.Normal
+                        font.family: "Times New Roman"
+                    }
+                    TextField {
+                        id: addressfield
+                        x: 178
+                        y: 130
+                        width: 750
+                        height: 55
+
+                        font.pixelSize: 28
+
+
+
+                        background: Rectangle {
+                            color: "white"
+                        }
+                        placeholderText: "Current address"
+
+
+                        onTextChanged: {
+                            // Change text color to black when the text changes
+                            addressfield.color = "black"
+                        }
+
+                    }
+                    Text {
+                        id: phonenumber
+                        x: 178
+                        y: 200
+                        width: 165
+                        height: 24
+                        color: "#6f42c1"
+                        text: qsTr("Phone Number")
+                        font.pixelSize: 24
+                        horizontalAlignment: Text.AlignLeft
+                        verticalAlignment: Text.AlignTop
+                        wrapMode: Text.NoWrap
+                        font.bold: true
+                        font.weight: Font.Normal
+                        font.family: "Times New Roman"
+                    }
+                    TextField {
+                        id: phonenumberfield
+                        x: 178
+                        y: 230
+                        width: 750
+                        height: 55
+                        background: Rectangle {
+                            color: "white"
+                        }
+                        font.pixelSize: 28
+                        placeholderText: "Phone number"
+
+
+                        onTextChanged: {
+                            // Change text color to black when the text changes
+                            phonenumberfield.color = "black"
+                        }
+                    }
+                    Text {
+                        id: email
+                        x: 178
+                        y: 300
+                        width: 165
+                        height: 24
+                        color: "#6f42c1"
+                        text: qsTr("Email")
+                        font.pixelSize: 24
+                        horizontalAlignment: Text.AlignLeft
+                        verticalAlignment: Text.AlignTop
+                        wrapMode: Text.NoWrap
+                        font.bold: true
+                        font.weight: Font.Normal
+                        font.family: "Times New Roman"
+                    }
+                    TextField {
+                        id: emailfield
+                        x: 178
+                        y: 330
+                        width: 750
+                        height: 55
+                        font.pixelSize: 28
+                        background: Rectangle {
+                            color: "white"
+                        }
+
+                        // Replaced with the Label functionality
+                        Label {
+                            id:emaillabel
+                            anchors.fill: parent
+                            color: "#6f42c1"
+                            text: mydb.getEmail()
+                            verticalAlignment: "AlignVCenter"
+                            horizontalAlignment: "AlignJustify"
+                            font.pixelSize: 24
+                            font.bold: true
+                        }
+                    }
+
+                    Image {
+                        id: next_button2
+                        x: 895
+                        y: 395
+                        width: 83
+                        height: 59
+                        source: "assets/next_button.png"
+                        fillMode: Image.PreserveAspectFit
+                        MouseArea{
+                            anchors.fill: parent
+                            onClicked: {
+                                rectangle_1296.clicked();
+                            }
+                        }
+
+
+                    }
+
+                }
+                Rectangle {
+                    id: rectangle_3
+                    y: 288
+                    width: 1000
+                    height: 548
+                    color: "#fefdff"
+                    radius: 50
+                    visible:false
+                    anchors.horizontalCenterOffset: 122
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    Text {
+                        id: education
+                        y: 26
+                        width: 329
+                        height: 36
+                        color: "#15cff1"
+                        text: qsTr("Education")
+                        font.pixelSize: 30
+                        horizontalAlignment: Text.AlignLeft
+                        verticalAlignment: Text.AlignTop
+                        wrapMode: Text.Wrap
+                        font.weight: Font.Bold
+                        font.family: "Mulish"
+                        anchors.horizontalCenterOffset: 14
+                        anchors.horizontalCenter: parent.horizontalCenter
+                    }
+                    Text {
+                        id: boardname
+                        x: 178
+                        y: 100
+                        width: 165
+                        height: 24
+                        color: "#6f42c1"
+                        text: qsTr("Board Name")
+                        font.pixelSize: 24
+                        horizontalAlignment: Text.AlignLeft
+                        verticalAlignment: Text.AlignTop
+                        wrapMode: Text.NoWrap
+                        font.bold: true
+                        font.weight: Font.Normal
+                        font.family: "Times New Roman"
+                    }
+                    TextField {
+                        id: boardnamefield
+                        x: 178
+                        y: 130
+                        width: 750
+                        height: 55
+
+                        font.pixelSize: 28
+
+
+
+                        background: Rectangle {
+                            color: "White"
+                        }
+                        placeholderText: "eg:NEB"
+
+
+                        onTextChanged: {
+                            // Change text color to black when the text changes
+                            boardnamefield.color = "black"
+                        }
+
+                    }
+                    Text {
+                        id: level
+                        x: 178
+                        y: 200
+                        width: 165
+                        height: 24
+                        color: "#6f42c1"
+                        text: qsTr("Level")
+                        font.pixelSize: 24
+                        horizontalAlignment: Text.AlignLeft
+                        verticalAlignment: Text.AlignTop
+                        wrapMode: Text.NoWrap
+                        font.bold: true
+                        font.weight: Font.Normal
+                        font.family: "Times New Roman"
+                    }
+                    TextField {
+                        id: levelfield
+                        x: 178
+                        y: 230
+                        width: 750
+                        height: 55
+                        font.pixelSize: 28
+                        background: Rectangle {
+                            color: "white"
+                        }
+                        ComboBox {
+                            id:combobox3
+                            anchors.fill: parent
+                            model: ["Select","SLC/SEE","+2/PCL", "Bachelors","Mphil","Master Degree", "PhD"]
+                            onCurrentIndexChanged: {
+                                levelfield.text = combobox3.currentText
+                            }
+                        }
+
+
+                    }
+                    Text {
+                        id: gpa
+                        x: 178
+                        y: 300
+                        width: 165
+                        height: 29
+                        color: "#6f42c1"
+                        text: qsTr("GPA/Percentage")
+                        font.pixelSize: 24
+                        horizontalAlignment: Text.AlignLeft
+                        verticalAlignment: Text.AlignTop
+                        wrapMode: Text.NoWrap
+                        font.bold: true
+                        font.weight: Font.Normal
+                        font.family: "Times New Roman"
+                    }
+                    TextField {
+                        id: gpafield
+                        x: 178
+                        y: 330
+                        width: 750
+                        height: 55
+                        font.pixelSize: 28
+                        background: Rectangle {
+                            color: "white"
+                        }
+                        placeholderText: "eg:3.75gpa or 90%"
+
+
+                        onTextChanged: {
+                            // Change text color to black when the text changes
+                            gpafield.color = "black"
+                        }
+
+                    }
+                    Text {
+                        id: faculty
+                        x: 178
+                        y: 400
+                        width: 165
+                        height: 29
+                        color: "#6f42c1"
+                        text: qsTr("Faculty")
+                        font.pixelSize: 24
+                        horizontalAlignment: Text.AlignLeft
+                        verticalAlignment: Text.AlignTop
+                        wrapMode: Text.NoWrap
+                        font.bold: true
+                        font.weight: Font.Normal
+                        font.family: "Times New Roman"
+                    }
+                    TextField {
+                        id: facultyfield
+                        x: 178
+                        y: 430
+                        width: 750
+                        height: 55
+                        font.pixelSize: 28
+                        background: Rectangle {
+                            color: "white"
+                        }
+                        ComboBox {
+                            id:combobox4
+                            anchors.fill: parent
+                            model: ["Select","Arts", "Business", "Engineering", "Health/Medicine", "Science","Others"]
+                            onCurrentIndexChanged: {
+                                facultyfield.text = combobox4.currentText
+                            }
+                        }
+
+                    }
+
+                    Image {
+                        id: next_button3
+                        x: 916
+                        y: 480
+                        width: 83
+                        height: 59
+                        source: "assets/next_button.png"
+                        fillMode: Image.PreserveAspectFit
+                        MouseArea{
+                            anchors.fill: parent
+                            onClicked: {
+                                rectangle_1297.clicked();
+                            }
+                        }
+                    }
+
+
+
+                }
+                Rectangle{
+                    id: rectangle_4
+                    y: 164
+                    width: 1000
+                    height: 731
+                    color: "#fefdff"
+                    radius: 50
+                    visible: false
+                    anchors.horizontalCenterOffset: 122
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    Text {
+                        id: experience
+                        y: 26
+                        width: 329
+                        height: 36
+                        color: "#15cff1"
+                        text: qsTr("Experience")
+                        font.pixelSize: 30
+                        horizontalAlignment: Text.AlignLeft
+                        verticalAlignment: Text.AlignTop
+                        wrapMode: Text.Wrap
+                        font.weight: Font.Bold
+                        font.family: "Mulish"
+                        anchors.horizontalCenterOffset: 14
+                        anchors.horizontalCenter: parent.horizontalCenter
+                    }
+                    Text {
+                        id: institutename
+                        x: 178
+                        y: 100
+                        width: 165
+                        height: 24
+                        color: "#6f42c1"
+                        text: qsTr("Company Name")
+                        font.pixelSize: 24
+                        horizontalAlignment: Text.AlignLeft
+                        verticalAlignment: Text.AlignTop
+                        wrapMode: Text.NoWrap
+                        font.bold: true
+                        font.weight: Font.Normal
+                        font.family: "Times New Roman"
+                    }
+                    TextField {
+                        id: institutenamefield
+                        x: 178
+                        y: 130
+                        width: 750
+                        height: 55
+                        font.pixelSize: 28
+                        background: Rectangle {
+                            color: "white"
+                        }
+                        placeholderText: "eg:Kathmandu University"
+
+
+                        onTextChanged: {
+                            // Change text color to black when the text changes
+                            institutenamefield.color = "black"
+                        }
+
+                    }
+                    Text {
+                        id: instituteaddress
+                        x: 178
+                        y: 200
+                        width: 165
+                        height: 24
+                        color: "#6f42c1"
+                        text: qsTr("Company Address")
+                        font.pixelSize: 24
+                        horizontalAlignment: Text.AlignLeft
+                        verticalAlignment: Text.AlignTop
+                        wrapMode: Text.NoWrap
+                        font.bold: true
+                        font.weight: Font.Normal
+                        font.family: "Times New Roman"
+                    }
+                    TextField {
+                        id: instituteaddressfield
+                        x: 178
+                        y: 230
+                        width: 750
+                        height: 55
+                        font.pixelSize: 28
+                        background: Rectangle {
+                            color: "white"
+                        }
+                        placeholderText: "eg:28kilo,Dhulikhel"
+
+
+                        onTextChanged: {
+                            // Change text color to black when the text changes
+                            instituteaddressfield.color = "black"
+                        }
+
+                    }
+                    Text {
+                        id: post
+                        x: 178
+                        y: 300
+                        width: 165
+                        height: 24
+                        color: "#6f42c1"
+                        text: qsTr("Post")
+                        font.pixelSize: 24
+                        horizontalAlignment: Text.AlignLeft
+                        verticalAlignment: Text.AlignTop
+                        wrapMode: Text.NoWrap
+                        font.bold: true
+                        font.weight: Font.Normal
+                        font.family: "Times New Roman"
+                    }
+                    TextField {
+                        id: postfield
+                        x: 178
+                        y: 330
+                        width: 750
+                        height: 55
+                        font.pixelSize: 28
+                        background: Rectangle {
+                            color: "white"
+                        }
+                        placeholderText: "eg:Senior Developer"
+
+
+                        onTextChanged: {
+                            // Change text color to black when the text changes
+                            postfield.color = "black"
+                        }
+
+                    }
+                    Text {
+                        id: working
+                        x: 178
+                        y: 400
+                        width: 165
+                        height: 30
+                        color: "#6f42c1"
+                        text: qsTr("Working Field")
+                        font.pixelSize: 24
+                        horizontalAlignment: Text.AlignLeft
+                        verticalAlignment: Text.AlignTop
+                        wrapMode: Text.NoWrap
+                        font.bold: true
+                        font.weight: Font.Normal
+                        font.family: "Times New Roman"
+                    }
+                    TextField {
+                        id: workingfield
+                        x: 178
+                        y:430
+                        width: 750
+                        height: 55
+                        font.pixelSize: 28
+                        background: Rectangle {
+                            color: "white"
+                        }
+                        placeholderText: "eg:Engineering"
+
+
+                        onTextChanged: {
+                            // Change text color to black when the text changes
+                            workingfield.color = "black"
+                        }
+
+                    }
+                    Text {
+                        id: experienceyear
+                        x: 178
+                        y: 500
+                        width: 165
+                        height: 31
+                        color: "#6f42c1"
+                        text: qsTr("Experience Year")
+                        font.pixelSize: 24
+                        horizontalAlignment: Text.AlignLeft
+                        verticalAlignment: Text.AlignTop
+                        wrapMode: Text.NoWrap
+                        font.bold: true
+                        font.weight: Font.Normal
+                        font.family: "Times New Roman"
+                    }
+                    TextField {
+                        id: experienceyearfield
+                        x: 178
+                        y: 530
+                        width: 750
+                        height: 55
+                        font.pixelSize: 28
+                        background: Rectangle {
+                            color: "white"
+                        }
+                        placeholderText: "eg: 3"
+
+
+                        onTextChanged: {
+                            // Change text color to black when the text changes
+                            experienceyearfield.color = "black"
+                        }
+
+                    }
+                    Text {
+                        id: experiencedocument
+                        x: 178
+                        y:600
+                        width: 236
+                        height: 32
+                        color: "#6f42c1"
+                        text: qsTr("Experience Document")
+                        font.pixelSize: 24
+                        horizontalAlignment: Text.AlignLeft
+                        verticalAlignment: Text.AlignTop
+                        wrapMode: Text.NoWrap
+                        font.bold: true
+                        font.weight: Font.Normal
+                        font.family: "Times New Roman"
+                    }
+                    TextField {
+                        id: experiencedocumentfield
+                        x: 178
+                        y: 630
+                        width: 750
+                        height: 55
+                        font.pixelSize: 28
+                        background: Rectangle {
+                            color: "white"
+                        }
+                        placeholderText: "link of experienceletter.pdf"
+
+
+                        onTextChanged: {
+                            // Change text color to black when the text changes
+                            experiencedocumentfield.color = "black"
+                        }
+
+                    }
+
+                    Image {
+                        id: next_button4
+                        x: 901
+                        y: 550
+                        width: 83
+                        height: 59
+                        source: "assets/next_button.png"
+                        fillMode: Image.PreserveAspectFit
+                        MouseArea{
+                            anchors.fill: parent
+                            onClicked: {
+                                rectangle_1298.clicked();
+                            }
+                        }
+                    }
+
+
+                }
+                Rectangle{
+                    id: rectangle_5
+                    y: 204
+                    width: 1000
+                    height: 659
+                    color: "#fefdff"
+                    radius: 50
+                    visible: false
+                    anchors.horizontalCenterOffset: 122
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    Text {
+                        id: documents
+                        y: 26
+                        width: 329
+                        height: 36
+                        color: "#15cff1"
+                        text: qsTr("Documents")
+                        font.pixelSize: 30
+                        horizontalAlignment: Text.AlignLeft
+                        verticalAlignment: Text.AlignTop
+                        wrapMode: Text.Wrap
+                        font.weight: Font.Bold
+                        font.family: "Mulish"
+                        anchors.horizontalCenterOffset: 14
+                        anchors.horizontalCenter: parent.horizontalCenter
+                    }
+                    Text {
+                        id: photo
+                        x: 178
+                        y:100
+                        width: 236
+                        height: 32
+                        color: "#6f42c1"
+                        text: qsTr("Photo")
+                        font.pixelSize: 24
+                        horizontalAlignment: Text.AlignLeft
+                        verticalAlignment: Text.AlignTop
+                        wrapMode: Text.NoWrap
+                        font.bold: true
+                        font.weight: Font.Normal
+                        font.family: "Times New Roman"
+                    }
+                    TextField {
+                        id: photofield
+                        x: 178
+                        y: 130
+                        width: 750
+                        height: 55
+                        font.pixelSize: 28
+                        background: Rectangle {
+                            color: "white"
+                        }
+                        placeholderText: "link of photo.jpg"
+
+
+                        onTextChanged: {
+                            // Change text color to black when the text changes
+                            photofield.color = "black"
+                        }
+
+                    }
+                    Text {
+                        id: signature
+                        x: 178
+                        y:200
+                        width: 236
+                        height: 32
+                        color: "#6f42c1"
+                        text: qsTr("Signature")
+                        font.pixelSize: 24
+                        horizontalAlignment: Text.AlignLeft
+                        verticalAlignment: Text.AlignTop
+                        wrapMode: Text.NoWrap
+                        font.bold: true
+                        font.weight: Font.Normal
+                        font.family: "Times New Roman"
+                    }
+                    TextField {
+                        id: signaturefield
+                        x: 178
+                        y: 230
+                        width: 750
+                        height: 55
+                        font.pixelSize: 28
+                        background: Rectangle {
+                            color: "white"
+                        }
+                        placeholderText: "link of signature.jpg"
+
+
+                        onTextChanged: {
+                            // Change text color to black when the text changes
+                            signaturefield.color = "black"
+                        }
+
+                    }
+                    Text {
+                        id: citizenship
+                        x: 178
+                        y:300
+                        width: 236
+                        height: 32
+                        color: "#6f42c1"
+                        text: qsTr("Citizenship")
+                        font.pixelSize: 24
+                        horizontalAlignment: Text.AlignLeft
+                        verticalAlignment: Text.AlignTop
+                        wrapMode: Text.NoWrap
+                        font.bold: true
+                        font.weight: Font.Normal
+                        font.family: "Times New Roman"
+                    }
+                    TextField {
+                        id: citizenshipfrontfield
+                        x: 178
+                        y: 330
+                        width: 750
+                        height: 55
+                        font.pixelSize: 28
+                        background: Rectangle {
+                            color: "white"
+                        }
+                        placeholderText: "link of front page of citizenshipF.jpg"
+
+
+                        onTextChanged: {
+                            // Change text color to black when the text changes
+                            citizenshipfrontfield.color = "black"
+                        }
+
+                    }
+
+                    TextField {
+                        id: citizenshipbackfield
+                        x: 178
+                        y: 400
+                        width: 750
+                        height: 55
+                        font.pixelSize: 28
+                        background: Rectangle {
+                            color: "white"
+                        }
+                        placeholderText: "link of back page of citizenshipB.jpg"
+
+
+                        onTextChanged: {
+                            // Change text color to black when the text changes
+                            citizenshipbackfield.color = "black"
+                        }
+
+                    }
+                    Text {
+                        id: resume
+                        x: 178
+                        y:470
+                        width: 236
+                        height: 32
+                        color: "#6f42c1"
+                        text: qsTr("Resume")
+                        font.pixelSize: 24
+                        horizontalAlignment: Text.AlignLeft
+                        verticalAlignment: Text.AlignTop
+                        wrapMode: Text.NoWrap
+                        font.bold: true
+                        font.weight: Font.Normal
+                        font.family: "Times New Roman"
+                    }
+                    TextField {
+                        id: resumefield
+                        x: 178
+                        y: 500
+                        width: 750
+                        height: 55
+                        font.pixelSize: 28
+                        background: Rectangle {
+                            color: "white"
+                        }
+                        placeholderText: "link of NameCV.pdf"
+
+
+                        onTextChanged: {
+                            // Change text color to black when the text changes
+                            resumefield.color = "black"
+                        }
+
+                    }
+
+                    Button {
+                        id: rectangle_1293
+                        x: 728
+                        y: 573
+                        width: 213
+                        height: 59
+                        text: "Submit"
+                        background: Rectangle {
+                            color: "#96be25"
+                        }
+
+                        font {
+                            pixelSize: 20
+                        }
+                        onClicked: {
+                            // Call C++ method to insert KYC data
+                            if (mydb.insertKYCData(label1.text,
+                                                   fullNameField.text,
+                                                   dateofbirthADfield.text,
+                                                   dateofbirthBSfield.text,
+                                                   genderfield.text,
+                                                   maritalstatusfield.text,
+                                                   addressfield.text,
+                                                   phonenumberfield.text,
+                                                   emaillabel.text,
+                                                   boardnamefield.text,
+                                                   levelfield.text,
+                                                   gpafield.text,
+                                                   facultyfield.text,
+                                                   institutenamefield.text,
+                                                   instituteaddressfield.text,
+                                                   postfield.text,
+                                                   workingfield.text,
+                                                   experienceyearfield.text,
+                                                   experiencedocumentfield.text,
+                                                   photofield.text,
+                                                   signaturefield.text,
+                                                   citizenshipfrontfield.text,
+                                                   citizenshipbackfield.text,
+                                                   resumefield.text))
+                            {
+                                console.log("KYC data submitted successfully")
+                                navigateTo(dashboardpagecomponent)
+                            } else{
+                                label3.text="KYC Not Submitted"
+                                console.log("Failed to submit KYC data")
+                            }
+                        }
+
+                    }
+
                 }
 
                 Image {
                     id: rectangle_60
                     y: 3
-                    width: 1300
-                    height: 148
+                    width: Screen.width
+                    height: 100
                     source: "assets/rectangle_60.png"
                     anchors.horizontalCenterOffset: 0
                     anchors.horizontalCenter: parent.horizontalCenter
+
+
                 }
 
                 Image {
@@ -88,180 +1180,11 @@ Page {
                     y: 3
                     source: "assets/logo_copy_2.png"
                 }
-                TextField {
-                    id: fullNameField
-                    y: 500
-                    width: 750
-                    height: 55
-                    color: "#d9d9d9"
-                    font.pixelSize: 28 // Increase font size to 16 pixels
-
-                    // Set the background color
-                    background: Rectangle {
-                        color: "white" // Set the background color to white
-                    }
-
-                    anchors.horizontalCenterOffset: -93
-                    anchors.horizontalCenter: parent.horizontalCenter
-                }
 
 
-                TextField {
-                    id: addressField
-                    y: 571
-                    width: 750
-                    height: 55
-                    color: "#d9d9d9"
-                    font.pixelSize: 28 // Increase font size to 16 pixels
-
-                    // Set the background color
-                    background: Rectangle {
-                        color: "white" // Set the background color to white
-                    }
-
-                    anchors.horizontalCenterOffset: -93
-                    anchors.horizontalCenter: parent.horizontalCenter
-                }
-
-                TextField {
-                    id: dobField
-                    y: 731
-                    width: 750
-                    height: 55
-                    color: "#d9d9d9"
-                    font.pixelSize: 28 // Increase font size to 16 pixels
-
-                    // Set the background color
-                    background: Rectangle {
-                        color: "white" // Set the background color to white
-                    }
-
-                    anchors.horizontalCenterOffset: -93
-                    anchors.horizontalCenter: parent.horizontalCenter
-                }
-
-                TextField {
-                    id: educationField
-                    y: 651
-                    width: 750
-                    height: 55
-                    color: "#d9d9d9"
-                    font.pixelSize: 28 // Increase font size to 16 pixels
-
-                    // Set the background color
-                    background: Rectangle {
-                        color: "white" // Set the background color to white
-                    }
-
-                    anchors.horizontalCenterOffset: -93
-                    anchors.horizontalCenter: parent.horizontalCenter
-                }
-
-                TextField {
-                    id: experienceField
-                    y: 811
-                    width: 750
-                    height: 55
-                    color: "#d9d9d9"
-                    font.pixelSize: 28 // Increase font size to 16 pixels
-
-                    // Set the background color
-                    background: Rectangle {
-                        color: "white" // Set the background color to white
-                    }
-
-                    anchors.horizontalCenterOffset: -89
-                    anchors.horizontalCenter: parent.horizontalCenter
-                }
 
 
-                Text {
-                    id: address
-                    x: 300
-                    y: 552
-                    width: 80
-                    height: 24
-                    color: "#808081"
-                    text: qsTr("Address")
-                    font.pixelSize: 20
-                    horizontalAlignment: Text.AlignLeft
-                    verticalAlignment: Text.AlignTop
-                    wrapMode: Text.NoWrap
-                    font.weight: Font.Normal
-                    font.family: "Inter"
-                }
 
-                Text {
-                    id: full_Name
-                    x: 300
-                    y: 470
-                    width: 95
-                    height: 24
-                    color: "#808081"
-                    text: qsTr("Full Name")
-                    font.pixelSize: 20
-                    horizontalAlignment: Text.AlignLeft
-                    verticalAlignment: Text.AlignTop
-                    wrapMode: Text.NoWrap
-                    font.weight: Font.Normal
-                    font.family: "Inter"
-                }
-
-
-                Text {
-                    id: date_of_Birth
-                    x: 300
-                    y: 712
-                    width: 122
-                    height: 24
-                    color: "#808081"
-                    text: qsTr("Date of Birth")
-                    font.pixelSize: 20
-                    horizontalAlignment: Text.AlignLeft
-                    verticalAlignment: Text.AlignTop
-                    wrapMode: Text.NoWrap
-                    font.weight: Font.Normal
-                    font.family: "Inter"
-                }
-
-                Text {
-                    id: education
-                    x: 300
-                    y: 632
-                    width: 96
-                    height: 24
-                    color: "#808081"
-                    text: qsTr("Education")
-                    font.pixelSize: 20
-                    horizontalAlignment: Text.AlignLeft
-                    verticalAlignment: Text.AlignTop
-                    wrapMode: Text.NoWrap
-                    font.weight: Font.Normal
-                    font.family: "Inter"
-                }
-
-                Text {
-                    id: experience
-                    x: 300
-                    y: 792
-                    width: 106
-                    height: 24
-                    color: "#808081"
-                    text: qsTr("Experience")
-                    font.pixelSize: 20
-                    horizontalAlignment: Text.AlignLeft
-                    verticalAlignment: Text.AlignTop
-                    wrapMode: Text.NoWrap
-                    font.weight: Font.Normal
-                    font.family: "Inter"
-                }
-
-                Image {
-                    id: home
-                    x: 483
-                    y: 19
-                    source: "assets/home.png"
-                }
 
                 Text {
                     id: search
@@ -331,11 +1254,22 @@ Page {
                     font.capitalization: Font.Capitalize
                 }
 
-                Image {
-                    id: _home_icon_1
-                    x: 455
-                    y: 19
-                    source: "assets/_home_icon_1.png"
+                MouseArea{
+                    Image {
+                        id: _home_icon_1
+                        x: 455
+                        y: 19
+                        source: "assets/_home_icon_1.png"
+                    }
+                    Image {
+                        id: home
+                        x: 483
+                        y: 19
+                        source: "assets/home.png"
+                    }
+                    onClicked: {
+                        navigateTo(homepagecomponent);
+                    }
                 }
 
                 Image {
@@ -419,16 +1353,16 @@ Page {
                 Rectangle {
                     id: rectangle_59
                     x: 0
-                    y: 1161
-                    width: 1300
+                    y: 951
+                    width: Screen.width
                     height: 353
                     color: "#f0ecf9"
                 }
 
                 Text {
                     id: about_JobHub
-                    x: 41
-                    y: 1230
+                    x: 44
+                    y: 1015
                     width: 119
                     height: 23
                     color: "#000000"
@@ -443,8 +1377,8 @@ Page {
 
                 Text {
                     id: job_Seeker
-                    x: 449
-                    y: 1230
+                    x: 452
+                    y: 1015
                     width: 129
                     height: 37
                     color: "#000000"
@@ -459,8 +1393,8 @@ Page {
 
                 Text {
                     id: employer
-                    x: 755
-                    y: 1230
+                    x: 758
+                    y: 1015
                     width: 94
                     height: 23
                     color: "#000000"
@@ -475,15 +1409,15 @@ Page {
 
                 Image {
                     id: jobHub_is_a_dedicated_job_portal_for_IT_and_engineering_jobs_Job
-                    x: 41
-                    y: 1265
+                    x: 44
+                    y: 1050
                     source: "assets/jobHub_is_a_dedicated_job_portal_for_IT_and_engineering_jobs_Job.png"
                 }
 
                 Text {
                     id: create_Account
-                    x: 449
-                    y: 1267
+                    x: 452
+                    y: 1052
                     width: 110
                     height: 23
                     color: "#6f42c1"
@@ -498,8 +1432,8 @@ Page {
 
                 Text {
                     id: create_Account1
-                    x: 755
-                    y: 1268
+                    x: 758
+                    y: 1053
                     width: 109
                     height: 23
                     color: "#6f42c1"
@@ -515,7 +1449,7 @@ Page {
                 Text {
                     id: fAQs1
                     x: 449
-                    y: 1300
+                    y: Screen.width
                     width: 40
                     height: 23
                     color: "#6f42c1"
@@ -530,8 +1464,8 @@ Page {
 
                 Text {
                     id: fAQs2
-                    x: 755
-                    y: 1303
+                    x: 758
+                    y: 1088
                     width: 39
                     height: 23
                     color: "#6f42c1"
@@ -546,8 +1480,8 @@ Page {
 
                 Text {
                     id: terms_Conditions
-                    x: 449
-                    y: 1333
+                    x: 452
+                    y: 1118
                     width: 137
                     height: 23
                     color: "#6f42c1"
@@ -562,8 +1496,8 @@ Page {
 
                 Text {
                     id: review
-                    x: 755
-                    y: 1336
+                    x: 758
+                    y: 1121
                     width: 53
                     height: 23
                     color: "#6f42c1"
@@ -578,8 +1512,8 @@ Page {
 
                 Text {
                     id: feedback
-                    x: 449
-                    y: 1366
+                    x: 452
+                    y: 1151
                     width: 69
                     height: 23
                     color: "#6f42c1"
@@ -594,8 +1528,8 @@ Page {
 
                 Text {
                     id: contact_Us1
-                    x: 1065
-                    y: 1230
+                    x: 1068
+                    y: 1015
                     width: 93
                     height: 23
                     color: "#000000"
@@ -610,8 +1544,8 @@ Page {
 
                 Text {
                     id: jobHub_com
-                    x: 1090
-                    y: 1267
+                    x: 1093
+                    y: 1052
                     width: 86
                     height: 23
                     color: "#6f42c1"
@@ -626,8 +1560,8 @@ Page {
 
                 Text {
                     id: kupondole_Lalitpur_Nepal
-                    x: 1090
-                    y: 1299
+                    x: 1093
+                    y: 1084
                     width: 186
                     height: 23
                     color: "#6f42c1"
@@ -642,8 +1576,8 @@ Page {
 
                 Text {
                     id: xxxxxxxx
-                    x: 1090
-                    y: 1331
+                    x: 1093
+                    y: 1116
                     width: 85
                     height: 23
                     color: "#6f42c1"
@@ -658,8 +1592,8 @@ Page {
 
                 Text {
                     id: xxxxxxxx1
-                    x: 1090
-                    y: 1366
+                    x: 1093
+                    y: 1151
                     width: 85
                     height: 23
                     color: "#6f42c1"
@@ -674,8 +1608,8 @@ Page {
 
                 Text {
                     id: info_JobHub_com
-                    x: 1090
-                    y: 1399
+                    x: 1093
+                    y: 1184
                     width: 127
                     height: 23
                     color: "#6f42c1"
@@ -690,8 +1624,8 @@ Page {
 
                 Text {
                     id: search_Jobs
-                    x: 449
-                    y: 1399
+                    x: 452
+                    y: 1184
                     width: 84
                     height: 23
                     color: "#6f42c1"
@@ -706,116 +1640,72 @@ Page {
 
                 Image {
                     id: logo_copy_1
-                    x: 594
-                    y: 1422
+                    x: 597
+                    y: 1207
                     source: "assets/logo_copy_1.png"
                 }
 
                 Image {
                     id: _app_logo_media_popular_social_icon_1
-                    x: 85
-                    y: 1387
+                    x: 88
+                    y: 1172
                     source: "assets/_app_logo_media_popular_social_icon_1.png"
                 }
 
                 Image {
                     id: _app_instagram_logo_media_popular_icon_1
-                    x: 125
-                    y: 1387
+                    x: 128
+                    y: 1172
                     source: "assets/_app_instagram_logo_media_popular_icon_1.png"
                 }
 
                 Image {
                     id: _circled_media_network_social_social_media_icon_1
-                    x: 166
-                    y: 1387
+                    x: 169
+                    y: 1172
                     source: "assets/_circled_media_network_social_social_media_icon_1.png"
                 }
 
                 Image {
                     id: _fb_facebook_facebook_logo_icon_1
-                    x: 41
-                    y: 1387
+                    x: 44
+                    y: 1172
                     source: "assets/_fb_facebook_facebook_logo_icon_1.png"
                 }
 
                 Image {
                     id: globe_svgrepo_com_1
-                    x: 1063
-                    y: 1270
+                    x: 1066
+                    y: 1055
                     source: "assets/globe_svgrepo_com_1.png"
                 }
 
                 Image {
                     id: _location_on_icon_1
                     x: 1067
-                    y: 1300
+                    y: Screen.width
                     source: "assets/_location_on_icon_1.png"
                 }
 
                 Image {
                     id: _local_phone_icon_1
-                    x: 1063
-                    y: 1367
+                    x: 1066
+                    y: 1152
                     source: "assets/_local_phone_icon_1.png"
                 }
 
                 Image {
                     id: _call_device_mobile_phone_smartphone_icon_2_1
-                    x: 1064
-                    y: 1336
+                    x: 1067
+                    y: 1121
                     source: "assets/_call_device_mobile_phone_smartphone_icon_2_1.png"
                 }
 
                 Image {
                     id: _mail_email_icon_1
-                    x: 1063
-                    y: 1403
+                    x: 1066
+                    y: 1188
                     source: "assets/_mail_email_icon_1.png"
-                }
-
-                Button {
-                    id: rectangle_1293
-                    x: 719
-                    y: 891
-                    width: 213
-                    height: 59
-                    text: "Submit"
-                    background: Rectangle{
-                        color: "#96be25"
-                    }
-
-                    font {
-                        pixelSize: 20
-
-                    }
-                    onClicked: {
-                        // Call C++ method to insert KYC data
-                        if (mydb.insertKYCData(mydb.getUserIdByEmail(0), fullNameField.text, addressField.text, educationField.text, dobField.text, experienceField.text)){
-                            console.log("KYC data submitted successfully");
-                            navigateTo(dashboardpagecomponent);
-
-                        }
-                        else
-                            console.log("Failed to submit KYC data");
-                    }
-                }
-
-                Text {
-                    id: personal_Information
-                    y: 389
-                    width: 329
-                    height: 36
-                    color: "#15cff1"
-                    text: qsTr("Personal Information")
-                    font.pixelSize: 30
-                    horizontalAlignment: Text.AlignLeft
-                    verticalAlignment: Text.AlignTop
-                    wrapMode: Text.Wrap
-                    font.weight: Font.Bold
-                    font.family: "Mulish"
-                    anchors.horizontalCenterOffset: -245
-                    anchors.horizontalCenter: parent.horizontalCenter
                 }
 
 
@@ -827,5 +1717,105 @@ Page {
 
 
 
+    }
+
+    Button {
+        id: rectangle_1294
+        x: 53
+        y: 252
+        width: 213
+        height: 59
+        text: "Personal"
+        font.pixelSize: 28
+        background: Rectangle {
+            color: "#96be25"
+        }
+        onClicked: {
+            rectangle_1.visible = true;
+            rectangle_2.visible = false;
+            rectangle_3.visible = false;
+            rectangle_4.visible = false;
+            rectangle_5.visible = false;
+        }
+    }
+
+    Button {
+        id: rectangle_1295
+        x: 53
+        y: 332
+        width: 213
+        height: 59
+        text: "Contact"
+        font.pixelSize: 28
+        background: Rectangle {
+            color: "#96be25"
+        }
+        onClicked: {
+            rectangle_1.visible = false;
+            rectangle_2.visible = true;
+            rectangle_3.visible = false;
+            rectangle_4.visible = false;
+            rectangle_5.visible = false;
+        }
+    }
+
+    Button {
+        id: rectangle_1296
+        x: 53
+        y: 413
+        width: 213
+        height: 59
+        text: "Education"
+        font.pixelSize: 28
+        background: Rectangle {
+            color: "#96be25"
+        }
+        onClicked: {
+            rectangle_1.visible = false;
+            rectangle_2.visible = false;
+            rectangle_3.visible = true;
+            rectangle_4.visible = false;
+            rectangle_5.visible = false;
+        }
+    }
+
+    Button {
+        id: rectangle_1297
+        x: 53
+        y: 493
+        width: 213
+        height: 59
+        text: "Experience"
+        font.pixelSize: 28
+        background: Rectangle {
+            color: "#96be25"
+        }
+        onClicked: {
+            rectangle_1.visible = false;
+            rectangle_2.visible = false;
+            rectangle_3.visible = false;
+            rectangle_4.visible = true;
+            rectangle_5.visible = false;
+        }
+    }
+
+    Button {
+        id: rectangle_1298
+        x: 53
+        y: 573
+        width: 213
+        height: 59
+        text: "Documents"
+        font.pixelSize: 28
+        background: Rectangle {
+            color: "#96be25"
+        }
+        onClicked: {
+            rectangle_1.visible = false;
+            rectangle_2.visible = false;
+            rectangle_3.visible = false;
+            rectangle_4.visible = false;
+            rectangle_5.visible = true;
+        }
     }
 }

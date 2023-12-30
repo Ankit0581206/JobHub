@@ -1,17 +1,14 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
-import "." as Globals
+
 
 Page {
     id: registerPage
-    width: 1440
+    width: Screen.width
     height: 900
     title: "Register Page"
-    /*property alias password_HintText: hintField.text
-    property alias passwordText: password.text
-    property alias registerText: register.text
-    property alias emailText: email.text*/
+
     ScrollView {
         id: scrollview
         anchors.fill: parent
@@ -28,18 +25,18 @@ Page {
                 id: rectangle
                 x: 0
                 y: 113
-                width: 1440
+                width: Screen.width
                 height: 787
                 color: "#6f42c1"
 
                 Button {
-                    x: 1229
-                    y: 186
+                    x: 835
+                    y: 127
                     width: 79
                     height: 37
                     text: "Login"
                     background: Rectangle {
-                        color: "#96be25" // You can replace "green" with any valid color string
+                        color: "#96be25"
                     }
                     onClicked: {
                         navigateTo(loginpagecomponent);
@@ -48,8 +45,8 @@ Page {
 
                 Text {
                     id: text1
-                    x: 1105
-                    y: 194
+                    x: 703
+                    y: 138
                     width: 261
                     height: 50
                     text: qsTr("ALREADY A USER?")
@@ -75,10 +72,10 @@ Page {
 
             Text {
                 id: register
-                x: 224
-                y: 154
-                width: 255
-                height: 90
+                x: 134
+                y: 145
+                width: 479
+                height: 75
                 color: "#15cff1"
                 text: qsTr("Register For Employers\n")
                 font.pixelSize: 40
@@ -91,16 +88,6 @@ Page {
                 font.weight: Font.Bold
             }
 
-            //    TextField {
-            //        id: emailField
-            //        x: 134
-            //        y: 269
-            //        width: 433
-            //        height: 61
-
-            //        color: "#6f42c1"
-            //        placeholderText: "Email"
-            //    }
             Rectangle {
                 x: 134
                 y: 269
@@ -132,35 +119,36 @@ Page {
                     font.capitalization: Font.MixedCase
                     placeholderTextColor: "#a0a0a1"
                     clip: true
-                    //                                            Text {
-                    //                                                id: email_address
-                    //                                                x: 32
-                    //                                                y: 12
-                    //                                                width: 248
-                    //                                                height: 27
-                    //                                                color: "#808081"
-                    //                                                text: qsTr("Email address")
-                    //                                                font.pixelSize: 20
-                    //                                                horizontalAlignment: Text.AlignLeft
-                    //                                                verticalAlignment: Text.AlignTop
-                    //                                                wrapMode: Text.Wrap
-                    //                                                font.weight: Font.Light
-                    //                                                font.family: "Mulish"
-                    //                                            }
+
                 }
 
             }
+            Button {
+                x: 273
+                y: 687
+                width: 156
+                height: 50
+                text: "Register"
+                background: Rectangle {
+                    color: "#96be25"
+                }
+                onClicked: {
+                    console.log("Attempting registration with values:", emailField.text, passworddField.text, hintField.text);
+                    if(mydb.isValidEmail(emailField.text)===false){
+                        label.text="Invalid Email Format"
+                    }
+                    // Call C++ method to register user
+                    if (mydb.registerEmployer(emailField.text, passworddField.text, hintField.text)){
+                        console.log("Registration successful");
+                        //                    StackView.push(loginpagecomponent.createObject())
+                        navigateTo(loginpagecomponentemployer);
+                    }
+                    else
+                        console.log("Registration failed");
+                }
+            }
 
-            //    TextField {
-            //        id: passwordField
-            //        x: 134
-            //        y: 403
-            //        width: 433
-            //        height: 67
-            //        color: "#d9d9d9"
-            //        placeholderText: "Password"
-            //        echoMode: TextInput.Password
-            //    }
+
             Rectangle {
                 x: 134
                 y: 403
@@ -174,7 +162,7 @@ Page {
 
                 TextField {
                     anchors.fill: parent
-                    id: passwordField
+                    id: passworddField
                     x: 0
                     y: 0
                     width: parent.width
@@ -192,35 +180,21 @@ Page {
                     font.capitalization: Font.MixedCase
                     placeholderTextColor: "#a0a0a1"
                     clip: true
-                    //                                            Text {
-                    //                                                id: email_address
-                    //                                                x: 32
-                    //                                                y: 12
-                    //                                                width: 248
-                    //                                                height: 27
-                    //                                                color: "#808081"
-                    //                                                text: qsTr("Email address")
-                    //                                                font.pixelSize: 20
-                    //                                                horizontalAlignment: Text.AlignLeft
-                    //                                                verticalAlignment: Text.AlignTop
-                    //                                                wrapMode: Text.Wrap
-                    //                                                font.weight: Font.Light
-                    //                                                font.family: "Mulish"
-                    //                                            }
+                    echoMode: TextInput.Password
+                    Text {
+                        id: passwordDisplay
+                        text: passwordField.text.length > 0 ? "*".repeat(passwordField.text.length) : ""
+                        verticalAlignment: Text.AlignVCenter
+                        font.pointSize: 12
+                        font.family: "Times New Roman"
+                    }
+
                 }
 
             }
 
 
-            //    TextField {
-            //        id: hintField
-            //        x: 134
-            //        y: 537
-            //        width: 433
-            //        height: 67
-            //        color: "#d9d9d9"
-            //        placeholderText: "Hint"
-            //    }
+
             Rectangle {
                 x: 134
                 y: 537
@@ -252,24 +226,24 @@ Page {
                     font.capitalization: Font.MixedCase
                     placeholderTextColor: "#a0a0a1"
                     clip: true
-                    //                                            Text {
-                    //                                                id: email_address
-                    //                                                x: 32
-                    //                                                y: 12
-                    //                                                width: 248
-                    //                                                height: 27
-                    //                                                color: "#808081"
-                    //                                                text: qsTr("Email address")
-                    //                                                font.pixelSize: 20
-                    //                                                horizontalAlignment: Text.AlignLeft
-                    //                                                verticalAlignment: Text.AlignTop
-                    //                                                wrapMode: Text.Wrap
-                    //                                                font.weight: Font.Light
-                    //                                                font.family: "Mulish"
-                    //                                            }
+
                 }
 
             }
+            Label {
+                id: label
+                x: 296
+                y: 342
+                width: 253
+                height: 28
+                color:"Red"
+                verticalAlignment: "AlignVCenter"
+                horizontalAlignment: "AlignHCenter"
+                text: qsTr("")
+                 font.pixelSize: 18
+            }
+
+
             Image {
                 id: _back_arrow_left_icon_1_1
                 anchors.left: parent.left
@@ -282,7 +256,7 @@ Page {
                           anchors.fill: parent // Fill the entire rectangle with the MouseArea
                           onClicked: {
                               // Call a function to navigate to the kycpagecomponent
-                              navigateTo(homepagecomponent);// This function should handle navigation
+                              navigateTo(homepagecomponent);// This function handle navigation
                           }
                       }
             }
@@ -336,24 +310,22 @@ Page {
             }
 
             Button {
-                x: 273
-                y: 687
-                width: 156
-                height: 50
-                text: "Register"
+                x: 526
+                y: 403
+                width: 41
+                height: 67
+                text: "show"
                 background: Rectangle {
-                    color: "#96be25" // You can replace "green" with any valid color string
+                    color: "transparent"
                 }
                 onClicked: {
-                    console.log("Attempting registration with values:", emailField.text, passwordField.text, hintField.text);
-                    // Call C++ method to register user
-                    if (mydb.registerEmployer(emailField.text, passwordField.text, hintField.text)){
-                        console.log("Registration successful");
-                        //                    StackView.push(loginpagecomponent.createObject())
-                        navigateTo(loginpagecomponentemployer);
+                    if (passworddField.echoMode === TextField.Password) {
+                        passworddField.echoMode = TextField.Normal; // Display actual text
+                        text = "Hide";
+                    } else {
+                        passworddField.echoMode = TextField.Password; // Display asterisks
+                        text = "Show";
                     }
-                    else
-                        console.log("Registration failed");
                 }
             }
         }

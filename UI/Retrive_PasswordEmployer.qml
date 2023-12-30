@@ -4,7 +4,7 @@ import QtQuick.Controls 2.15
 
 
 Rectangle {
-    id: retrive_Password
+    id: retrivepasswordemployer
     width: Screen.width
     height: 1024
     color: "#ffffff"
@@ -135,7 +135,7 @@ Rectangle {
                     anchors.fill: parent // Fill the entire rectangle with the MouseArea
                     onClicked: {
                         // Call a function to navigate to the kycpagecomponent
-                        navigateTo(loginpagecomponent);// This function  handle navigation
+                        navigateTo(loginpagecomponentemployer);// This function handle navigation
                     }
                 }
             }
@@ -169,7 +169,7 @@ Rectangle {
                     leftInset: 0
                     topInset: 0
 
-                    // Make the TextField transparent
+
                     font.family: "Times New Roman"
                     font.pointSize: 22
                     placeholderTextColor: "#a0a0a1"
@@ -208,7 +208,7 @@ Rectangle {
                     leftInset: 0
                     topInset: 0
 
-
+                    // Make the TextField transparent
                     font.family: "Times New Roman"
                     font.pointSize: 22
                     placeholderTextColor: "#a0a0a1"
@@ -240,9 +240,9 @@ Rectangle {
 
                 onClicked: {
                     mydb.storeCurrentEmail(rectangle_1287.text);
-                    if(rectangle_1287.text===mydb.retrieveUser(mydb.getUserIdByEmail(0),"email") && rectangle_1288.text === mydb.retrieveUser(mydb.getUserIdByEmail(0),"phint") ){
+                    if(rectangle_1287.text===mydb.retrieveEmployer(mydb.getUserIdByEmail(1),"email") && rectangle_1288.text === mydb.retrieveEmployer(mydb.getUserIdByEmail(1),"phint") ){
                         label.visible = true
-                        label1.text=mydb.retrieveUser(mydb.getUserIdByEmail(0),"password")
+                        label1.text=mydb.retrieveEmployer(mydb.getUserIdByEmail(1),"password")
                     }
                     else{
                         label1.visible =true
@@ -301,21 +301,13 @@ Rectangle {
                 anchors.left: parent.left
                 anchors.top: parent.top
                 source: "assets/image_removebg_preview_1_1.png"
-                anchors.topMargin: 111
-                anchors.leftMargin: 708
+                anchors.topMargin: 83
+                anchors.leftMargin: 715
             }
         }
-
 
 
 
     }
 }
 
-
-
-/*##^##
-Designer {
-    D{i:0;uuid:"f1bb3bb6-3db2-5459-b5c3-506e4070b6df"}
-}
-##^##*/

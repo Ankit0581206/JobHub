@@ -5,50 +5,16 @@ import QtQuick.Layouts 1.0
 
 Page {
     id: admin_page
-    width: 1300
+    width: Screen.width
     height: 2780
     Rectangle{
-        width: 1300
+        width: Screen.width
         height: 2780
         color: "#6f42c1"
 
     }
 
-    /*property alias catagoryText: catagory.text
-    property alias aboutText: about.text
-    property alias info_JobHub_comText: info_JobHub_com.text
-    property alias job_SeekerText: job_Seeker.text
-    property alias preferred_Work_LocationText: preferred_Work_Location.text
-    property alias post_a_New_JobText: post_a_New_Job.text
-    property alias contact_Us1Text: contact_Us1.text
-    property alias preferred_LocationText: preferred_Location.text
-    property alias minimum_Job_ExperienceText: minimum_Job_Experience.text
-    property alias searchText: search.text
-    property alias select_a_job_category_Text: select_a_job_category_.text
-    property alias job_TitleText: job_Title.text
-    property alias xxxxxxxxText: xxxxxxxx.text
-    property alias job_DescriptonText: job_Descripton.text
-    property alias fAQsText: fAQs.text
-    property alias sign_inText: sign_in.text
-    property alias current_Company_optional_Text: current_Company_optional_.text
-    property alias application_DeadlineText: application_Deadline.textuut
-    property alias jobHub_comText: jobHub_com.text
-    property alias registerText: register.text
-    property alias search_JobsText: search_Jobs.text
-    property alias eg_Front_End_developerText: eg_Front_End_developer.text
-    property alias employerText: employer.text
-    property alias feedbackText: feedback.text
-    property alias fAQs1Text: fAQs1.text
-    property alias kupondole_Lalitpur_NepalText: kupondole_Lalitpur_Nepal.text
-    property alias reviewText: review.text
-    property alias contact_UsText: contact_Us.text
-    property alias terms_ConditionsText: terms_Conditions.text
-    property alias create_AccountText: create_Account.text
-    property alias create_Account1Text: create_Account1.text
-    property alias fAQs2Text: fAQs2.text
-    property alias xxxxxxxx1Text: xxxxxxxx1.text
-    property alias about_JobHubText: about_JobHub.text
-    property alias academic_QualificationsText: academic_Qualifications.text*/
+
     ScrollView {
         id: scrollview
         anchors.fill: parent
@@ -64,10 +30,10 @@ Page {
             Image {
                 id: rectangle_60
                 y: 0
-                width: 1300
+                width: Screen.width
                 height: 148
                 source: "assets/rectangle_60.png"
-                anchors.horizontalCenterOffset: -118
+                anchors.horizontalCenterOffset: -2
                 anchors.horizontalCenter: parent.horizontalCenter
             }
 
@@ -78,7 +44,7 @@ Page {
             Image {
                 id: logo_copy_2
                 x: 0
-                y: 0
+                y: 30
                 source: "assets/logo_copy_2.png"
             }
 
@@ -87,7 +53,7 @@ Page {
                 id: rectangle_59
                 x: -2
                 y: 2426
-                width: 1300
+                width: Screen.width
                 height: 353
                 color: "#f0ecf9"
             }
@@ -205,13 +171,13 @@ Page {
                 anchors.topMargin: 200
                 anchors.leftMargin: 15
                 MouseArea {
-                          id: mouseAreaForEmployee
-                          anchors.fill: parent // Fill the entire rectangle with the MouseArea
-                          onClicked: {
-                              // Call a function to navigate to the kycpagecomponent
-                              navigateTo(dashboardpagecomponent);// This function should handle navigation
-                          }
-                      }
+                    id: mouseAreaForEmployee
+                    anchors.fill: parent // Fill the entire rectangle with the MouseArea
+                    onClicked: {
+                        // Call a function to navigate to the kycpagecomponent
+                        navigateTo(dashboardpagecomponent);// This function should handle navigation
+                    }
+                }
             }
 
             Text {
@@ -465,14 +431,14 @@ Page {
             Image {
                 id: home
                 x: 413
-                y: 16
+                y: 16+30
                 source: "assets/home.png"
             }
 
             Text {
                 id: search
                 x: 508
-                y: 16
+                y: 16+30
                 width: 59
                 height: 23
                 color: "#808081"
@@ -489,7 +455,7 @@ Page {
             Text {
                 id: fAQs
                 x: 611
-                y: 16
+                y: 16+30
                 width: 48
                 height: 23
                 color: "#808081"
@@ -506,7 +472,7 @@ Page {
             Text {
                 id: contact_Us
                 x: 703
-                y: 16
+                y: 16+30
                 width: 105
                 height: 23
                 color: "#808081"
@@ -523,7 +489,7 @@ Page {
             Text {
                 id: about
                 x: 852
-                y: 16
+                y: 16+30
                 width: 56
                 height: 23
                 color: "#808081"
@@ -540,42 +506,42 @@ Page {
             Image {
                 id: _home_icon_1
                 x: 385
-                y: 16
+                y: 16+30
                 source: "assets/_home_icon_1.png"
             }
 
             Image {
                 id: _search_strong_icon_1_1
                 x: 484
-                y: 16
+                y: 16+30
                 source: "assets/_search_strong_icon_1_1.png"
             }
 
             Image {
                 id: _help_question_icon_1
                 x: 593
-                y: 18
+                y: 16+30
                 source: "assets/_help_question_icon_1.png"
             }
 
             Image {
                 id: _local_phone_icon_1_1
                 x: 685
-                y: 19
+                y: 16+30
                 source: "assets/_local_phone_icon_1_1.png"
             }
 
             Image {
                 id: _about_info_information_help_ui_icon_1
                 x: 832
-                y: 16
+                y: 16+30
                 source: "assets/_about_info_information_help_ui_icon_1.png"
             }
 
             Rectangle {
                 id: rectangle_29
                 x: 952
-                y: 11
+                y: 14+30
                 width: 80
                 height: 35
                 color: "#f0ecf9"
@@ -597,7 +563,7 @@ Page {
             Text {
                 id: sign_in
                 x: 968
-                y: 19
+                y: 19+30
                 width: 48
                 height: 19
                 color: "#000000"
@@ -635,7 +601,7 @@ Page {
                 width: 995
                 height: 2126
                 source: "assets/rectangle_58.png"
-                anchors.horizontalCenterOffset: -133
+                anchors.horizontalCenterOffset: -48
                 anchors.horizontalCenter: parent.horizontalCenter
 
                 Button {
@@ -657,16 +623,15 @@ Page {
                         var userId = mydb.getUserIdByEmail(1);
                         mydb.insertJob(mydb.getEmail(), jobtitleField.text, jobcategoryField.text , degree.text, joblevel.text, jobeducationField.text, jobexperienceField.text, joblocationField.text, jobdeadlineField.text, jobdescriptionField.text, educational_preference.text, number_of_vacancy.text,salary.text, userId);
                         navigateTo(dashboardpagecomponent);
-                    }//Q_INVOKABLE bool insertJob(const QString& email, const QString& jobtitle, const QString& catagory, const QString& degree, const QString& job_level, const QString& academics, const QString& minimumjob, const QString& location, const QString& deadline, const QString& description, const QString& education, const QString& vacancies, const QString& salary, const QString& employer_id) {
-
+                    }
                 }
 
             }
 
             Text {
                 id: minimum_Job_Experience
-                x: 234
-                y: 744
+                x: 237
+                y: 729
                 width: 528
                 height: 50
                 color: "#000000"
@@ -683,7 +648,7 @@ Page {
             Text {
                 id: application_Deadline
                 x: 234
-                y: 1043
+                y: 1029
                 width: 460
                 height: 50
                 color: "#000000"
@@ -699,8 +664,8 @@ Page {
 
             Text {
                 id: preferred_Location
-                x: 234
-                y: 894
+                x: 237
+                y: 880
                 width: 414
                 height: 49
                 color: "#000000"
@@ -716,12 +681,12 @@ Page {
 
             Text {
                 id: job_Descripton
-                x: 225
-                y: 1192
+                x: 237
+                y: 1181
                 width: 352
                 height: 50
                 color: "#000000"
-                text: qsTr(" Job Descripton")
+                text: qsTr("Job Descripton")
                 font.pixelSize: 40
                 horizontalAlignment: Text.AlignLeft
                 verticalAlignment: Text.AlignTop
@@ -733,11 +698,11 @@ Page {
             Text {
                 id: educational_Preference
                 x: 234
-                y: 1455
+                y: 1445
                 width: 494
                 height: 50
                 color: "#000000"
-                text: qsTr(" Educational Preference")
+                text: qsTr("Educational Preference")
                 font.pixelSize: 40
                 horizontalAlignment: Text.AlignLeft
                 verticalAlignment: Text.AlignTop
@@ -749,8 +714,8 @@ Page {
 
             Text {
                 id: academic_Qualifications
-                x: 234
-                y: 595
+                x: 237
+                y: 581
                 width: 525
                 height: 50
                 color: "#000000"
@@ -765,8 +730,8 @@ Page {
             }
             Text {
                 id: number_of_vacancy1
-                x: 234
-                y: 1606
+                x: 237
+                y: 1597
                 width: 494
                 height: 46
                 color: "#000000"
@@ -782,7 +747,7 @@ Page {
             Text {
                 id:salary1
                 x: 237
-                y: 1756
+                y: 1745
                 width: 494
                 height: 51
                 color: "#000000"
@@ -797,8 +762,8 @@ Page {
             }
             Text {
                 id:degree1
-                x: 234
-                y: 1903
+                x: 237
+                y: 1891
                 width: 494
                 height: 51
                 color: "#000000"
@@ -813,8 +778,8 @@ Page {
             }
             Text {
                 id:joblevel1
-                x: 234
-                y: 2049
+                x: 237
+                y: 2041
                 width: 494
                 height: 51
                 color: "#000000"
@@ -848,8 +813,8 @@ Page {
 
             Text {
                 id: job_Title
-                x: 234
-                y: 294
+                x: 237
+                y: 277
                 width: 218
                 height: 50
                 color: "#000000"
@@ -865,8 +830,8 @@ Page {
 
             Text {
                 id: catagory
-                x: 234
-                y: 439
+                x: 237
+                y: 427
                 width: 240
                 height: 50
                 color: "#000000"
@@ -903,7 +868,7 @@ Page {
                     }
                 }
 
-                //'here's code
+
                 TextField {
                     id: jobcategoryField
 

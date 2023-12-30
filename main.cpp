@@ -3,6 +3,7 @@
 #include <QCoreApplication>
 #include <QQmlContext>
 #include <QStringList>
+#include <QRegularExpression>
 
 #include <QSqlDatabase>
 #include <QSqlDriver>
@@ -20,7 +21,7 @@
 #include<QWidget>
 #include <QMetaType>
 #include <QVariant>
-// ...
+
 
 
 
@@ -32,6 +33,8 @@ private:
     QString logInUserId;
     QString EmployerId;
     QString JobId;
+    QString Search;
+    QString reviewemail;
 
 
 
@@ -46,7 +49,7 @@ public:
         {
             QSqlDatabase db = QSqlDatabase::addDatabase(DRIVER);
 
-            db.setDatabaseName("C:/Users/adity/Qttest/credential.db");
+            db.setDatabaseName("C:/Users/ankar/OneDrive/Documents/GitHub/Database/myDatabase.db");
 
             if(!db.open())
                 qWarning() << "DatabaseConnect - ERROR: " << db.lastError().text();
@@ -60,34 +63,26 @@ public:
                    "phint TEXT,"
                    "fullName TEXT,"
                    "address TEXT,"
-                   "dob DATETIME,"
-                   "gender TEXT CHECK (gender IN ('male', 'female', 'others')),"
-                   "marital_status TEXT CHECK (marital_status IN ('married', 'unmarried')),"
+                   "dobA TEXT,"
+                   "dobB TEXT,"
+                   "gender TEXT,"
+                   "marital_status TEXT,"
                    "phone_number TEXT,"
-                   "education_level TEXT CHECK (education_level IN ('SLC/SEE', '+2', 'Diploma', 'Bachelors', 'Masters', 'PhD')),"
-                   "degree_name TEXT,"
-                   "running TEXT CHECK (running IN ('yes', 'no')),"
-                   "institute_name TEXT,"
+                   "board_name TEXT,"
+                   "education_level TEXT,"
                    "gpa_or_percentage TEXT,"
-                   "experience_org_name TEXT,"
-                   "experience_org_address TEXT,"
-                   "num_experience_years INTEGER,"
-                   "working TEXT CHECK (working IN ('yes', 'no')),"
-                   "designation TEXT,"
-                   "freelancing_1_title TEXT,"
-                   "freelancing_1_link TEXT,"
-                   "freelancing_2_title TEXT,"
-                   "freelancing_2_link TEXT,"
-                   "freelancing_3_title TEXT,"
-                   "freelancing_3_link TEXT,"
-                   "social_link_1 TEXT,"
-                   "social_link_2 TEXT,"
-                   "social_link_3 TEXT,"
-                   "social_link_4 TEXT,"
-                   "social_link_5 TEXT,"
+                   "faculty TEXT,"
+                   "company_name TEXT,"
+                   "company_address TEXT,"
+                   "post TEXT,"
+                   "working_field TEXT,"
+                   "experience_years INTEGER,"
+                   "experience_letter TEXT,"
                    "photo_link TEXT,"
-                   "resume_link TEXT,"
-                   "recommendation_letter_link TEXT"
+                   "signature_link TEXT,"
+                   "citizenshipf_link TEXT,"
+                   "citizenshipb_link TEXT,"
+                   "resume_link TEXT"
                    ")");
         //for employer
         if (!query.exec("CREATE TABLE IF NOT EXISTS Employer ("
@@ -130,8 +125,178 @@ public:
                    "    job_level TEXT,"
                    "    serialNumber INTEGER PRIMARY KEY"
                    ");");
+         query.exec("CREATE TABLE AppliedJobs (job_id INTEGER, employer_id INTEGER, user_id INTEGER, status TEXT, applicationId INTEGER PRIMARY KEY AUTOINCREMENT);");
 
     }
+
+    Q_INVOKABLE QString retrieveUser(const QString &user_id, const QString &whatINeed) {
+         QSqlQuery query;
+         query.prepare("SELECT * FROM Users WHERE user_id = :user_id");
+         query.bindValue(":user_id", user_id);
+
+         if (query.exec()) {
+            if (query.next()) {
+                if (whatINeed == "user_id") {
+                    QString value = query.value("user_id").toString();
+                    return value;
+                }
+                if (whatINeed == "email") {
+                    QString value = query.value("email").toString();
+                    return value;
+                }
+                if (whatINeed == "password") {
+                    QString value = query.value("password").toString();
+                    return value;
+                }
+                if (whatINeed == "phint") {
+                    QString value = query.value("phint").toString();
+                    return value;
+                }
+                if (whatINeed == "fullName") {
+                    QString value = query.value("fullName").toString();
+                    return value;
+                }
+                if (whatINeed == "address") {
+                    QString value = query.value("address").toString();
+                    return value;
+                }
+                if (whatINeed == "dobA") {
+                    QString value = query.value("dobA").toString();
+                    return value;
+                }
+                if (whatINeed == "dobB") {
+                    QString value = query.value("dobB").toString();
+                    return value;
+                }
+                if (whatINeed == "gender") {
+                    QString value = query.value("gender").toString();
+                    return value;
+                }
+                if (whatINeed == "marital_status") {
+                    QString value = query.value("marital_status").toString();
+                    return value;
+                }
+                if (whatINeed == "phone_number") {
+                    QString value = query.value("phone_number").toString();
+                    return value;
+                }
+                if (whatINeed == "education_level") {
+                    QString value = query.value("education_level").toString();
+                    return value;
+                }
+                if (whatINeed == "board_name") {
+                    QString value = query.value("board_name").toString();
+                    return value;
+                }
+                if (whatINeed == "gpa_or_percentage") {
+                    QString value = query.value("gpa_or_percentage").toString();
+                    return value;
+                }
+                if (whatINeed == "faculty") {
+                    QString value = query.value("faculty").toString();
+                    return value;
+                }
+                if (whatINeed == "company_name") {
+                    QString value = query.value("company_name").toString();
+                    return value;
+                }
+
+
+                if (whatINeed == "company_address") {
+                    QString value = query.value("company_address").toString();
+                    return value;
+                }
+                if (whatINeed == "post") {
+                    QString value = query.value("post").toString();
+                    return value;
+                }
+                if (whatINeed == "working_field") {
+                    QString value = query.value("working_field").toString();
+                    return value;
+                }
+                if (whatINeed == "experience_years") {
+                    QString value = query.value("experience_years").toString();
+                    return value;
+                }
+
+                if (whatINeed == "experience_letter") {
+                    QString value = query.value("experience_letter").toString();
+                    return value;
+                }
+
+                if (whatINeed == "photo_link") {
+                    QString value = query.value("photo_link").toString();
+                    return value;
+                }
+                if (whatINeed == "signature_link") {
+                    QString value = query.value("signature_link").toString();
+                    return value;
+                }
+                if (whatINeed == "citizenshipf_link") {
+                    QString value = query.value("citizenshipf_link").toString();
+                    return value;
+                }
+                if (whatINeed == "citizenshipb_link") {
+                    QString value = query.value("citizenshipb_link").toString();
+                    return value;
+                }
+                if (whatINeed == "resume_link") {
+                    QString value = query.value("resume_link").toString();
+                    return value;
+                }
+            }
+         }
+        return ""; // Return an empty string if there's an issue with the query or if the column is not found
+    }
+
+    Q_INVOKABLE QString retrievePosted(const QString &applicationId, const QString &whatINeed) {
+         QSqlQuery query;
+         query.prepare("SELECT * FROM AppliedJobs  WHERE applicationId = :applicationId ORDER BY applicationId ASC");
+         query.bindValue(":applicationId", applicationId);
+         if (query.exec()) {
+            if (query.next()) {
+                if(whatINeed=="job_id"){
+                    QString value = query.value("job_id").toString();
+                    return value;
+                }
+                if(whatINeed=="employer_id"){
+                    QString value = query.value("employer_id").toString();
+                    return value;
+                }
+                if(whatINeed=="user_id"){
+                    QString value = query.value("user_id").toString();
+                    return value;
+                }
+                if(whatINeed=="status"){
+                    QString value = query.value("status").toString();
+                    return value;
+                }
+
+            }
+         }
+
+         return ""; // Return an empty string if there's an issue with the query
+    }
+
+    Q_INVOKABLE QStringList getAllAppliedJobsByEmployer(const QString& employerId) {
+         QStringList applicationIds;
+         QSqlQuery query;
+
+         query.prepare("SELECT applicationId FROM AppliedJobs WHERE employer_id = :employer_id ORDER BY applicationId DESC");
+         query.bindValue(":employer_id", employerId);
+
+         if (query.exec()) {
+            while (query.next()) {
+                QString applicationId = query.value("applicationId").toString();
+                applicationIds.append(applicationId);
+            }
+         } else {
+            qWarning() << "MyDatabase::getAllAppliedJobsByEmployer - ERROR: " << query.lastError().text();
+         }
+
+         return applicationIds;
+    }
+
     Q_INVOKABLE QString getUserIdByEmail(int x) {
         QString email = semail;
         QSqlQuery query;
@@ -165,7 +330,7 @@ public:
                 return QString(); // Return an empty string if no user ID found for the given email
             }
         }
- }
+    }
 
  //just for trying
     Q_INVOKABLE QStringList getAllJobIdsByEmployer(const QString& employerId) {
@@ -187,6 +352,29 @@ public:
         return jobIds;
     }
 
+
+
+    Q_INVOKABLE QStringList getJobIdsByCategory(const QString& searchText) {
+        QStringList jobIds;
+        QSqlQuery query;
+
+        // Modify the SQL query to search in the category column
+        query.prepare("SELECT job_id FROM JobPosted WHERE job_title LIKE :searchText ORDER BY serialNumber DESC");
+        query.bindValue(":searchText", "%" + searchText + "%"); // Using '%' for a partial match
+
+        if (query.exec()) {
+            while (query.next()) {
+                QString jobId = query.value("job_id").toString();
+                jobIds.append(jobId);
+            }
+        } else {
+            qWarning() << "MyDatabase::getJobIdsByCategory - ERROR: " << query.lastError().text();
+        }
+
+        return jobIds;
+    }
+
+
     Q_INVOKABLE QStringList getAllJobIdsAvailable() {
         QStringList jobIds;
         QSqlQuery query;
@@ -205,6 +393,21 @@ public:
         return jobIds;
     }
 
+    //applyJob(jobIdSave,userId)
+    Q_INVOKABLE bool applyJob(const QString& jobId, const QString& userId){
+        QSqlQuery query;
+        query.prepare("INSERT INTO AppliedJobs (job_id, employer_id, user_id) VALUES (:jobId, :employerId, :userId) ");
+        query.bindValue(":jobId", jobId);
+        query.bindValue(":employerId",  retrieveJob(jobId,"employer_id"));
+        query.bindValue(":userId", userId);
+
+        if (!query.exec()) {
+            qWarning() << "MyDatabase::applyJob - ERROR: " << query.lastError().text();
+            return false;
+        }
+
+        return true;
+    }
 
 Q_INVOKABLE bool insertJob(const QString& email, const QString& jobtitle, const QString& catagory, const QString& degree, const QString& job_level, const QString& academics, const QString& minimumjob, const QString& location, const QString& deadline, const QString& description, const QString& education, const QString& vacancies, const QString& salary,const QString &employer_id ) {
         QSqlQuery query;
@@ -251,10 +454,10 @@ Q_INVOKABLE bool insertJob(const QString& email, const QString& jobtitle, const 
         bool loginSuccessful = query.next();  // Use query.next() instead of query.first() for correctness.
 
         if (loginSuccessful) {
-            //QMessageBox::information(nullptr, "Login", "Login Successful");
+
             return true;
         } else {
-            //QMessageBox::information(nullptr, "Login", "Invalid Credentials");
+
             return false;
         }
     }
@@ -262,6 +465,17 @@ Q_INVOKABLE bool insertJob(const QString& email, const QString& jobtitle, const 
     Q_INVOKABLE void storeCurrentEmail(const QString& email) {
         semail=email;
     }
+    Q_INVOKABLE void storeReviewEmail(const QString& email) {
+        reviewemail=email;
+    }
+
+    Q_INVOKABLE void storeSearchedText(const QString& searchedtext) {
+        Search=searchedtext;
+    }
+    Q_INVOKABLE QString getSearchedText(){
+        return Search;
+    }
+
     Q_INVOKABLE bool deleteJobById(const QString &jobId)
     {
         QSqlDatabase::database().transaction();
@@ -306,32 +520,30 @@ Q_INVOKABLE bool insertJob(const QString& email, const QString& jobtitle, const 
             return false;
         }
     }
-  //  Q_INVOKABLE bool authenticateUserEmployer(const QString &email, const QString &password) {
-       // QSqlQuery query;
-       // query.prepare("SELECT * FROM employer WHERE email = :email AND password = :password");
-       // query.bindValue(":email", email);
-        //query.bindValue(":password", password);
-
-       // if (!query.exec()) {
-       //     qWarning() << "MyDatabase::authenticateUserEmployer - ERROR: " << query.lastError().text();
-       //     return false;
-       // }
-
-       // bool loginSuccessful = query.next();
-
-       // if (loginSuccessful) {
-       //     return true;
-       // } else {
-       //     return false;
-       // }
-   // }
-
-
 
 
     Q_INVOKABLE QString getEmail(){
         return semail;
     }
+    Q_INVOKABLE QString getReviewUserIdByEmail() {
+        QString email = reviewemail;
+        QSqlQuery query;
+        query.prepare("SELECT user_id FROM Users WHERE email = :email");
+        query.bindValue(":email", email);
+
+        if (!query.exec()) {
+            qWarning() << "MyDatabase::getReviewUserIdByEmail - ERROR: " << query.lastError().text();
+            return QString(); // Return an empty string on error
+        }
+
+        if (query.next()) {
+            return query.value("user_id").toString();
+        } else {
+            return QString(); // Return an empty string if no user ID found for the given email
+        }
+    }
+
+
 
 
     //this one is for the top jobs section where all the new job id is required
@@ -369,28 +581,19 @@ Q_INVOKABLE bool insertJob(const QString& email, const QString& jobtitle, const 
 
 
 
-    Q_INVOKABLE QString getUserIdByEmail() {
-        QString email = semail;
-        QSqlQuery query;
-        query.prepare("SELECT user_id FROM Users WHERE email = :email");
-        query.bindValue(":email", email);
 
-        if (!query.exec()) {
-            qWarning() << "MyDatabase::getUserIdByEmail - ERROR: " << query.lastError().text();
-            return QString(); // Return an empty string on error
-        }
-
-        if (query.next()) {
-            return query.value("user_id").toString();
-        } else {
-            return QString(); // Return an empty string if no user ID found for the given email
-        }
+    Q_INVOKABLE bool isValidEmail(const QString& email) {
+        static QRegularExpression emailRegex(R"([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})");
+        return emailRegex.match(email).hasMatch();
     }
 
-
     Q_INVOKABLE bool registerUser(const QString& email, const QString& password, const QString& phint) {
+        // Validate the email format
+        if (!isValidEmail(email)) {
+            qWarning() << "MyDatabase::registerUser - ERROR: Invalid email format";
+            return false;
+        }
         // Generate a unique user ID
-
         QString userId = QString::number((rand() % 90000) + 10000);
         QSqlQuery query;
         query.prepare("INSERT INTO Users (user_id, email, password, phint) VALUES (:user_id, :email, :password, :phint)");
@@ -405,6 +608,10 @@ Q_INVOKABLE bool insertJob(const QString& email, const QString& jobtitle, const 
         return true;
     }
     Q_INVOKABLE bool registerEmployer(const QString& email, const QString& password, const QString& phint){
+        if (!isValidEmail(email)) {
+            qWarning() << "MyDatabase::registerUser - ERROR: Invalid email format";
+            return false;
+        }
         QSqlQuery query;
         QString Id = QString::number((rand() % 90000) + 10000);
         query.prepare("INSERT INTO employer (email, password, phint, id) VALUES (:email, :password, :phint, :id)");
@@ -430,30 +637,48 @@ Q_INVOKABLE bool insertJob(const QString& email, const QString& jobtitle, const 
 
 
         if (!query.exec()) {
-            qWarning() << "MyDatabase::insertKYCData - ERROR: " << query.lastError().text();
+            qWarning() << "MyDatabase::insertKYCDataEmployer - ERROR: " << query.lastError().text();
             return false;
         }
         return true;
     }
 
 
-    Q_INVOKABLE bool insertKYCData(const QString& userId, const QString& fullName, const QString& address, const QString& education, const QString& dob, const QString& experience) {
+    Q_INVOKABLE bool insertKYCData(const QString& user_id, const QString& fullName, const QString& dobA, const QString& dobB, const QString& gender, const QString& marital_status, const QString& address, const QString& phone_number, const QString& email, const QString& board_name, const QString& education_level, const QString& gpa_or_percentage, const QString& faculty, const QString& company_name, const QString& company_address, const QString& post, const QString& working_field, const QString& experience_years, const QString& experience_letter, const QString& photo_link, const QString& signature_link, const QString& citizenshipf_link, const QString& citizenshipb_link, const QString& resume_link) {
         QSqlQuery query;
-        query.prepare("UPDATE Users SET fullName = :fullName, address = :address, education = :education, dob = :dob, experience = :experience WHERE user_id = :user_id");
+        query.prepare("UPDATE Users SET fullName = :fullName, dobA = :dobA, dobB = :dobB, gender = :gender, marital_status = :marital_status, address = :address, phone_number = :phone_number, email = :email, board_name = :board_name, education_level = :education_level, gpa_or_percentage = :gpa_or_percentage, faculty = :faculty, company_name = :company_name, company_address = :company_address, post = :post, working_field = :working_field, experience_years = :experience_years, experience_letter = :experience_letter, photo_link = :photo_link, signature_link = :signature_link, citizenshipf_link = :citizenshipf_link, citizenshipb_link = :citizenshipb_link, resume_link = :resume_link WHERE user_id = :user_id");
         query.bindValue(":fullName", fullName);
+        query.bindValue(":dobA", dobA);
+        query.bindValue(":dobB", dobB);
+        query.bindValue(":gender", gender);
+        query.bindValue(":marital_status", marital_status);
         query.bindValue(":address", address);
-        query.bindValue(":education", education);
-        query.bindValue(":dob", dob);
-        query.bindValue(":experience", experience);
-        query.bindValue(":user_id", userId);
+        query.bindValue(":phone_number", phone_number);
+        query.bindValue(":email", email);
+        query.bindValue(":board_name", board_name);
+        query.bindValue(":education_level", education_level);
+        query.bindValue(":gpa_or_percentage", gpa_or_percentage);
+        query.bindValue(":faculty", faculty);
+        query.bindValue(":company_name", company_name);
+        query.bindValue(":company_address", company_address);
+        query.bindValue(":post", post);
+        query.bindValue(":working_field", working_field);
+        query.bindValue(":experience_years", experience_years);
+        query.bindValue(":experience_letter", experience_letter);
+        query.bindValue(":photo_link", photo_link);
+        query.bindValue(":signature_link", signature_link);
+        query.bindValue(":citizenshipf_link", citizenshipf_link);
+        query.bindValue(":citizenshipb_link", citizenshipb_link);
+        query.bindValue(":resume_link", resume_link);
+        query.bindValue(":user_id", user_id);
 
         if (!query.exec()) {
-            qWarning() << "MyDatabase::insertKYCData - ERROR: " << query.lastError().text();
+            qWarning() << "MyDatabase::insertKYCData - ERROR:" << query.lastError().text();
             return false;
         }
         return true;
-
     }
+
     Q_INVOKABLE QString retrieveEmployer(const QString &id, const QString &whatINeed) {
         QSqlQuery query;
         query.prepare("SELECT * FROM Employer WHERE id = :id");
@@ -530,7 +755,7 @@ Q_INVOKABLE bool insertJob(const QString& email, const QString& jobtitle, const 
         query.bindValue(":job_id", job_id);
 
         if (!query.exec()) {
-            qWarning() << "MyDatabase::getUserIdByEmail - ERROR: " << query.lastError().text();
+            qWarning() << "MyDatabase::retriveJob - ERROR: " << query.lastError().text();
             return QString(); // Return an empty string on error
         }
 
@@ -625,7 +850,7 @@ Q_INVOKABLE bool insertJob(const QString& email, const QString& jobtitle, const 
 
     Q_INVOKABLE QString getdob(const QString& email) {
         QSqlQuery query;
-        query.prepare("SELECT dob FROM Users WHERE email = :email");
+        query.prepare("SELECT dobB FROM Users WHERE email = :email");
         query.bindValue(":email", email);
 
         if (!query.exec()) {
@@ -635,7 +860,7 @@ Q_INVOKABLE bool insertJob(const QString& email, const QString& jobtitle, const 
 
         if (query.next()) {
             // Assuming the 'name' column is of type QString
-            return query.value("dob").toString();
+            return query.value("dobB").toString();
         } else {
             qWarning() << "No record found for email:" << email;
             return QString();  // Return an empty string if no record is found
@@ -683,7 +908,7 @@ Q_INVOKABLE bool insertJob(const QString& email, const QString& jobtitle, const 
 
     Q_INVOKABLE QStringList checkForSearch(const QString &x) {
         QSqlQuery query;
-        query.prepare("SELECT DISTINCT job_title FROM JobPosted WHERE job_title LIKE :x OR category LIKE :x");
+        query.prepare("SELECT DISTINCT job_title FROM JobPosted WHERE category LIKE :x");
         query.bindValue(":x", "%" + x + "%");
 
         QStringList results;  // Use a QStringList to store unique results

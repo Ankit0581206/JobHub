@@ -1,16 +1,14 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
-import "." as Globals
+
 
 Page {
     id: loginPage
     title: "Login Page"
     width: Screen.width
     height: 900
-    /*property alias passwordText: password.text
-    property alias emailText: email.text
-    property alias sign_InText: sign_In.text*/
+
     Rectangle {
         id: rectangle1
         width: Screen.width
@@ -18,18 +16,31 @@ Page {
         color: "#6f42c1"
 
         Button {
-            x: 1330
-            y: 176
+            x: 909
+            y: 205
             width: 156
             height: 50
             text: "Register"
             background: Rectangle {
-                color: "#96be25" // You can replace "green" with any valid color string
+                color: "#96be25"
             }
             onClicked: {
                 navigateTo(registerpagecomponent);
             }
         }
+    }
+
+    Label {
+        id: label
+        x: 247
+        y: 489
+        width: 226
+        height: 33
+        color: "Red"
+        text: qsTr("")
+        verticalAlignment: "AlignVCenter"
+        horizontalAlignment: "AlignHCenter"
+        font.pixelSize: 18
     }
     Image {
         id: _back_arrow_left_icon_1_1
@@ -39,13 +50,13 @@ Page {
         anchors.topMargin: 127
         anchors.leftMargin: 15
         MouseArea {
-                  id: mouseAreaForEmployee
-                  anchors.fill: parent // Fill the entire rectangle with the MouseArea
-                  onClicked: {
-                      // Call a function to navigate to the kycpagecomponent
-                      navigateTo(homepagecomponent);// This function should handle navigation
-                  }
-              }
+            id: mouseAreaForEmployee
+            anchors.fill: parent // Fill the entire rectangle with the MouseArea
+            onClicked: {
+
+                navigateTo(homepagecomponent);// This function handle navigation
+            }
+        }
     }
 
     Rectangle {
@@ -65,7 +76,7 @@ Page {
     }
 
     Text{
-          id : forget
+        id : forget
         x: 356
         y: 563
         width: 156
@@ -75,19 +86,19 @@ Page {
         font.pixelSize: 16
 
         MouseArea {
-             id: forget1
-             anchors.fill: parent
+            id: forget1
+            anchors.fill: parent
             onClicked:
             {
-             navigateTo(retrivepasswordcomponent);
-        }
+                navigateTo(retrivepasswordcomponent);
+            }
         }
     }
 
     Text {
         id: sign_In
-        x: 135
-        y: 180
+        x: 134
+        y: 162
         width: 433
         height: 38
         color: "#15cff1"
@@ -100,15 +111,6 @@ Page {
         font.weight: Font.Bold
     }
 
-    //    TextField {
-    //        id: loginEmailField
-    //        x: 134
-    //        y: 269
-    //        width: 433
-    //        height: 67
-    //        color: "#d9d9d9"
-    //        placeholderText: mydb.retrieveJob(jobId,"job_title")
-    //    }
     Rectangle {
         x: 134
         y: 269
@@ -144,16 +146,7 @@ Page {
 
     }
 
-    //    TextField {
-    //        id: loginPasswordField
-    //        placeholderText: "Password"
-    //        echoMode: TextInput.Password
-    //        x: 134
-    //        y: 403
-    //        width: 433
-    //        height: 67
-    //        color: "#d9d9d9"
-    //    }
+
     Rectangle {
         x: 134
         y: 403
@@ -177,12 +170,12 @@ Page {
             echoMode: TextInput.Password
             Text {
                 id: passwordDisplay
-                text: loginPasswordField.text.length > 0 ? "*".repeat(loginPasswordField.text.length) : ""
+                text: passwordField.text.length > 0 ? "*".repeat(passwordField.text.length) : ""
                 verticalAlignment: Text.AlignVCenter
                 font.pointSize: 12
                 font.family: "Times New Roman"
             }
-            leftInset: 0 // Make the TextField transparent
+            leftInset: 0
             font.family: "Times New Roman"
             font.pointSize: 22
             font.capitalization: Font.MixedCase
@@ -191,6 +184,25 @@ Page {
 
 
 
+        }
+        Button {
+            x: 392
+            y: 0
+            width: 41
+            height: 67
+            text: "show"
+            background: Rectangle {
+                color: "transparent"
+            }
+            onClicked: {
+                if (loginPasswordField.echoMode === TextField.Password) {
+                    loginPasswordField.echoMode = TextField.Normal; // Display actual text
+                    text = "Hide";
+                } else {
+                    loginPasswordField.echoMode = TextField.Password; // Display asterisks
+                    text = "Show";
+                }
+            }
         }
     }
 
@@ -227,9 +239,9 @@ Page {
     }
     Text {
         id: newRegister
-        x: 1126
+        x: 709
 
-        y: 191
+        y: 223
         width: 248
         height: 27
         color: "#ffffff"
@@ -249,11 +261,10 @@ Page {
         height: 50
         text: "Login"
         background: Rectangle {
-            color: "#96be25" // You can replace "green" with any valid color string
+            color: "#96be25"
         }
         onClicked: {
-            //Globals.globalString += loginEmailField.text
-            // Call C++ method to authenticate user
+
             mydb.storeCurrentEmail(loginEmailField.text.trim().toLowerCase())
             if (mydb.authenticateUser(loginEmailField.text, loginPasswordField.text)){
                 console.log("Login successful");
@@ -265,15 +276,17 @@ Page {
                     navigateTo(kycpagecomponent);
                 }
             }
-            else
+            else{
+                label.text="Invalid Credentials"
                 console.log("Invalid credentials");
+            }
         }
     }
 
     Image {
         id: image_2_copy_1
-        x: 870
-        y: 242
+        x: 672
+        y: 256
         source: "assets/image_2_copy_1.png"
     }
 }
