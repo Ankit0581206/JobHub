@@ -39,6 +39,12 @@ Window {
 
         }
     }
+    Component{
+        id:userdashboardpagecomponent
+        UserDashboard{
+
+        }
+    }
 
     Component{
         id:reviewpagecomponent

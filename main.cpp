@@ -49,7 +49,7 @@ public:
         {
             QSqlDatabase db = QSqlDatabase::addDatabase(DRIVER);
 
-            db.setDatabaseName("C:/Users/ankar/OneDrive/Documents/GitHub/Database/myDatabase.db");
+            db.setDatabaseName("JobHub");
 
             if(!db.open())
                 qWarning() << "DatabaseConnect - ERROR: " << db.lastError().text();
@@ -249,6 +249,36 @@ public:
         return ""; // Return an empty string if there's an issue with the query or if the column is not found
     }
 
+    Q_INVOKABLE QString retrieveApplied(const QString &applicationId, const QString &whatINeed) {
+        QSqlQuery query;
+        query.prepare("SELECT * FROM AppliedJobs WHERE applicationId = :applicationId");
+        query.bindValue(":applicationId", applicationId);
+
+        if (query.exec()) {
+            if (query.next()) {
+                if (whatINeed == "job_id") {
+                    QString value = query.value("job_id").toString();
+                    return value;
+                }
+                if (whatINeed == "employer_id") {
+                    QString value = query.value("employer_id").toString();
+                    return value;
+                }
+                if (whatINeed == "user_id") {
+                    QString value = query.value("user_id").toString();
+                    return value;
+                }
+                if (whatINeed == "status") {
+                    QString value = query.value("status").toString();
+                    return value;
+                }
+                // Add more conditions for other columns if needed...
+            }
+        }
+
+        return ""; // Return an empty string if there's an issue with the query or if the column is not found
+    }
+
     Q_INVOKABLE QString retrievePosted(const QString &applicationId, const QString &whatINeed) {
          QSqlQuery query;
          query.prepare("SELECT * FROM AppliedJobs  WHERE applicationId = :applicationId ORDER BY applicationId ASC");
@@ -292,6 +322,25 @@ public:
             }
          } else {
             qWarning() << "MyDatabase::getAllAppliedJobsByEmployer - ERROR: " << query.lastError().text();
+         }
+
+         return applicationIds;
+    }
+
+    Q_INVOKABLE QStringList getAllAppliedJobsByUser(const QString& userId) {
+         QStringList applicationIds;
+         QSqlQuery query;
+
+         query.prepare("SELECT applicationId FROM AppliedJobs WHERE user_id = :user_id ORDER BY applicationId DESC");
+         query.bindValue(":user_id", userId);
+
+         if (query.exec()) {
+            while (query.next()) {
+                QString applicationId = query.value("applicationId").toString();
+                applicationIds.append(applicationId);
+            }
+         } else {
+            qWarning() << "MyDatabase::getAllAppliedJobsByUser - ERROR: " << query.lastError().text();
          }
 
          return applicationIds;
@@ -393,13 +442,16 @@ public:
         return jobIds;
     }
 
+
+
     //applyJob(jobIdSave,userId)
     Q_INVOKABLE bool applyJob(const QString& jobId, const QString& userId){
         QSqlQuery query;
-        query.prepare("INSERT INTO AppliedJobs (job_id, employer_id, user_id) VALUES (:jobId, :employerId, :userId) ");
+        query.prepare("INSERT INTO AppliedJobs (job_id, employer_id, user_id, status) VALUES (:jobId, :employerId, :userId, :status) ");
         query.bindValue(":jobId", jobId);
         query.bindValue(":employerId",  retrieveJob(jobId,"employer_id"));
         query.bindValue(":userId", userId);
+        query.bindValue(":status", "Pending");
 
         if (!query.exec()) {
             qWarning() << "MyDatabase::applyJob - ERROR: " << query.lastError().text();
@@ -407,6 +459,9 @@ public:
         }
 
         return true;
+
+
+
     }
 
 Q_INVOKABLE bool insertJob(const QString& email, const QString& jobtitle, const QString& catagory, const QString& degree, const QString& job_level, const QString& academics, const QString& minimumjob, const QString& location, const QString& deadline, const QString& description, const QString& education, const QString& vacancies, const QString& salary,const QString &employer_id ) {
@@ -936,7 +991,7 @@ Q_INVOKABLE bool insertJob(const QString& email, const QString& jobtitle, const 
         // Assuming your table is named 'kyc_data' and has a column 'email' as the primary key
         if(x==0){
             QSqlQuery query;
-            query.prepare("SELECT address AND dob FROM Users WHERE email = ?");
+            query.prepare("SELECT address AND dobA AND dobB AND phone_number FROM Users WHERE email = ?");
             query.addBindValue(email);
 
             if (query.exec() && query.next()) {

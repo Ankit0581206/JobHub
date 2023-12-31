@@ -1927,5 +1927,6 @@
         <file>UI/ReviewPage.qml</file>
         <file>UI/assets/next_button.png</file>
         <file>UI/Retrive_PasswordEmployer.qml</file>
+        <file>UI/UserDashboard.qml</file>
     </qresource>
 </RCC>

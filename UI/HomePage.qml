@@ -9,7 +9,7 @@ Page {
     width: Screen.width
     height: 3305
     property string jobIdSave: ""
-    property string userId: mydb.getUseIdByEmail(0);
+    property string userId: mydb.getUserIdByEmail(0);
 
 
 
@@ -1010,7 +1010,7 @@ Page {
                             Rectangle {
                                 id: rectangle_1294i
                                 width: 833
-                                height: 500
+                                height: 878
                                 color: "#6f42c1"
                                 anchors.left: parent.left
                                 anchors.top: parent.top
@@ -1043,6 +1043,20 @@ Page {
                                 font.weight: Font.Black
                                 font.family: "Mulish"
                                 font.capitalization: Font.Capitalize
+                            }
+
+                            Button {
+                                id: applyButtonInfo
+                                width: 121
+                                height: 59
+
+                                anchors.left: parent.left
+                                anchors.top: parent.top
+                                anchors.leftMargin: 250
+                                anchors.topMargin: 100
+                                onClicked:{
+                                    mydb.applyJob(jobIdSave,userId);
+                                }
                             }
 
                             Text {
@@ -1273,19 +1287,7 @@ Page {
                                 font.capitalization: Font.Capitalize
                             }
 
-                            Button {
-                                id: applyButtonInfo
-                                width: 121
-                                height: 59
 
-                                anchors.left: parent.left
-                                anchors.top: parent.top
-                                anchors.leftMargin: 678
-                                anchors.topMargin: 701
-                                onClicked:{
-                                    mydb.applyJob(jobIdSave,userId);
-                                }
-                            }
 
                             Rectangle {
                                 id: rectangle_1297i

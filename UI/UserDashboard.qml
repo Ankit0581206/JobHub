@@ -3,7 +3,7 @@ import QtQuick.Layouts 1.15
 import QtQuick.Controls 2.25
 
 Page {
-    id: dashboardPage
+    id: userdashboardPage
     width: 1400
     height: 1550
     ScrollView {
@@ -27,6 +27,63 @@ Page {
                     width: 1400
                     height: 1550
                     color: "#f4f6f8"
+                    //    property alias edit2Text: edit2.text
+                    //    property alias searchText: search.text
+                    //    property alias edit3Text: edit3.text
+                    //    property alias editText: edit.text
+                    //    property alias elementText: element.text
+                    //    property alias element6Text: element6.text
+                    //    property alias element3Text: element3.text
+                    //    property alias delete2Text: delete2.text
+                    //    property alias contact_Us1Text: contact_Us1.text
+                    //    property alias total_ApplicantsText: total_Applicants.text
+                    //    property alias update2Text: update2.text
+                    //    property alias delete3Text: delete3.text
+                    //    property alias employerText: employer.text
+                    //    property alias delete1Text: delete1.text
+                    //    property alias ad_ExpiryText: ad_Expiry.text
+                    //    property alias element8Text: element8.text
+                    //    property alias dashBoardText: dashBoard.text
+                    //    property alias update3Text: update3.text
+                    //    property alias element4Text: element4.text
+                    //    property alias jobHub_comText: jobHub_com.text
+                    //    property alias job_AdvertisementsText: job_Advertisements.text
+                    //    property alias feedbackText: feedback.text
+                    //    property alias info_JobHub_comText: info_JobHub_com.text
+                    //    property alias element11Text: element11.text
+                    //    property alias search_JobsText: search_Jobs.text
+                    //    property alias kupondole_Lalitpur_NepalText: kupondole_Lalitpur_Nepal.text
+                    //    property alias xxxxxxxxText: xxxxxxxx.text
+                    //    property alias aboutText: about.text
+                    //    property alias about_JobHubText: about_JobHub.text
+                    //    property alias update1Text: update1.text
+                    //    property alias updateText: update.text
+                    //    property alias element1Text: element1.text
+                    //    property alias job_SeekerText: job_Seeker.text
+                    //    property alias element2Text: element2.text
+                    //    property alias create_AccountText: create_Account.text
+                    //    property alias element5Text: element5.text
+                    //    property alias delete4Text: delete4.text
+                    //    property alias back_end_Software_DeveloperText: back_end_Software_Developer.text
+                    //    property alias xxxxxxxx1Text: xxxxxxxx1.text
+                    //    property alias create_Account1Text: create_Account1.text
+                    //    property alias posted_DateText: posted_Date.text
+                    //    property alias terms_ConditionsText: terms_Conditions.text
+                    //    property alias secretaryText: secretary.text
+                    //    property alias element9Text: element9.text
+                    //    property alias front_end_Software_DeveloperText: front_end_Software_Developer.text
+                    //    property alias fAQsText: fAQs.text
+                    //    property alias shrestha_SoftwaresText: shrestha_Softwares.text
+                    //    property alias edit1Text: edit1.text
+                    //    property alias post_a_new_job_Text: post_a_new_job_.text
+                    //    property alias data_AnalystText: data_Analyst.text
+                    //    property alias element10Text: element10.text
+                    //    property alias element7Text: element7.text
+                    //    property alias reviewText: review.text
+                    //    property alias menuText: menu.text
+                    //    property alias contact_UsText: contact_Us.text
+                    //    property alias fAQs1Text: fAQs1.text
+                    //    property alias fAQs2Text: fAQs2.text
 
 
 
@@ -82,7 +139,7 @@ Page {
                         width: 491
                         height: 115
                         color: "#000000"
-                        text: mydb.retrieveEmployer(mydb.getUserIdByEmail(1) ,"company_name")
+                        text: mydb.retrieveUser(mydb.getUserIdByEmail(0) ,"fullName")
                         font.pixelSize: 48
                         horizontalAlignment: Text.AlignHCenter
                         verticalAlignment: Text.AlignVCenter
@@ -131,6 +188,31 @@ Page {
                         font.weight: Font.Normal
                         font.family: "Arvo"
                         font.capitalization: Font.Capitalize
+                    }
+                    Text {
+                        id: vacancy
+                        x: 74
+                        y: 223
+                        width: 97
+                        height: 22
+                        color: "#808081"
+                        text: qsTr("Vacancies")
+                        font.pixelSize: 18
+                        horizontalAlignment: Text.AlignLeft
+                        verticalAlignment: Text.AlignTop
+                        wrapMode: Text.NoWrap
+                        font.weight: Font.Normal
+                        font.family: "Arvo"
+                        font.capitalization: Font.Capitalize
+                        MouseArea {
+
+                                  anchors.fill: parent
+                                  onClicked: {
+                                      rectangle_1279.visible=true
+                                      navigateTo(homepagecomponent);
+                                  }
+                              }
+
                     }
 
                     Text {
@@ -260,10 +342,86 @@ Page {
                         x: 335
                         y: 400
                         width: 994
-                        height: 325
+                        height: 507
                         color: "#ffffff"
                         radius: 10
+
                     }
+
+
+                        ListModel {
+                        id: mymodel3
+                        }
+
+                        ListView {
+                        x: 335
+                        y: 452
+                        width: 994
+                        height: 364
+                        spacing: 15
+                        model: mymodel3
+
+
+                        Component.onCompleted: {
+                        var userId = mydb.getUserIdByEmail(0) ;
+                        var applicationId = mydb.getAllAppliedJobsByUser(userId);
+
+                        // Iterate over the job IDs
+                        for (var i = 0; i < applicationId.length; ++i) {
+                           var applicationId1 = applicationId[i];
+                           mymodel3.append({ jobName: mydb.retrieveJob(mydb.retrievePosted(applicationId1,"job_id") ,"job_title"), companyName: mydb.retrieveEmployer( mydb.retrievePosted(applicationId1,"employer_id"),"company_name") , applicationId: applicationId1, status: mydb.retrieveApplied(applicationId1,"status") });
+                        //
+                        }
+                        }
+
+                        delegate: Rectangle {
+                        id: newApplication
+                        width: 994
+                        height: 50
+                        color: "#f0ecf9"
+                        property string applicationId : model.applicationId
+
+
+                        Text {
+                           id: status
+                           text: model.status
+                           font.pixelSize: 30
+                           font.family: "Times New Roman"
+                           anchors {
+                               right: parent.right
+                               verticalCenter: parent.verticalCenter
+                               rightMargin: 20
+                           }
+                        }
+
+                        Text {
+                           id: companyName
+                           text: model.companyName
+                           font.pixelSize: 30
+                           font.family: "Times New Roman"
+                           anchors {
+                               left: parent.left
+                               verticalCenter: parent.verticalCenter
+                               leftMargin: 20
+                           }
+                        }
+
+                        Text {
+                           text: model.jobName
+                           font.pixelSize: 30
+                           font.family: "Times New Roman"
+                           anchors {
+                               left: companyName.right
+                               verticalCenter: parent.verticalCenter
+                               leftMargin: 20
+                           }
+                        }
+                        }
+
+
+                        }
+
+
 
                     Rectangle {
                         id: rectangle_59
@@ -637,7 +795,7 @@ Page {
                         width: 131
                         height: 17
                         color: "#1e293b"
-                        text: qsTr("Job Advertisements")
+                        text: qsTr("Job Title")
                         font.letterSpacing: -0.266
                         font.pixelSize: 14
                         horizontalAlignment: Text.AlignLeft
@@ -647,58 +805,22 @@ Page {
                         font.family: "Inter"
                     }
 
-
-
-                    Rectangle {
-                        id: rectangle_1285
-                        x: 341
-                        y: 772
-                        width: 994
-                        height: 367
-                        color: "#ffffff"
-                        radius: 10
-                    }
-
                     Text {
-                        id: post_a_new_job_
-                        x: 1098
-                        y: 146
-                        width: 261
-                        height: 46
-                        color: "#000000"
-                        text: qsTr("Post a new job?")
-                        font.pixelSize: 35
-                        horizontalAlignment: Text.AlignHCenter
-                        verticalAlignment: Text.AlignVCenter
+                        x: 859
+                        y: 416
+                        width: 131
+                        height: 17
+                        color: "#1e293b"
+                        text: qsTr("Status")
+                        font.letterSpacing: -0.266
+                        font.pixelSize: 14
+                        horizontalAlignment: Text.AlignLeft
+                        verticalAlignment: Text.AlignTop
                         wrapMode: Text.NoWrap
-                        font.weight: Font.Bold
-                        font.family: "DM Sans"
+                        font.weight: Font.Medium
+                        font.family: "Inter"
                     }
-                    Rectangle {
-                        id: customButton
-                        x: 1132
-                        y: 205
 
-
-                        width: 197
-                        height: 35
-                        radius: 5
-                        color: "#6f42c1"
-
-                        Text {
-                            anchors.centerIn: parent
-                            text: qsTr("Click Here")
-                            color: "white"
-                        }
-
-                        MouseArea {
-                            anchors.fill: parent
-                            onClicked: {
-
-                                navigateTo(postjobpagecomponent)
-                            }
-                        }
-                    }
 
 
                     Image {
@@ -712,180 +834,12 @@ Page {
 
 
             }
-            ListModel {
-                id: myModel
-            }
-
-            ListView {
-                x: 335
-                y: 452
-                width: 994
-                height: 276
-                spacing: 15
-                model: myModel
-
-                Component.onCompleted: {
-
-                    // Start fetching and appending data
-
-                    var employerId = mydb.getUserIdByEmail(1) ; // Replace with the actual employer ID
-                    var jobIds = mydb.getAllJobIdsByEmployer(employerId);
-
-                    // Iterate over the job IDs
-                    for (var i = 0; i < jobIds.length; ++i) {
-                        var jobId = jobIds[i];
-                        myModel.append({ jobName: mydb.retrieveJob(jobId, "job_title"), jobId: jobId });
-
-                    }
-                }
-
-                delegate: Rectangle {
-                    id: newJob
-                    width: 994
-
-                    height: 50
-                    color: "#f0ecf9"
-
-                    property string jobId:""
-
-                    Button {
-                        id: deleteButton
-                        text: qsTr("Delete")
-                        anchors {
-                            right: parent.right
-                            verticalCenter: parent.verticalCenter
-                            rightMargin: 10
-                        }
-
-                        onClicked: {
-                            mydb.deleteJobById(jobId);
-                            // Find the index of the delegate in the model by iterating over items
-                            for (var i = 0; i < myModel.count; ++i) {
-                                if (myModel.get(i).jobId === model.jobId) {
-                                    myModel.remove(i);
-                                    break;
-                                }
-                            }
-                        }
-                    }
-
-
-                    Button {
-                        id: editButton
-                        text: qsTr("Edit")
-                        anchors {
-                            right: deleteButton.left
-                            verticalCenter: parent.verticalCenter
-                            rightMargin: 10
-                        }
-                    }
-                    Button {
-                        id: updateButton
-                        text: qsTr("Update")
-                        anchors.verticalCenterOffset: 0
-                        anchors {
-                            right: editButton.left
-                            verticalCenter: parent.verticalCenter
-                            rightMargin: 10
-                        }
-                    }
-
-                    Text {
-                        x: 65
-                        y: 5
-                        text: model.jobName
-                        font.pixelSize: 30
-                        font.family: "Times New Roman"
-                    }
-
-
-                }
-
-            }
-            ListModel {
-                id: myModel2
-            }
-
-            ListView {
-                x: 335
-                y: 772
-                width: 994
-                height: 364
-                spacing: 15
-                model: myModel2
-
-
-                Component.onCompleted: {
-
-                    // Start fetching and appending data
-
-                    var employerId = mydb.getUserIdByEmail(1) ; // Replace with the actual employer ID
-                    var applicationId = mydb.getAllAppliedJobsByEmployer(employerId);
-
-                    // Iterate over the job IDs
-                    for (var i = 0; i < applicationId.length; ++i) {
-                        var applicationId1 = applicationId[i];
-                        myModel2.append({ jobName: mydb.retrieveJob(mydb.retrievePosted(applicationId1,"job_id") ,"job_title"), userName: mydb.retrieveUser(mydb.retrievePosted(applicationId1,"user_id") , "fullName") , applicationId: applicationId1 });
-
-                    }
-                }
-
-                delegate: Rectangle {
-                    id: newApplicant
-                    width: 994
-
-                    height: 50
-                    color: "#f0ecf9"
-
-                    property string applicationId: model.applicationId
-
-                    Button {
-                        id: reviewbutton
-                        text: qsTr("Review")
-                        anchors {
-                            right: parent.right
-                            verticalCenter: parent.verticalCenter
-                            rightMargin: 10
-                        }
-                        onClicked:{
-                            var userId = mydb.retrievePosted(applicationId,"user_id")
-                            var reviewemail = mydb.retrieveUser(userId,"email")
-                            mydb.storeReviewEmail(reviewemail);
-                            navigateTo(reviewpagecomponent);
-                        }
-
-                    }
 
 
 
 
 
-                    Text {
-                        id: userName
-                        text: model.userName
-                        font.pixelSize: 30
-                        font.family: "Times New Roman"
-                        anchors{
-                            left: parent.left
-                            verticalCenter: parent.verticalCenter
-                            rightMargin: 10
-                        }
-                    }
-                    Text {
-                        text: model.jobName
-                        font.pixelSize: 30
-                        font.family: "Times New Roman"
-                        anchors {
-                            left: userName.right
-                            verticalCenter: parent.verticalCenter
-                            leftMargin: 15
-                        }
-                    }
 
-
-                }
-
-            }
 
 
         }

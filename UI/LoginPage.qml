@@ -270,7 +270,7 @@ Page {
                 console.log("Login successful");
                 if (mydb.isKYCDataAvailable(loginEmailField.text,0)) {
                     // KYC data is available, navigate to another page
-                    navigateTo(dashboardpagecomponent);
+                    navigateTo(userdashboardpagecomponent);
                 } else {
                     // KYC data is not available, navigate to the kycpagecomponent
                     navigateTo(kycpagecomponent);

@@ -1151,7 +1151,7 @@ Page {
                                                    resumefield.text))
                             {
                                 console.log("KYC data submitted successfully")
-                                navigateTo(dashboardpagecomponent)
+                                navigateTo(userdashboardpagecomponent);
                             } else{
                                 label3.text="KYC Not Submitted"
                                 console.log("Failed to submit KYC data")
