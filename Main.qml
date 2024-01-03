@@ -9,8 +9,8 @@ import "UI"
 
 Window {
     visible: true
-    width: Screen.desktopAvailableWidth-width
-    height: Screen.height
+    width: Screen.width
+    height: Screen.height/(1.3)
     title: "JobHub"
 
     Loader {
